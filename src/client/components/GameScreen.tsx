@@ -15,12 +15,6 @@ export function GameScreen() {
   const sound = useSound();
 
   useEffect(() => {
-    if (game.phase === "playing" && game.currentCard === 0) {
-      sound.playCardSwoosh();
-    }
-  }, [game.currentCard, game.phase, sound]);
-
-  useEffect(() => {
     if (game.revealed) {
       const currentCard = game.daily?.cards[game.currentCard];
       if (currentCard) {

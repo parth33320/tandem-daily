@@ -388,10 +388,10 @@ export function useDailyGame(direction: Direction) {
   }, [clearTimers]);
 
   useEffect(() => {
-    if (state.daily) {
+    if (state.daily && !state.practiceMode) {
       fetchDaily();
     }
-  }, [direction, fetchDaily]);
+  }, [direction, fetchDaily, state.practiceMode]);
 
   useEffect(() => {
     if (state.phase === "playing" && !state.revealed) {

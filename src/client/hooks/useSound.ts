@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { playSwoosh, playTick, playCorrect, playWrong, setSfxMuted } from "@/utils/soundEffects";
 
 export function useSound() {
@@ -8,5 +8,14 @@ export function useSound() {
   const playWrongSound = useCallback(() => playWrong(), []);
   const setMuted = useCallback((m: boolean) => setSfxMuted(m), []);
 
-  return { playCardSwoosh, playTickSound, playCorrectSound, playWrongSound, setMuted };
+  return useMemo(
+    () => ({
+      playCardSwoosh,
+      playTickSound,
+      playCorrectSound,
+      playWrongSound,
+      setMuted,
+    }),
+    [playCardSwoosh, playTickSound, playCorrectSound, playWrongSound, setMuted]
+  );
 }
