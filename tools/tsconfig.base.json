@@ -23,6 +23,12 @@
     "sourceMap": true,
     "target": "ES2022",
     "lib": ["DOM", "ES2023", "esnext.disposable"],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../src/client/*"],
+      "@/shared/*": ["../src/shared/*"]
+    },
+    "ignoreDeprecations": "6.0"
   }
 }

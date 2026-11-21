@@ -1,6 +1,14 @@
 {
   "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
   "name": "tandem-daily",
+  "permissions": {
+    "redis": true,
+    "reddit": {
+      "enable": true,
+      "scope": "user",
+      "asUser": ["SUBMIT_COMMENT"]
+    }
+  },
   "post": {
     "dir": "dist/client",
     "entrypoints": {
