@@ -62,6 +62,7 @@ export function CardView({
   showCommunityStats,
   communityStats,
   directionMode,
+  lifelinesUsed,
 }: CardViewProps) {
   // For "en" (Visual Detective) mode, display as zh2ja (show Chinese, guess Japanese)
   const displayDir = direction === "en" ? "zh2ja" : direction;

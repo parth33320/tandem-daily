@@ -115,6 +115,7 @@ export function GameScreen() {
             eliminatedIndices={game.eliminatedIndices}
             communityStats={cardStats}
             directionMode={direction}
+            lifelinesUsed={game.lifelinesUsed}
           />
           <ChoiceButtons
             card={currentCard}
