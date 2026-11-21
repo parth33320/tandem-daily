@@ -499,7 +499,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Originally meaning spiritually lost or deceived, in Japanese it migrated to mean causing inconvenience or annoyance to others around you.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it an inconvenience? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -755,7 +755,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "In Chinese, yueshu means to restrict or bind behavior, whereas in Japanese, yakusoku highlights the mutual promise binding both parties.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Can it carry passengers? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -917,7 +917,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Originally meaning transforming people through literature and virtue, it became the established Sino-Japanese translation for Western culture.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -930,7 +930,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Truncated from the classical Chinese idiom keisei saimin (governing the state and relieving the people's suffering) to translate political economy.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -969,7 +969,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Both characters date back millennia in Chinese texts to document passed calendars and chroniclers, remaining identical in meaning.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -1076,7 +1076,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "In Chinese, both heping and pinghe are used, with pinghe emphasizing tranquil mildness, whereas Japanese standardized heiwa for geopolitical peace.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -1123,7 +1123,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "A perfectly identical compound dating back to antiquity meaning achieving accomplishment.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -2249,7 +2249,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Direct opposite of seiko/chenggong (success), shared in identical form and philosophical meaning across both cultures.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -2330,7 +2330,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "In classical Buddhist theology, woman represented the sin of clinging stubbornly to one's ego; in Japan, that obstinate pride transformed into the cardinal virtue of silent perseverance.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Can it carry passengers? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -2531,7 +2531,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Historically an official release or exemption granted by the Shogun or Emperor; Japanese everyday speech colloquialized it into gomen nasai (I'm sorry).",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -2599,7 +2599,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Originally the Buddhist foundation of consciousness; Japanese shifted iji into obstinate willpower and stubbornness, as seen in ijippari.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ],
     "radical": {
       "glyph": "心",
@@ -2871,7 +2871,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Both mean without incident; Japanese frequently uses buji as a relieved sigh that someone arrived safely without harm, while Chinese often means having nothing to do.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it an inconvenience? Yes"
+      "Can you physically touch or hold it? No"
     ],
     "radical": {
       "glyph": "灬",
@@ -2918,7 +2918,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "In Chinese, niantou describes a spontaneous notion or whim, whereas Japanese nento ni oku means solemnly keeping a strategic concept firmly fixed in mind.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ],
     "radical": {
       "glyph": "心",
@@ -3485,7 +3485,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Both derive from Buddhist active worldly karma, developing into secular descriptions of promising youth with bright futures.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a commitment or restriction? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {
@@ -4516,7 +4516,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Combining burning distillation (shō/shāo) with liquor (chū/zhǒu), representing clear, potent distilled spirits.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ],
     "radical": {
       "glyph": "火",
@@ -4636,7 +4636,7 @@ export const wordPool: PoolWord[] = [
     "fun_fact": "Translating Sanskrit Sukhavati as utmost bliss, this realm of Amitabha Buddha provides salvation in East Asian Pure Land Buddhism.",
     "clues": [
       "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Can you physically touch or hold it? No"
     ]
   },
   {

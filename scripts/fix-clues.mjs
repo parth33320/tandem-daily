@@ -328,6 +328,8 @@ function genClues(word) {
     c2 = "Can it carry multiple passengers? Yes";
   } else if (isAction) {
     c2 = "Is it typically done indoors? No";
+  } else if (isAbstract) {
+    c2 = "Can you physically touch or hold it? No";
   } else {
     // Fallback: cross-language semantic contrast (never expose enum names like false_friend/true_friend)
     const meaningCombined = (word.meaning_en).toLowerCase();
