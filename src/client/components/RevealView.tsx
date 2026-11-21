@@ -121,10 +121,10 @@ export function RevealView({ card, selectedIdx, correct, stats, directionMode, o
       </div>
 
       {/* Next Card / See Final Score button - always visible at bottom */}
-      <div className="w-full max-w-md mt-auto pt-2">
+      <div className="w-full max-w-md shrink-0 mt-2">
         <button
           onClick={onNext}
-          className="w-full btn-primary py-2.5 text-sm font-semibold"
+          className="w-full btn-primary py-2.5 text-sm font-semibold shrink-0"
         >
           {isLastCard ? "See Final Score →" : "Next Card →"}
         </button>

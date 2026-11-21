@@ -28,6 +28,9 @@ interface UseDailyGameState {
   showClues: string[];
   showCommunityStats: boolean;
   practiceMode: boolean;
+  _practiceSeed: number | undefined;
+  pendingStartGame: boolean;
+  pendingPractice: boolean;
 }
 
 const BASE_POINTS = 100;
@@ -58,27 +61,13 @@ export function useDailyGame(direction: Direction) {
     showClues: [],
     showCommunityStats: false,
     practiceMode: false,
+    _practiceSeed: undefined,
+    pendingStartGame: false,
+    pendingPractice: false,
   });
 
   const timerRef = useRef<number | null>(null);
   const pauseTimeoutRef = useRef<number | null>(null);
-
-  const fetchDaily = useCallback(async () => {
-    try {
-      const res = await fetch("/api/daily");
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data: DailyResponse = await res.json();
-      if (data.type !== "daily") throw new Error("Unexpected response");
-      setState((s) => ({ ...s, daily: data, loading: false, error: null }));
-    } catch (err) {
-      console.error("Failed to fetch daily", err);
-      setState((s) => ({ ...s, loading: false, error: "Failed to load today's puzzle" }));
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchDaily();
-  }, [fetchDaily]);
 
   const clearTimers = useCallback(() => {
     if (timerRef.current) {
@@ -108,6 +97,50 @@ export function useDailyGame(direction: Direction) {
     }, 1000);
   }, [clearTimers]);
 
+  const fetchDaily = useCallback(async () => {
+    try {
+      const res = await fetch("/api/daily");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data: DailyResponse = await res.json();
+      if (data.type !== "daily") throw new Error("Unexpected response");
+      setState((s) => ({ ...s, daily: data, loading: false, error: null }));
+    } catch (err) {
+      console.error("Failed to fetch daily", err);
+      setState((s) => ({ ...s, loading: false, error: "Failed to load today's puzzle" }));
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchDaily();
+  }, [fetchDaily]);
+
+  // Start game automatically when daily data loads and there's a pending start
+  useEffect(() => {
+    if (state.pendingStartGame && state.daily) {
+      const seed = state._practiceSeed;
+      const practice = state.pendingPractice;
+      setState((s) => ({
+        ...s,
+        phase: "playing",
+        currentCard: 0,
+        score: 0,
+        answers: [],
+        usedHints: [],
+        revealed: false,
+        eliminatedIndices: [],
+        lifelinesUsed: { fiftyFifty: false, xray: false, twentyQuestions: 0, askSubreddit: false },
+        showRadicalOverlay: false,
+        showClues: [],
+        showCommunityStats: false,
+        practiceMode: practice,
+        _practiceSeed: seed,
+        pendingStartGame: false,
+        pendingPractice: false,
+      }));
+      setTimeout(startTimer, 300);
+    }
+  }, [state.daily, state.pendingStartGame, state.pendingPractice, state._practiceSeed, startTimer]);
+
   const pauseTimer = useCallback((duration = LIFELINE_PAUSE_MS) => {
     setState((s) => ({ ...s, timerPaused: true, timerPausedUntil: Date.now() + duration }));
     if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
@@ -119,22 +152,35 @@ export function useDailyGame(direction: Direction) {
   const startGame = useCallback((practice = false) => {
     clearTimers();
     const seed = practice ? Date.now() : undefined;
-    setState((s) => ({
-      ...s,
-      phase: "playing",
-      currentCard: 0,
-      score: 0,
-      answers: [],
-      usedHints: [],
-      revealed: false,
-      eliminatedIndices: [],
-      lifelinesUsed: { fiftyFifty: false, xray: false, twentyQuestions: 0, askSubreddit: false },
-      showRadicalOverlay: false,
-      showClues: [],
-      showCommunityStats: false,
-      practiceMode: practice,
-      _practiceSeed: seed,
-    }));
+    setState((s) => {
+      // If daily is already loaded, start immediately; otherwise queue the start
+      if (s.daily) {
+        return {
+          ...s,
+          phase: "playing",
+          currentCard: 0,
+          score: 0,
+          answers: [],
+          usedHints: [],
+          revealed: false,
+          eliminatedIndices: [],
+          lifelinesUsed: { fiftyFifty: false, xray: false, twentyQuestions: 0, askSubreddit: false },
+          showRadicalOverlay: false,
+          showClues: [],
+          showCommunityStats: false,
+          practiceMode: practice,
+          _practiceSeed: seed,
+          pendingStartGame: false,
+          pendingPractice: false,
+        };
+      }
+      return {
+        ...s,
+        pendingStartGame: true,
+        pendingPractice: practice,
+        _practiceSeed: seed,
+      };
+    });
     setTimeout(startTimer, 300);
   }, [clearTimers, startTimer]);
 
@@ -168,27 +214,7 @@ export function useDailyGame(direction: Direction) {
       score: s.score + points,
       answers: [...s.answers, { cardIdx: s.currentCard, choiceIdx, correct }],
     }));
-
-    await new Promise((r) => setTimeout(r, 1500));
-
-    const nextCard = currentCard + 1;
-    if (nextCard >= 5) {
-      setState((s) => ({ ...s, phase: "ended", revealed: false }));
-    } else {
-      setState((s) => ({
-        ...s,
-        currentCard: nextCard,
-        revealed: false,
-        usedHints: [],
-        eliminatedIndices: [],
-        lifelinesUsed: { fiftyFifty: false, xray: false, twentyQuestions: 0, askSubreddit: false },
-        showRadicalOverlay: false,
-        showClues: [],
-        showCommunityStats: false,
-      }));
-      setTimeout(startTimer, 300);
-    }
-  }, [state, clearTimers, calculateRoundPoints, startTimer]);
+  }, [state, clearTimers, calculateRoundPoints]);
 
   const useHint = useCallback((hint: "eliminate") => {
     const { daily, currentCard, usedHints } = state;
@@ -332,6 +358,28 @@ export function useDailyGame(direction: Direction) {
     }));
   }, [clearTimers]);
 
+  const nextCard = useCallback(() => {
+    clearTimers();
+    setState((s) => {
+      const next = s.currentCard + 1;
+      if (next >= 5) {
+        return { ...s, phase: "ended", revealed: false };
+      }
+      return {
+        ...s,
+        currentCard: next,
+        revealed: false,
+        usedHints: [],
+        eliminatedIndices: [],
+        lifelinesUsed: { fiftyFifty: false, xray: false, twentyQuestions: 0, askSubreddit: false },
+        showRadicalOverlay: false,
+        showClues: [],
+        showCommunityStats: false,
+      };
+    });
+    startTimer();
+  }, [clearTimers]);
+
   useEffect(() => {
     if (state.daily) {
       fetchDaily();
@@ -360,5 +408,6 @@ export function useDailyGame(direction: Direction) {
     submitScore,
     shareScore,
     resetGame,
+    nextCard,
   };
 }

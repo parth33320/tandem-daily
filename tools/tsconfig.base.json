@@ -13,7 +13,7 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "strict": true,
-    "types": [],
+    "types": ["vitest", "@testing-library/jest-dom"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "module": "ESNext",

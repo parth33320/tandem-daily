@@ -135,12 +135,7 @@ export function GameScreen() {
             correct={game.answers[game.answers.length - 1]?.correct ?? false}
             stats={cardStats}
             directionMode={direction}
-            onNext={() => {
-              const nextCard = game.currentCard + 1;
-              if (nextCard >= 5) {
-                // Game over - phase will be "ended" already
-              }
-            }}
+            onNext={game.nextCard}
             isLastCard={game.currentCard === 4}
           />
         </div>
