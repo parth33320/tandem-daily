@@ -50,9 +50,8 @@ export function GameScreen() {
   };
 
   const handlePlayAgain = () => {
-    game.resetGame();
-    game.fetchDaily();
-    setDirection("zh2ja");
+    game.startGame(true);
+    sound.playCardSwoosh();
   };
 
   const handleShare = (onStatus: (status: "loading" | "success" | "error", error?: string) => void) => {
@@ -112,10 +111,8 @@ export function GameScreen() {
             showRadicalOverlay={game.showRadicalOverlay}
             showClues={game.showClues}
             showCommunityStats={game.showCommunityStats}
-            eliminatedIndices={game.eliminatedIndices}
             communityStats={cardStats}
             directionMode={direction}
-            lifelinesUsed={game.lifelinesUsed}
           />
           <ChoiceButtons
             card={currentCard}

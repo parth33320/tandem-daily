@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { DailyResponse, Direction, ScoreResponse, ShareResponse } from "@/shared/api";
+import { dealDailyCards } from "@/lib/daily";
+import { WORDS } from "@/lib/words";
 
 interface LifelinesUsed {
   fiftyFifty: boolean;
@@ -155,6 +157,10 @@ export function useDailyGame(direction: Direction) {
     setState((s) => {
       // If daily is already loaded, start immediately; otherwise queue the start
       if (s.daily) {
+        let newCards = s.daily.cards;
+        if (practice) {
+          newCards = dealDailyCards(s.daily.puzzleNumber, direction, WORDS, Date.now());
+        }
         return {
           ...s,
           phase: "playing",
@@ -172,6 +178,7 @@ export function useDailyGame(direction: Direction) {
           _practiceSeed: seed,
           pendingStartGame: false,
           pendingPractice: false,
+          daily: { ...s.daily, cards: newCards },
         };
       }
       return {
@@ -182,7 +189,7 @@ export function useDailyGame(direction: Direction) {
       };
     });
     setTimeout(startTimer, 300);
-  }, [clearTimers, startTimer]);
+  }, [clearTimers, startTimer, direction]);
 
   const calculateRoundPoints = useCallback((correct: boolean, usedHints: string[], lifelinesUsed: LifelinesUsed) => {
     if (!correct) return 0;

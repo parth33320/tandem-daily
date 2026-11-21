@@ -17,10 +17,8 @@ interface CardViewProps {
   showRadicalOverlay: boolean;
   showClues: string[];
   showCommunityStats: boolean;
-  eliminatedIndices: number[];
   communityStats: { [choice: string]: number } | undefined;
   directionMode: "zh2ja" | "ja2zh" | "en";
-  lifelinesUsed: { xray: boolean; fiftyFifty: boolean; twentyQuestions: number; askSubreddit: boolean };
 }
 
 const RELATION_LABELS = {
@@ -62,7 +60,6 @@ export function CardView({
   showCommunityStats,
   communityStats,
   directionMode,
-  lifelinesUsed,
 }: CardViewProps) {
   // For "en" (Visual Detective) mode, display as zh2ja (show Chinese, guess Japanese)
   const displayDir = direction === "en" ? "zh2ja" : direction;
@@ -77,7 +74,7 @@ export function CardView({
 
   // For en mode, auto-show radical if available
   const shouldShowRadical = isEnMode && card.word.radical && !showRadicalOverlay;
-  const radical = shouldShowRadical ? card.word.radical : (showRadicalOverlay ? card.word.radical : null);
+  const radical = showRadicalOverlay ? card.word.radical : (shouldShowRadical ? card.word.radical : null);
 
   const lifelinePills = [
     { label: "✂️ 50/50", cost: 20, onClick: onFiftyFifty, disabled: !canFiftyFifty },
@@ -138,14 +135,14 @@ export function CardView({
           <div className="relative inline-block leading-none">
             {targetWord.split('').map((char, idx) => {
               const isTargetChar = radical && idx === radical.charIndex;
-              const showRadicalGlow = (lifelinesUsed.xray || direction === "en") && !!radical;
+              const showRadicalGlow = showRadicalOverlay && !!radical;
               return (
                 <span key={idx} className="relative inline-block leading-none">
                   <span className="relative z-0 kanji-display block text-3xl sm:text-5xl">{char}</span>
                   {isTargetChar && showRadicalGlow && (
                     <span
                       aria-hidden="true"
-                      className="absolute inset-0 z-10 text-amber-400 animate-pulse drop-shadow-[0_0_12px_rgba(251,191,36,1)] pointer-events-none select-none"
+                      className="absolute inset-0 z-10 kanji-display block text-3xl sm:text-5xl text-amber-400 animate-pulse pointer-events-none select-none"
                       style={{ clipPath: getClipPath(radical!.position) }}
                     >
                       {char}
@@ -155,10 +152,9 @@ export function CardView({
               );
             })}
           </div>
-          {radical && (
-            <div className="radical-badge mt-1 inline-flex text-xs sm:text-sm">
-              <span>{radical.icon}</span>
-              <span>{radical.name} radical</span>
+          {radical && showRadicalOverlay && (
+            <div className="mt-1.5 flex justify-center">
+              <span className="radical-badge text-base px-2.5 py-0.5">{radical.icon}</span>
             </div>
           )}
         </div>

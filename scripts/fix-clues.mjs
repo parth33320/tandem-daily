@@ -111,6 +111,9 @@ const RADICAL_MAP = {
   '論': { glyph: '言', icon: '💬', name: 'Speech', position: 'left', breakdown: '論 = 言 Speech + 侖 Arrange' },
   '講': { glyph: '言', icon: '💬', name: 'Speech', position: 'left', breakdown: '講 = 言 Speech + 空 Empty' },
   
+  // Speech (言, 💬, "whole")
+  '言': { glyph: '言', icon: '💬', name: 'Speech', position: 'whole', breakdown: '言 = Speech (pictograph of words from mouth)' },
+  
   // Heart/Emotion (忄/心, ❤️, "left" / "whole")
   '情': { glyph: '忄', icon: '❤️', name: 'Heart', position: 'left', breakdown: '情 = 忄 Heart + 青 Blue' },
   '忙': { glyph: '忄', icon: '❤️', name: 'Heart', position: 'left', breakdown: '忙 = 忄 Heart + 亡 Perish' },
@@ -209,8 +212,17 @@ const RADICAL_MAP = {
   // Mountain (山, ⛰️, "whole")
   '山': { glyph: '山', icon: '⛰️', name: 'Mountain', position: 'whole', breakdown: '山 = Mountain (pictograph of three peaks)' },
   
-  // Mouth (口, 👄, "left")
-  '口': { glyph: '口', icon: '👄', name: 'Mouth', position: 'left', breakdown: '口 = Mouth (pictograph of open mouth)' },
+  // Mouth (口, 👄, "whole")
+  '口': { glyph: '口', icon: '👄', name: 'Mouth', position: 'whole', breakdown: '口 = Mouth (pictograph of open mouth)' },
+  
+  // Heart (心, ❤️, "whole")
+  '心': { glyph: '心', icon: '❤️', name: 'Heart', position: 'whole', breakdown: '心 = Heart (anatomical heart pictograph)' },
+  
+  // Eye (目, 👁️, "whole")
+  '目': { glyph: '目', icon: '👁️', name: 'Eye', position: 'whole', breakdown: '目 = Eye (pictograph of an eye)' },
+  
+  // Sun/Day (日, ☀️, "whole")
+  '日': { glyph: '日', icon: '☀️', name: 'Sun', position: 'whole', breakdown: '日 = Sun (pictograph of the sun)' },
   
   // Rain (雨, 🌧️, "top")
   '雨': { glyph: '雨', icon: '🌧️', name: 'Rain', position: 'top', breakdown: '雨 = Rain (pictograph of rain drops)' },
@@ -368,7 +380,9 @@ function genClues(word) {
     else if (/hobby|flavor|taste/.test(meaningCombined)) c2 = "Is it a pastime or sensory experience? Yes";
     else if (/appearance|standard|good/.test(meaningCombined)) c2 = "Is it about looks or quality? Yes";
     else if (/structure|splendid|quite/.test(meaningCombined)) c2 = "Is it about construction or satisfaction? Yes";
-    else c2 = `Is it ${word.relation === 'false_friend' ? 'a false friend' : word.relation === 'true_friend' ? 'a true friend' : 'a half friend'}? Yes`;
+    else if (/mother|father|daughter|son|brother|sister|wife|husband|parent|child|uncle|aunt|cousin|grandfather|grandmother|grandfather|grandmother/.test(meaningCombined)) c2 = "Is it a family member? Yes";
+    else if (/police|doctor|teacher|student|president|boss|manager|worker|actor|singer|writer|monk|professor|director|minister|officer|judge|lawyer|engineer|scientist|pilot|driver|chef|waiter|clerk|secretary|receptionist|translator|interpreter|guide|coach|trainer|mentor|leader|official|politician|diplomat|ambassador|governor|mayor|senator|representative|deputy|minister|secretary|commissioner|inspector|detective|guard|soldier|officer|captain|general|admiral|marshal|admiral|marshal/.test(meaningCombined)) c2 = "Is it a job or official title? Yes";
+    else c2 = "Is it a general human or social role? Yes";
   }
   
   cs.push(c2);
