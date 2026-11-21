@@ -1,6 +1,7 @@
 import {
   type Word,
   WORDS,
+  hash,
 } from "./words";
 import { dealRound, dealWord } from "./content";
 import type { RoundContent, Direction } from "@/shared/api";
@@ -20,13 +21,26 @@ function isFalseFriend(word: Word): boolean {
   return word.relation === "false";
 }
 
+function getSeededRandom(seed: number) {
+  let s = seed >>> 0;
+  return () => {
+    s = Math.imul(s ^ (s << 13), 0x5bd1e995) >>> 0;
+    s = Math.imul(s ^ (s >> 17), 0x5bd1e995) >>> 0;
+    return s;
+  };
+}
+
 export function dealDailyCards(
   puzzleNum: number,
   _direction: Direction,
-  pool: Word[] = WORDS
+  pool: Word[] = WORDS,
+  seed?: number
 ): RoundContent[] {
   const cards: RoundContent[] = [];
   const usedIds = new Set<number>();
+
+  const rng = seed !== undefined ? getSeededRandom(seed) : null;
+  const getRandom = (max: number) => (rng ? rng() % max : hash(`${Date.now()}-${Math.random()}`) % max);
 
   for (let i = 0; i < 5; i++) {
     let n = puzzleNum * 5 + i;
@@ -38,9 +52,28 @@ export function dealDailyCards(
       for (let t = 0; t < nonFalsePool.length && usedIds.has(nonFalsePool[idx]!.id); t++) {
         idx = (idx + 1) % nonFalsePool.length;
       }
+      if (rng) {
+        idx = getRandom(nonFalsePool.length);
+        for (let t = 0; t < nonFalsePool.length && usedIds.has(nonFalsePool[idx]!.id); t++) {
+          idx = (idx + 1) % nonFalsePool.length;
+        }
+      }
       card = dealWord(nonFalsePool[idx]!, nonFalsePool, n);
     } else {
-      card = dealRound(n, Array.from(usedIds), pool);
+      if (rng) {
+        const available = pool.filter((w) => !usedIds.has(w.id));
+        if (available.length > 0) {
+          let idx = getRandom(available.length);
+          for (let t = 0; t < available.length && usedIds.has(available[idx]!.id); t++) {
+            idx = (idx + 1) % available.length;
+          }
+          card = dealWord(available[idx]!, pool, n);
+        } else {
+          card = dealRound(n, Array.from(usedIds), pool);
+        }
+      } else {
+        card = dealRound(n, Array.from(usedIds), pool);
+      }
     }
 
     usedIds.add(card.word.id);

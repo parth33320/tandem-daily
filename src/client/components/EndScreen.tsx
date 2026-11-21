@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { similarity } from "@/lib/content";
 
 interface EndScreenProps {
@@ -6,69 +6,91 @@ interface EndScreenProps {
   streak: number;
   answers: { cardIdx: number; choiceIdx: number; correct: boolean }[];
   daily: { puzzleNumber: number; cards: { word: { relation: string } }[] };
-  onShare: () => void;
+  onShare: (onStatus: (status: "loading" | "success" | "error", error?: string) => void) => void;
   onPlayAgain: () => void;
 }
 
 export function EndScreen({ score, streak, answers, daily, onShare, onPlayAgain }: EndScreenProps) {
   const sim = similarity(daily.cards.map((c) => c.word));
   const emoji = answers.map((a) => (a.correct ? "🟩" : "🟥")).join("");
+  const correctCount = answers.filter((a) => a.correct).length;
 
-  useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      if (event.data === "share-success") {
-        // Optional: show toast
-      }
-    };
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, []);
+  const [shareStatus, setShareStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [shareError, setShareError] = useState<string>("");
+
+  const handleShare = () => {
+    setShareStatus("loading");
+    setShareError("");
+    onShare((status, error) => {
+      setShareStatus(status);
+      if (error) setShareError(error);
+    });
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-4 gap-4 text-center">
-      <div className="w-full max-w-md">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          {score === 5 ? "🎉 Perfect!" : score >= 3 ? "👍 Good Job!" : "📚 Keep Learning!"}
-        </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">Score: {score}/5</p>
+    <div className="flex flex-col items-center justify-center h-full p-2.5 sm:p-4 gap-2.5 sm:gap-4 text-center">
+      <div className="w-full max-w-md space-y-3 sm:space-y-4">
+        <div className="animate-in">
+          <h1 className="text-xl sm:text-2xl font-bold text-paper mb-1 font-serif">
+            {score === 500 ? "🎉 Perfect!" : score >= 300 ? "👍 Well Done!" : "📚 Keep Learning!"}
+          </h1>
+          <p className="text-base sm:text-lg text-gold-light mb-1 font-mono">
+            {score} pts · {correctCount}/5 Correct
+          </p>
+        </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 mb-4">
-          <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">Similarity Meter</div>
-          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+        {/* Similarity Meter */}
+        <div className="game-card p-3 sm:p-4 animate-slide-up">
+          <div className="text-xs sm:text-sm text-border-light mb-1.5">Similarity Meter</div>
+          <div className="w-full h-3 sm:h-4 bg-ink-light/50 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full transition-all duration-500"
+              className="h-full progress-bar-fill"
               style={{ width: `${sim.pct}%` }}
             ></div>
           </div>
-          <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+          <div className="flex justify-between text-[10px] sm:text-xs text-border-light mt-1">
             <span>0%</span>
-            <span className="font-semibold text-gray-900 dark:text-gray-100">{sim.pct}%</span>
+            <span className="font-semibold text-gold-light">{sim.pct}%</span>
             <span>100%</span>
           </div>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+          <p className="text-[10px] sm:text-xs text-border-light mt-1.5 text-center">
             {sim.same} true friend{sim.same !== 1 ? "s" : ""}, {sim.partial} half friend{sim.partial !== 1 ? "s" : ""}, {sim.different} false friend{sim.different !== 1 ? "s" : ""}
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 mb-4">
-          <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">Streak</div>
-          <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">🔥 {streak} day{streak !== 1 ? "s" : ""}</div>
+        {/* Streak */}
+        <div className="game-card p-3 sm:p-4 animate-slide-up">
+          <div className="text-xs sm:text-sm text-border-light mb-1.5">Current Streak</div>
+          <div className="text-2xl sm:text-3xl font-bold text-gold">🔥 {streak} day{streak !== 1 ? "s" : ""}</div>
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-3 font-mono text-sm text-gray-700 dark:text-gray-300 mb-4 break-all">
-          Tandem Daily #{daily.puzzleNumber} · {score}/5 {emoji} · 🔥 {streak}-day streak
+        {/* Shareable scorecard */}
+        <div className="game-card p-2.5 sm:p-3 animate-slide-up">
+          <div className="font-mono text-xs sm:text-sm text-paper break-all bg-ink-light/30 rounded p-1.5 sm:p-2">
+            Tandem Daily #{daily.puzzleNumber} · {correctCount}/5 {emoji} · 🔥 {streak}-day streak
+          </div>
         </div>
 
-        <div className="space-y-2">
+        {/* Action buttons */}
+        <div className="space-y-2 animate-in">
           <button
-            onClick={onShare}
-            className="w-full py-3 px-6 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors"
+            onClick={handleShare}
+            disabled={shareStatus !== "idle"}
+            className="w-full py-2.5 sm:py-3 px-4 sm:px-6 btn-primary text-sm sm:text-base transition-all"
           >
-            Share Score to Comments
+            {shareStatus === "loading" && "Posting..."}
+            {shareStatus === "success" && "✅ Shared to Comments!"}
+            {shareStatus === "error" && `❌ Failed — Tap to Retry`}
+            {shareStatus === "idle" && "Share Score to Comments"}
           </button>
+          {shareStatus === "error" && (
+            <div className="text-[10px] sm:text-xs text-crimson-light text-center">
+              {shareError}
+            </div>
+          )}
           <button
             onClick={onPlayAgain}
-            className="w-full py-3 px-6 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            className="w-full py-2.5 sm:py-3 px-4 sm:px-6 btn-secondary text-sm sm:text-base"
           >
             Play Again
           </button>

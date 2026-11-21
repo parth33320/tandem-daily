@@ -5,87 +5,129 @@ interface RevealViewProps {
   selectedIdx: number;
   correct: boolean;
   stats?: { [choice: string]: number } | undefined;
+  directionMode: "zh2ja" | "ja2zh" | "en";
+  onNext: () => void;
+  isLastCard: boolean;
 }
 
-const RELATION_LABELS: Record<string, { label: string; color: string; emoji: string }> = {
-  true: { label: "True Friend", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200", emoji: "✅" },
-  false: { label: "False Friend", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200", emoji: "❌" },
-  partial: { label: "Half Friend", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200", emoji: "⚠️" },
-};
+const RELATION_LABELS = {
+  true: { label: "True Friend", color: "badge-true", emoji: "✅" },
+  false: { label: "False Friend", color: "badge-false", emoji: "❌" },
+  partial: { label: "Half Friend", color: "badge-partial", emoji: "⚠️" },
+} as const;
 
-type RelationLabel = { label: string; color: string; emoji: string };
+type RelationKey = keyof typeof RELATION_LABELS;
 
-function getRelation(relation: string): RelationLabel {
-  const key = relation as keyof typeof RELATION_LABELS;
-  const result = RELATION_LABELS[key];
-  return (result ?? RELATION_LABELS.partial) as RelationLabel;
+function getRelation(relation: RelationKey) {
+  return RELATION_LABELS[relation] ?? RELATION_LABELS.partial;
 }
 
-export function RevealView({ card, selectedIdx, correct, stats }: RevealViewProps) {
+export function RevealView({ card, selectedIdx, correct, stats, directionMode, onNext, isLastCard }: RevealViewProps) {
   const relation = getRelation(card.word.relation);
   const total = stats ? Object.values(stats).reduce((a, b) => a + b, 0) : 0;
+  const isEnMode = directionMode === "en";
 
   return (
-    <div className="w-full max-w-md space-y-3 animate-in fade-in-0 duration-300">
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-        <div className="flex items-center justify-between mb-3">
-          <span className={`text-xs font-semibold px-2 py-1 rounded-full ${relation.color}`}>
-            {relation.emoji} {relation.label}
-          </span>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            {correct ? "Correct!" : "Wrong"}
-          </span>
-        </div>
+    <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md space-y-2 overflow-hidden animate-in p-2.5 sm:p-4">
+      {/* Relation badge - now visible after answer */}
+      <div className="flex items-center justify-between mb-2 w-full max-w-md">
+        <span className={`badge ${relation.color} text-xs`}>
+          {relation.emoji} {relation.label}
+        </span>
+        <span className={`text-xs font-semibold ${correct ? "text-emerald-light" : "text-crimson-light"}`}>
+          {correct ? "Correct!" : "Wrong"}
+        </span>
+      </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-3">
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
-            <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">Japanese</div>
-            <div className="font-bold text-gray-900 dark:text-gray-100">{card.word.form}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 font-mono">{card.word.reading}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">{card.word.ja}</div>
-          </div>
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
-            <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">Chinese</div>
-            <div className="font-bold text-gray-900 dark:text-gray-100">{card.word.zhForm}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 font-mono">{card.word.pinyin}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">{card.word.zh}</div>
-          </div>
+      {/* 50/50 Trap badge for en mode on false friends */}
+      {isEnMode && card.word.relation === "false" && (
+        <div className="badge badge-trap text-center mx-auto mb-2 animate-in text-xs">
+          ⚠️ 50/50 Trap: Pick the Japanese meaning
         </div>
+      )}
 
-        <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
-          {card.word.facts[0]}
+      {/* Side-by-side JP/ZH reveal - keep grid-cols-2 on mobile */}
+      <div className="game-card p-3 grid grid-cols-2 gap-2 mb-2 w-full max-w-md">
+        <div className="bg-ink-light/30 rounded-lg p-2.5">
+          <div className="text-[10px] text-border-light mb-0.5">Japanese</div>
+          <div className="kanji-display text-xl mb-0.5">{card.word.form}</div>
+          <div className="reading-text text-xs mb-1">{card.word.reading}</div>
+          <div className="meaning-text text-xs">{card.word.ja}</div>
+        </div>
+        <div className="bg-ink-light/30 rounded-lg p-2.5">
+          <div className="text-[10px] text-border-light mb-0.5">Chinese</div>
+          <div className="kanji-display text-xl mb-0.5">{card.word.zhForm}</div>
+          <div className="reading-text text-xs mb-1">{card.word.pinyin}</div>
+          <div className="meaning-text text-xs">{card.word.zh}</div>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
-        {card.options.map((opt: string, idx: number) => {
+      {/* Radical breakdown */}
+      {card.word.radical && (
+        <div className="game-card p-2.5 mb-2 animate-in w-full max-w-md">
+          <div className="flex items-center gap-1.5 mb-1">
+            <span className="text-lg">{card.word.radical.icon}</span>
+            <span className="font-semibold text-gold-light text-sm">{card.word.radical.name} radical</span>
+          </div>
+          <div className="radical-breakdown text-center text-sm">
+            {card.word.radical.breakdown}
+          </div>
+        </div>
+      )}
+
+      {/* Fun fact */}
+      <div className="fact-text text-center mb-2 text-[11px] w-full max-w-md">
+        {card.word.facts[0]}
+      </div>
+
+      {/* Collapsed choice results - only show what was picked + correct answer */}
+      <div className="space-y-1.5 w-full max-w-md">
+        {card.options.map((opt, idx) => {
           const isCorrect = idx === card.correct;
           const isSelected = idx === selectedIdx;
           const pct = stats && total > 0 ? Math.round((stats[idx.toString()] || 0) / total * 100) : null;
+          
+          // In reveal, only show selected and correct
+          if (!isSelected && !isCorrect) return null;
+          
           return (
             <div
               key={idx}
-              className={`px-3 py-2 text-sm rounded-lg border-2 transition-all ${
+              className={`game-card p-2 transition-all ${
                 isCorrect
-                  ? "bg-green-50 dark:bg-green-900/30 border-green-400"
-                  : isSelected
-                  ? "bg-red-50 dark:bg-red-900/30 border-red-400"
-                  : "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                  ? "border-l-4 border-emerald bg-emerald/5"
+                  : "border-l-4 border-crimson bg-crimson/5"
               }`}
             >
-              <div className="flex items-center justify-between">
-                <span className={isCorrect ? "font-semibold" : ""}>{opt}</span>
+              <div className="flex items-center justify-between gap-1.5">
+                <span className={`font-medium ${isCorrect ? "text-emerald-light" : "text-crimson-light"} text-sm`}>
+                  {isSelected ? "Your pick: " : "Correct: "} {opt}
+                </span>
                 {pct !== null && (
-                  <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">
-                    {pct}%
+                  <span className="stat-pill gold text-[10px] px-1.5 py-0.5">
+                    {pct}% picked
                   </span>
                 )}
               </div>
-              {isCorrect && <div className="text-xs text-green-700 dark:text-green-300 mt-1">✓ Correct answer</div>}
-              {isSelected && !isCorrect && <div className="text-xs text-red-700 dark:text-red-300 mt-1">✗ Your answer</div>}
+              {isCorrect && (
+                <div className="text-[10px] text-emerald-light mt-0.5">✓ Correct answer</div>
+              )}
+              {isSelected && !isCorrect && (
+                <div className="text-[10px] text-crimson-light mt-0.5">✗ Your answer</div>
+              )}
             </div>
           );
         })}
+      </div>
+
+      {/* Next Card / See Final Score button - always visible at bottom */}
+      <div className="w-full max-w-md mt-auto pt-2">
+        <button
+          onClick={onNext}
+          className="w-full btn-primary py-2.5 text-sm font-semibold"
+        >
+          {isLastCard ? "See Final Score →" : "Next Card →"}
+        </button>
       </div>
     </div>
   );

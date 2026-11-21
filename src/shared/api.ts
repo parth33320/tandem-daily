@@ -1,4 +1,4 @@
-export type Direction = "zh2ja" | "ja2zh";
+export type Direction = "zh2ja" | "ja2zh" | "en";
 
 export type OptionSet = {
   options: string[];
@@ -21,6 +21,15 @@ export interface Word {
   facts: string[];
   by?: string;
   trap?: boolean;
+  clues?: [string, string];
+  radical?: {
+    charIndex: number;
+    glyph: string;
+    icon: string;
+    name: string;
+    position: "left" | "top" | "whole";
+    breakdown: string;
+  };
 }
 
 export type RoundContent = OptionSet & {
@@ -83,6 +92,8 @@ export type ShareRequest = {
 export type ShareResponse = {
   type: "share";
   commentId: string;
+  ok: boolean;
+  error?: string;
 };
 
 export type ErrorResponse = {

@@ -86,3 +86,10 @@ export function playCorrect(): void {
 export function playWrong(): void {
   tone(180, 0, 0.45, { type: "sawtooth", gain: 0.12, to: 110 });
 }
+
+export function playWin(): void {
+  tone(880, 0, 0.3, { gain: 0.18 });
+  tone(1100, 0.1, 0.3, { gain: 0.15 });
+  tone(1320, 0.2, 0.4, { gain: 0.12 });
+  tone(1760, 0.3, 0.5, { gain: 0.1 });
+}

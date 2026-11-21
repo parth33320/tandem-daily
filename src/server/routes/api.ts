@@ -14,6 +14,7 @@ import type {
   IncrementResponse,
   DecrementResponse,
 } from "../../shared/api";
+import { wordPool, type PoolWord } from "../../shared/wordPool";
 
 export const api = new Hono();
 
@@ -33,6 +34,46 @@ function hash(s: string): number {
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
   return Math.abs(h);
 }
+
+// Convert PoolWord to Word for server-side use
+function toServerWord(p: PoolWord): Word {
+  const hit = /JP:\s*(.+?)\s*;\s*ZH:\s*(.+)$/i.exec(p.meaning_en.trim());
+  let ja: string, zh: string;
+  if (hit) {
+    ja = hit[1]!.trim();
+    zh = hit[2]!.trim().replace(/[.;]+$/, "");
+  } else {
+    const same = p.meaning_en.trim().replace(/[.;]+$/, "");
+    ja = same;
+    zh = same;
+  }
+  const REL: Record<string, Word["relation"]> = {
+    true_friend: "true",
+    false_friend: "false",
+    half_friend: "partial",
+  };
+  const relation = REL[p.relation] ?? "partial";
+  return {
+    id: p.id,
+    form: p.kanji,
+    zhForm: p.kanji,
+    reading: p.jp_reading,
+    pinyin: p.zh_pinyin,
+    ja,
+    zh,
+    relation,
+    category: relation === "true" ? "a true friend — trust your instinct" :
+              relation === "false" ? "a false friend — your instinct is a trap" :
+              "a half friend — related, but shifted",
+    example: `Japanese: ${p.jp_reading} · Chinese: ${p.zh_pinyin}`,
+    facts: [p.fun_fact],
+    clues: p.clues,
+    radical: p.radical,
+  };
+}
+
+// Convert the entire word pool
+const SERVER_WORD_POOL: Word[] = wordPool.map(toServerWord);
 
 function isFalseFriend(word: Word): boolean {
   return word.relation === "false";
@@ -128,32 +169,6 @@ async function getStats(puzzleNumber: number): Promise<Record<string, { [choice:
   return stats;
 }
 
-// Word pool data - embedded for server-side use
-const wordPool: Word[] = [
-  {"id": 1, "form": "手紙", "zhForm": "手紙", "reading": "tegami", "pinyin": "shǒuzhǐ", "ja": "letter", "zh": "toilet paper", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: tegami · Chinese: shǒuzhǐ", "facts": ["In ancient China, shouzhi referred to scrap paper for drafting notes, which later degraded to mean toilet paper, while Japan preserved the epistolary association."]},
-  {"id": 2, "form": "大家", "zhForm": "大家", "reading": "ōya", "pinyin": "dàjiā", "ja": "landlord", "zh": "everyone or master/expert", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: ōya · Chinese: dàjiā", "facts": ["In Japanese, oya literally denotes the master of the house (rented property), whereas in Chinese dajia evolved into the pronoun for everybody."]},
-  {"id": 3, "form": "汽車", "zhForm": "汽車", "reading": "kisha", "pinyin": "qìchē", "ja": "steam train", "zh": "automobile/car", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: kisha · Chinese: qìchē", "facts": ["Both derive from steam-powered origins, but Japanese kept kisha strictly for steam locomotives while Chinese adapted qiche for standard motor cars."]},
-  {"id": 4, "form": "勉強", "zhForm": "勉強", "reading": "benkyō", "pinyin": "miǎnqiǎng", "ja": "study or discount", "zh": "reluctant or force oneself", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: benkyō · Chinese: miǎnqiǎng", "facts": ["The classical Chinese root means forcing oneself against hardship; Japanese applied this idea of exertion to academic studying and commercial price cuts."]},
-  {"id": 5, "form": "娘", "zhForm": "娘", "reading": "musume", "pinyin": "niáng", "ja": "daughter or young woman", "zh": "mother or mature woman", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: musume · Chinese: niáng", "facts": ["In Japanese, musume refers down a generation to girls or daughters, whereas in Chinese, niang shifted upward in rank to mean mother or woman."]},
-  {"id": 6, "form": "愛人", "zhForm": "愛人", "reading": "aijin", "pinyin": "àiren", "ja": "mistress/lover", "zh": "spouse or husband/wife", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: aijin · Chinese: àiren", "facts": ["Introducing your airen in Tokyo implies an illicit extramarital lover, while introducing your airen in Beijing refers to your legitimate spouse."]},
-  {"id": 7, "form": "先生", "zhForm": "先生", "reading": "sensei", "pinyin": "xiānsheng", "ja": "teacher, doctor, or master", "zh": "mister, sir, or gentleman", "relation": "partial", "category": "a half friend — related, but shifted", "example": "Japanese: sensei · Chinese: xiānsheng", "facts": ["Both mean born earlier; Japanese retained it as an honorific for professionals, while Chinese broadened it into the universal title for Mr."]},
-  {"id": 8, "form": "老婆", "zhForm": "老婆", "reading": "rōba", "pinyin": "lǎopo", "ja": "elderly woman", "zh": "wife", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: rōba · Chinese: lǎopo", "facts": ["Calling your young wife roba in Japanese directly translates to calling her an old crone."]},
-  {"id": 9, "form": "放心", "zhForm": "放心", "reading": "hōshin", "pinyin": "fàngxīn", "ja": "absent-mindedness/daze", "zh": "feel relieved/at ease", "relation": "false", "category": "a false friend — your instinct is a trap", "example": "Japanese: hōshin · Chinese: fàngxīn", "facts": ["Chinese treats letting go of the heart as relaxing worry, whereas Japanese treats it as the soul vacating the body in a trance."]},
-  {"id": 10, "form": "新聞", "zhForm": "新聞", "reading": "shinbun", "pinyin": "xīnwén", "ja": "newspaper", "zh": "news/broadcast", "relation": "partial", "category": "a half friend — related, but shifted", "example": "Japanese: shinbun · Chinese: xīnwén", "facts": ["Literally newly heard things; Chinese kept the abstract concept of current events, whereas Meiji Japan applied it specifically to the printed medium."]},
-  // ... (truncated for brevity - in production, include all 340 words)
-  // For now, using a subset. The full word pool should be imported from a shared data file.
-];
-
-// Extend the pool with remaining words for the server
-// In production, this should be loaded from a shared data file
-const FULL_WORD_POOL: Word[] = wordPool;
-
-// Pad with duplicates to reach 340 for now (in production, use the full pool)
-while (FULL_WORD_POOL.length < 340) {
-  FULL_WORD_POOL.push(...wordPool);
-}
-FULL_WORD_POOL.length = 340;
-
 api.get("/daily", async (c) => {
   const { postId } = context;
 
@@ -178,7 +193,7 @@ api.get("/daily", async (c) => {
     const streak = streakStr ? parseInt(streakStr, 10) : 0;
     const puzzleNumber = getPuzzleNumber(new Date());
     const seed = getDailySeed(new Date());
-    const cards = dealDailyCards(puzzleNumber, FULL_WORD_POOL);
+    const cards = dealDailyCards(puzzleNumber, SERVER_WORD_POOL);
     const stats = await getStats(puzzleNumber);
 
     return c.json<DailyResponse>({
@@ -246,9 +261,9 @@ api.post("/score", async (c) => {
 
     let flair: string | undefined;
     try {
-      if (body.score === 5 && streak >= 7) {
+      if (body.score === 500 && streak >= 7) {
         flair = "🏆 Tandem Master";
-      } else if (body.score === 5) {
+      } else if (body.score === 500) {
         flair = "⭐ Perfect Day";
       } else if (streak >= 30) {
         flair = "💎 Month Streak";
@@ -280,22 +295,35 @@ api.post("/score", async (c) => {
 
 api.post("/share", async (c) => {
   const { postId } = context;
-  if (!postId) {
+  const postIdStr = String(postId ?? "");
+  if (!postIdStr) {
     return c.json<ErrorResponse>({ status: "error", message: "postId is required" }, 400);
   }
 
   try {
     const body = await c.req.json<ShareRequest>();
     const text = `Tandem Daily #${body.puzzleNumber} · ${body.score}/${body.maxScore} ${body.emoji} · 🔥 ${body.streak}-day streak`;
-    const comment = await reddit.submitComment({ postId, text } as never);
-    return c.json<ShareResponse>({ type: "share", commentId: comment.id });
+    
+    // Ensure postId has t3_ prefix
+    const fullPostId = postIdStr.startsWith("t3_") ? postIdStr : `t3_${postIdStr}`;
+    
+    let comment;
+    try {
+      // Try posting as the user first
+      comment = await reddit.submitComment({ id: fullPostId as `t3_${string}`, text, runAs: "USER" });
+    } catch {
+      // Fallback to posting as the app
+      comment = await reddit.submitComment({ id: fullPostId as `t3_${string}`, text });
+    }
+    
+    return c.json<ShareResponse>({ type: "share", commentId: comment.id, ok: true });
   } catch (error) {
     console.error("API Share Error:", error);
     let errorMessage = "Unknown error during share";
     if (error instanceof Error) {
       errorMessage = `Share failed: ${error.message}`;
     }
-    return c.json<ErrorResponse>({ status: "error", message: errorMessage }, 400);
+    return c.json<ShareResponse>({ type: "share", commentId: "", ok: false, error: errorMessage });
   }
 });
 
@@ -321,7 +349,7 @@ api.get("/init", async (c) => {
 
     return c.json<InitResponse>({
       type: "init",
-      postId: postId,
+      postId: String(postId),
       count: count ? parseInt(count) : 0,
       username: username ?? "anonymous",
     });
@@ -353,7 +381,7 @@ api.post("/increment", async (c) => {
   const count = await redis.incrBy("count", 1);
   return c.json<IncrementResponse>({
     count,
-    postId,
+    postId: String(postId),
     type: "increment",
   });
 });
@@ -373,7 +401,7 @@ api.post("/decrement", async (c) => {
   const count = await redis.incrBy("count", -1);
   return c.json<DecrementResponse>({
     count,
-    postId,
+    postId: String(postId),
     type: "decrement",
   });
 });

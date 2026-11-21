@@ -1,4 +1,4 @@
-import { wordPool, type PoolWord, type PoolRelation } from "@/data/wordPool";
+import { wordPool, type PoolWord, type PoolRelation } from "@/shared/wordPool";
 
 export type Relation = "true" | "false" | "partial";
 
@@ -17,6 +17,15 @@ export interface Word {
   facts: string[];
   by?: string;
   trap?: boolean;
+  clues?: [string, string];
+  radical?: {
+    charIndex: number;
+    glyph: string;
+    icon: string;
+    name: string;
+    position: "left" | "top" | "whole";
+    breakdown: string;
+  };
 }
 
 const REL: Record<PoolRelation, Relation> = {
@@ -46,7 +55,7 @@ export function splitMeaning(m: string): { ja: string; zh: string } {
 export function toWord(p: PoolWord): Word {
   const { ja, zh } = splitMeaning(p.meaning_en);
   const relation = REL[p.relation] as Relation;
-  return {
+  const result: Word = {
     id: p.id,
     form: p.kanji,
     zhForm: p.kanji,
@@ -58,7 +67,12 @@ export function toWord(p: PoolWord): Word {
     category: CATEGORY[relation],
     example: `Japanese: ${p.jp_reading} · Chinese: ${p.zh_pinyin}`,
     facts: [p.fun_fact],
+    clues: p.clues,
   };
+  if (p.radical) {
+    result.radical = p.radical;
+  }
+  return result;
 }
 
 export const WORDS: Word[] = wordPool.map(toWord);

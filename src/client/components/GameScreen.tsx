@@ -34,9 +34,9 @@ export function GameScreen() {
     }
   }, [game.revealed, game.answers, game.daily, game.currentCard, sound]);
 
-  const handleStart = (dir: Direction) => {
+  const handleStart = (dir: Direction, practice = false) => {
     setDirection(dir);
-    game.startGame();
+    game.startGame(practice);
     sound.playCardSwoosh();
   };
 
@@ -44,20 +44,26 @@ export function GameScreen() {
     game.selectAnswer(idx);
   };
 
-  const handleHint = (hint: "eliminate" | "example" | "category") => {
-    game.useHint(hint);
+  const handleLifeline = (type: "fiftyFifty" | "xray" | "twentyQuestions" | "askSubreddit") => {
+    game.useLifeline(type);
     sound.playTickSound();
   };
 
   const handlePlayAgain = () => {
+    game.resetGame();
     game.fetchDaily();
     setDirection("zh2ja");
+  };
+
+  const handleShare = (onStatus: (status: "loading" | "success" | "error", error?: string) => void) => {
+    game.submitScore();
+    game.shareScore(onStatus);
   };
 
   if (game.loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-orange-600 border-t-transparent"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-gold border-t-transparent"></div>
       </div>
     );
   }
@@ -65,7 +71,7 @@ export function GameScreen() {
   if (game.error) {
     return (
       <div className="flex items-center justify-center h-full p-4 text-center">
-        <p className="text-red-600 dark:text-red-400">{game.error}</p>
+        <p className="text-crimson-light">{game.error}</p>
       </div>
     );
   }
@@ -75,41 +81,66 @@ export function GameScreen() {
   }
 
   const currentCard = game.daily.cards[game.currentCard];
+  const cardStats = game.daily.stats?.[`card_${game.currentCard}`];
 
   return (
-    <div className="h-screen overflow-hidden flex flex-col bg-white dark:bg-gray-900">
+    <div className="h-screen overflow-hidden flex flex-col">
       <HandCursor />
       {game.phase === "start" && (
-        <StartScreen puzzleNumber={game.daily.puzzleNumber} onStart={handleStart} disabled={game.daily.alreadyPlayed} />
+        <StartScreen
+          puzzleNumber={game.daily.puzzleNumber}
+          onStart={handleStart}
+          alreadyPlayed={game.daily.alreadyPlayed}
+        />
       )}
-      {game.phase === "playing" && currentCard && (
-        <div className="flex-1 flex flex-col items-center justify-center p-4 gap-3 overflow-hidden">
+      {game.phase === "playing" && currentCard && !game.revealed && (
+        <div className="flex-1 flex flex-col items-center justify-center p-2.5 sm:p-4 gap-2 overflow-hidden">
           <CardView
             card={currentCard}
             direction={direction}
-            showReading={game.showReading}
-            onEliminate={() => handleHint("eliminate")}
-            onShowReading={() => handleHint("example")}
-            canEliminate={!game.usedHints.includes("eliminate")}
-            canShowReading={!game.usedHints.includes("example")}
+            timer={game.timer}
+            timerEnabled={game.timerEnabled}
+            onToggleTimer={game.toggleTimer}
+            onFiftyFifty={() => handleLifeline("fiftyFifty")}
+            onXRay={() => handleLifeline("xray")}
+            onTwentyQuestions={() => handleLifeline("twentyQuestions")}
+            onAskSubreddit={() => handleLifeline("askSubreddit")}
+            canFiftyFifty={!game.lifelinesUsed.fiftyFifty}
+            canXRay={!game.lifelinesUsed.xray && !!currentCard.word.radical}
+            canTwentyQuestions={game.lifelinesUsed.twentyQuestions < 2}
+            canAskSubreddit={!game.lifelinesUsed.askSubreddit}
+            showRadicalOverlay={game.showRadicalOverlay}
+            showClues={game.showClues}
+            showCommunityStats={game.showCommunityStats}
+            eliminatedIndices={game.eliminatedIndices}
+            communityStats={cardStats}
+            directionMode={direction}
           />
           <ChoiceButtons
             card={currentCard}
             direction={direction}
-            eliminated={game.eliminated}
+            eliminatedIndices={game.eliminatedIndices}
             onSelect={handleSelect}
             disabled={game.revealed}
-            stats={game.daily.stats?.[`card_${game.currentCard}`]}
+            stats={cardStats}
           />
         </div>
       )}
       {game.phase === "playing" && game.revealed && currentCard && (
-        <div className="flex-1 flex flex-col items-center justify-center p-4 gap-3 overflow-hidden">
+        <div className="flex-1 flex flex-col items-center justify-center p-2.5 sm:p-4 gap-2 overflow-hidden">
           <RevealView
             card={currentCard}
             selectedIdx={game.answers[game.answers.length - 1]?.choiceIdx ?? -1}
             correct={game.answers[game.answers.length - 1]?.correct ?? false}
-            stats={game.daily.stats?.[`card_${game.currentCard}`]}
+            stats={cardStats}
+            directionMode={direction}
+            onNext={() => {
+              const nextCard = game.currentCard + 1;
+              if (nextCard >= 5) {
+                // Game over - phase will be "ended" already
+              }
+            }}
+            isLastCard={game.currentCard === 4}
           />
         </div>
       )}
@@ -122,10 +153,7 @@ export function GameScreen() {
             puzzleNumber: game.daily.puzzleNumber,
             cards: game.daily.cards,
           }}
-          onShare={() => {
-            game.submitScore();
-            game.shareScore();
-          }}
+          onShare={handleShare}
           onPlayAgain={handlePlayAgain}
         />
       )}

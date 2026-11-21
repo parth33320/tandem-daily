@@ -2,75 +2,236 @@ import type { RoundContent } from "@/lib/content";
 
 interface CardViewProps {
   card: RoundContent;
-  direction: "zh2ja" | "ja2zh";
-  showReading: boolean;
-  onEliminate: () => void;
-  onShowReading: () => void;
-  canEliminate: boolean;
-  canShowReading: boolean;
+  direction: "zh2ja" | "ja2zh" | "en";
+  timer: number;
+  timerEnabled: boolean;
+  onToggleTimer: () => void;
+  onFiftyFifty: () => void;
+  onXRay: () => void;
+  onTwentyQuestions: () => void;
+  onAskSubreddit: () => void;
+  canFiftyFifty: boolean;
+  canXRay: boolean;
+  canTwentyQuestions: boolean;
+  canAskSubreddit: boolean;
+  showRadicalOverlay: boolean;
+  showClues: string[];
+  showCommunityStats: boolean;
+  eliminatedIndices: number[];
+  communityStats: { [choice: string]: number } | undefined;
+  directionMode: "zh2ja" | "ja2zh" | "en";
+  lifelinesUsed: { xray: boolean; fiftyFifty: boolean; twentyQuestions: number; askSubreddit: boolean };
 }
 
-const RELATION_LABELS: Record<string, { label: string; color: string }> = {
-  true: { label: "True Friend", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
-  false: { label: "False Friend", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
-  partial: { label: "Half Friend", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200" },
-};
+const RELATION_LABELS = {
+  true: { label: "True Friend", color: "badge-true" },
+  false: { label: "False Friend", color: "badge-false" },
+  partial: { label: "Half Friend", color: "badge-partial" },
+} as const;
 
-type RelationLabel = { label: string; color: string };
+type RelationKey = keyof typeof RELATION_LABELS;
 
-function getRelation(relation: string): RelationLabel {
-  const key = relation as keyof typeof RELATION_LABELS;
-  const result = RELATION_LABELS[key];
-  return (result ?? RELATION_LABELS.partial) as RelationLabel;
+function getRelation(relation: RelationKey) {
+  return RELATION_LABELS[relation] ?? RELATION_LABELS.partial;
+}
+
+function getClipPath(position: "left" | "top" | "whole"): string {
+  switch (position) {
+    case "left": return "inset(0 60% 0 0)";
+    case "top": return "inset(0 0 60% 0)";
+    case "whole": return "inset(0 0 0 0)";
+  }
 }
 
 export function CardView({
   card,
   direction,
-  showReading,
-  onEliminate,
-  onShowReading,
-  canEliminate,
-  canShowReading,
+  timer,
+  timerEnabled,
+  onToggleTimer,
+  onFiftyFifty,
+  onXRay,
+  onTwentyQuestions,
+  onAskSubreddit,
+  canFiftyFifty,
+  canXRay,
+  canTwentyQuestions,
+  canAskSubreddit,
+  showRadicalOverlay,
+  showClues,
+  showCommunityStats,
+  communityStats,
+  directionMode,
 }: CardViewProps) {
-  const targetLang = direction === "zh2ja" ? "Japanese" : "Chinese";
-  const targetWord = direction === "zh2ja" ? card.word.form : card.word.zhForm;
-  const targetReading = direction === "zh2ja" ? card.word.reading : card.word.pinyin;
+  // For "en" (Visual Detective) mode, display as zh2ja (show Chinese, guess Japanese)
+  const displayDir = direction === "en" ? "zh2ja" : direction;
+  const targetLang = displayDir === "zh2ja" ? "Japanese" : "Chinese";
+  const targetWord = displayDir === "zh2ja" ? card.word.form : card.word.zhForm;
+  // const targetReading = displayDir === "zh2ja" ? card.word.reading : card.word.pinyin; // Unused since Show Reading removed
+  const totalVotes = communityStats ? Object.values(communityStats).reduce((a, b) => a + b, 0) : 0;
 
   const relation = getRelation(card.word.relation);
+  const isEnMode = directionMode === "en";
+  const isFalseFriend = card.word.relation === "false";
+
+  // For en mode, auto-show radical if available
+  const shouldShowRadical = isEnMode && card.word.radical && !showRadicalOverlay;
+  const radical = shouldShowRadical ? card.word.radical : (showRadicalOverlay ? card.word.radical : null);
+
+  const lifelinePills = [
+    { label: "✂️ 50/50", cost: 20, onClick: onFiftyFifty, disabled: !canFiftyFifty },
+    { label: "🔍 X-Ray", cost: 20, onClick: onXRay, disabled: !canXRay, hidden: !card.word.radical },
+    { label: "🎭 20-Q", cost: 15, onClick: onTwentyQuestions, disabled: !canTwentyQuestions },
+    { label: "📊 Poll", cost: 20, onClick: onAskSubreddit, disabled: !canAskSubreddit },
+  ].filter((p) => !p.hidden);
 
   return (
-    <div className="flex flex-col items-center gap-3 w-full max-w-md">
-      <div className="w-full bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
-        <div className="flex items-center justify-between mb-3">
-          <span className={`text-xs font-semibold px-2 py-1 rounded-full ${relation.color}`}>
+    <div className="flex flex-col items-center gap-2 w-full max-w-md">
+      {/* Top HUD: Timer toggle pill + progress bar */}
+      <div className="w-full max-w-md flex items-center justify-between gap-2 mb-1">
+        <button
+          onClick={onToggleTimer}
+          className={`flex items-center gap-1 px-2 py-1 text-[10px] font-mono rounded-full border transition-colors ${
+            timerEnabled
+              ? "bg-gold/10 border-gold/50 text-gold-light"
+              : "bg-crimson/10 border-crimson/50 text-crimson-light"
+          }`}
+          aria-label={timerEnabled ? "Disable timer" : "Enable timer"}
+        >
+          ⏱️ {timerEnabled ? `${timer}s` : "OFF"}
+        </button>
+        {timerEnabled && (
+          <div className="flex-1 progress-bar">
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${(timer / 15) * 100}%` }}
+            ></div>
+          </div>
+        )}
+      </div>
+
+      {/* Main card */}
+      <div className="w-full game-card p-3 sm:p-4 relative">
+        {/* Relation badge - hidden during question, shown after reveal */}
+        <div className="flex items-center justify-between mb-2">
+          <span className={`text-xs font-semibold px-2 py-1 rounded-full ${relation.color} opacity-0 pointer-events-none`}>
             {relation.label}
           </span>
-          <span className="text-xs text-gray-500 dark:text-gray-400">{targetLang}</span>
         </div>
 
-        <div className="text-center mb-3">
-          <div className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-1">{targetWord}</div>
-          {showReading && (
-            <div className="text-sm text-gray-600 dark:text-gray-400 font-mono">{targetReading}</div>
+        {/* Target Language Prompt Pill - prominent top-center */}
+        <div className="mb-2 text-center">
+          {targetLang === "Japanese" ? (
+            <span className="inline-flex items-center gap-1.5 bg-rose-500/20 border border-rose-400/50 text-rose-200 font-semibold text-xs px-3 py-1 rounded-full">
+              🇯🇵 Guess the JAPANESE meaning
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-400/50 text-amber-200 font-semibold text-xs px-3 py-1 rounded-full">
+              🇨🇳 Guess the CHINESE meaning
+            </span>
           )}
         </div>
 
-        <div className="flex items-center justify-center gap-2">
-          <button
-            onClick={onEliminate}
-            disabled={!canEliminate}
-            className="px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            ✂ Eliminate 2
-          </button>
-          <button
-            onClick={onShowReading}
-            disabled={!canShowReading || showReading}
-            className="px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            文 Show Reading
-          </button>
+        {/* Word display with radical glow overlay */}
+        <div className="text-center mb-2 relative">
+          <div className="relative inline-block leading-none">
+            {targetWord.split('').map((char, idx) => {
+              const isTargetChar = radical && idx === radical.charIndex;
+              const showRadicalGlow = (lifelinesUsed.xray || direction === "en") && !!radical;
+              return (
+                <span key={idx} className="relative inline-block leading-none">
+                  <span className="relative z-0 kanji-display block text-3xl sm:text-5xl">{char}</span>
+                  {isTargetChar && showRadicalGlow && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 z-10 text-amber-400 animate-pulse drop-shadow-[0_0_12px_rgba(251,191,36,1)] pointer-events-none select-none"
+                      style={{ clipPath: getClipPath(radical!.position) }}
+                    >
+                      {char}
+                    </span>
+                  )}
+                </span>
+              );
+            })}
+          </div>
+          {radical && (
+            <div className="radical-badge mt-1 inline-flex text-xs sm:text-sm">
+              <span>{radical.icon}</span>
+              <span>{radical.name} radical</span>
+            </div>
+          )}
+        </div>
+
+        {/* 50/50 Trap badge for en mode on false friends */}
+        {isEnMode && isFalseFriend && (
+          <div className="badge badge-trap text-center mx-auto mb-2 animate-in text-xs">
+            ⚠️ 50/50 Trap: Pick the Japanese meaning
+          </div>
+        )}
+
+        {/* Clues pills (20 Questions lifeline) */}
+        {showClues.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-1 mb-2 animate-in">
+            {showClues.map((clue, idx) => (
+              <span key={idx} className="stat-pill emerald text-[10px] px-2 py-1">
+                🎭 {clue}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Community stats (Ask the Subreddit lifeline) */}
+        {showCommunityStats && communityStats && totalVotes > 0 && (
+          <div className="mb-2 animate-in">
+            <div className="text-[10px] text-border-light mb-1 text-center">Community Picks</div>
+            <div className="grid grid-cols-2 gap-1">
+              {card.options.map((opt, idx) => {
+                const votes = communityStats[idx.toString()] || 0;
+                const pct = totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0;
+                return (
+                  <div key={idx} className="text-[10px]">
+                    <div className="flex justify-between text-border-light mb-0.5">
+                      <span className="truncate pr-1">{opt}</span>
+                      <span className="font-mono text-gold-light">{pct}%</span>
+                    </div>
+                    <div className="h-1 bg-ink-light/50 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-gold to-emerald"
+                        style={{ width: `${pct}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {showCommunityStats && communityStats && totalVotes === 0 && (
+          <div className="stat-pill crimson text-center mx-auto mb-2 animate-in text-xs">
+            📊 Fewer than 3 plays today—you're setting the trend!
+          </div>
+        )}
+
+        {/* 4 Lifeline pills in single row */}
+        <div className="flex items-center justify-center gap-1 mt-1 flex-wrap">
+          {lifelinePills.map((pill) => (
+            <button
+              key={pill.label}
+              onClick={pill.onClick}
+              disabled={pill.disabled}
+              className={`flex items-center gap-1 px-2 py-1 text-[11px] rounded-full border transition-all ${
+                pill.disabled
+                  ? "opacity-50 cursor-not-allowed bg-ink-light/30 border-border"
+                  : "bg-gold/10 border-gold/50 text-gold-light hover:bg-gold/20"
+              }`}
+              title={`${pill.label} (-${pill.cost} pts)`}
+              aria-label={`${pill.label}, ${pill.cost} points`}
+            >
+              <span>{pill.label.split(" ")[0]}</span>
+              <span className="hidden sm:inline">{pill.label.split(" ")[1]}</span>
+            </button>
+          ))}
         </div>
       </div>
     </div>
