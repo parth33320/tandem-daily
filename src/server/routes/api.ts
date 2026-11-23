@@ -15,6 +15,13 @@ import type {
   DecrementResponse,
 } from "../../shared/api";
 import { wordPool, type PoolWord } from "../../shared/wordPool";
+import {
+  generateRoomCode,
+  sanitizeChatText,
+  type RoomState,
+  type RoomPlayer,
+  type RoomChatMessage,
+} from "../../shared/room";
 
 export const api = new Hono();
 
@@ -324,6 +331,255 @@ api.post("/share", async (c) => {
       errorMessage = `Share failed: ${error.message}`;
     }
     return c.json<ShareResponse>({ type: "share", commentId: "", ok: false, error: errorMessage });
+  }
+});
+
+// ===== Multiplayer Room Endpoints (Redis-backed, 2-hour TTL) =====
+
+const store = redis.global ?? redis;
+const ROOM_TTL_SECONDS = 7200;
+
+function roomKey(code: string): string {
+  return `room:${code.toUpperCase()}`;
+}
+
+async function loadRoom(code: string): Promise<RoomState | null> {
+  const raw = await store.get(roomKey(code));
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as RoomState;
+  } catch {
+    return null;
+  }
+}
+
+async function saveRoom(room: RoomState): Promise<void> {
+  room.updatedAt = Date.now();
+  await store.set(roomKey(room.code), JSON.stringify(room));
+  await store.expire(roomKey(room.code), ROOM_TTL_SECONDS);
+}
+
+api.post("/rooms", async (c) => {
+  try {
+    const username = await reddit.getCurrentUsername();
+    if (!username) {
+      return c.json<ErrorResponse>({ status: "error", message: "username required" }, 400);
+    }
+
+    const code = generateRoomCode();
+    const room: RoomState = {
+      code,
+      host: username,
+      direction: "zh2ja",
+      status: "lobby",
+      currentCard: 0,
+      cards: [],
+      players: [{ username, score: 0, answeredCard: -1, choiceIdx: null, correct: null }],
+      chat: [],
+      updatedAt: Date.now(),
+    };
+
+    await saveRoom(room);
+
+    return c.json({ type: "room", room });
+  } catch (error) {
+    console.error("Room create error:", error);
+    return c.json<ErrorResponse>({ status: "error", message: "Failed to create room" }, 400);
+  }
+});
+
+api.post("/rooms/:code/join", async (c) => {
+  try {
+    const username = await reddit.getCurrentUsername();
+    if (!username) {
+      return c.json<ErrorResponse>({ status: "error", message: "username required" }, 400);
+    }
+
+    const code = c.req.param("code").toUpperCase();
+    const room = await loadRoom(code);
+    if (!room) {
+      return c.json<ErrorResponse>({ status: "error", message: "Room not found" }, 404);
+    }
+
+    if (!room.players.some((p) => p.username === username)) {
+      if (room.players.length >= 8) {
+        return c.json<ErrorResponse>({ status: "error", message: "Room is full (max 8 players)" }, 400);
+      }
+      const newPlayer: RoomPlayer = {
+        username,
+        score: 0,
+        answeredCard: -1,
+        choiceIdx: null,
+        correct: null,
+      };
+      room.players.push(newPlayer);
+      await saveRoom(room);
+    }
+
+    return c.json({ type: "room", room });
+  } catch (error) {
+    console.error("Room join error:", error);
+    return c.json<ErrorResponse>({ status: "error", message: "Failed to join room" }, 400);
+  }
+});
+
+api.get("/rooms/:code", async (c) => {
+  try {
+    const code = c.req.param("code").toUpperCase();
+    const room = await loadRoom(code);
+    if (!room) {
+      return c.json<ErrorResponse>({ status: "error", message: "Room not found" }, 404);
+    }
+
+    return c.json({ type: "room", room });
+  } catch (error) {
+    console.error("Room get error:", error);
+    return c.json<ErrorResponse>({ status: "error", message: "Failed to get room" }, 400);
+  }
+});
+
+api.post("/rooms/:code/start", async (c) => {
+  try {
+    const username = await reddit.getCurrentUsername();
+    if (!username) {
+      return c.json<ErrorResponse>({ status: "error", message: "username required" }, 400);
+    }
+
+    const code = c.req.param("code").toUpperCase();
+    const room = await loadRoom(code);
+    if (!room) {
+      return c.json<ErrorResponse>({ status: "error", message: "Room not found" }, 404);
+    }
+
+    if (room.host !== username) {
+      return c.json<ErrorResponse>({ status: "error", message: "Only the host can start the match" }, 400);
+    }
+
+    room.status = "playing";
+    room.currentCard = 0;
+    // Deal cards if not already dealt
+    if (room.cards.length === 0) {
+      room.cards = dealDailyCards(getPuzzleNumber(new Date()), SERVER_WORD_POOL);
+    }
+    await saveRoom(room);
+
+    return c.json({ type: "room", room });
+  } catch (error) {
+    console.error("Room start error:", error);
+    return c.json<ErrorResponse>({ status: "error", message: "Failed to start room" }, 400);
+  }
+});
+
+api.post("/rooms/:code/answer", async (c) => {
+  try {
+    const username = await reddit.getCurrentUsername();
+    if (!username) {
+      return c.json<ErrorResponse>({ status: "error", message: "username required" }, 400);
+    }
+
+    const code = c.req.param("code").toUpperCase();
+    const room = await loadRoom(code);
+    if (!room) {
+      return c.json<ErrorResponse>({ status: "error", message: "Room not found" }, 404);
+    }
+
+    const body = await c.req.json<{ choiceIdx: number; correct: boolean; points: number }>();
+    const player = room.players.find((p) => p.username === username);
+    if (!player) {
+      return c.json<ErrorResponse>({ status: "error", message: "Player not in room" }, 400);
+    }
+
+    player.choiceIdx = body.choiceIdx;
+    player.correct = body.correct;
+    player.answeredCard = room.currentCard;
+    if (body.correct) {
+      player.score += body.points;
+    }
+
+    await saveRoom(room);
+
+    return c.json({ type: "room", room });
+  } catch (error) {
+    console.error("Room answer error:", error);
+    return c.json<ErrorResponse>({ status: "error", message: "Failed to submit answer" }, 400);
+  }
+});
+
+api.post("/rooms/:code/next", async (c) => {
+  try {
+    const username = await reddit.getCurrentUsername();
+    if (!username) {
+      return c.json<ErrorResponse>({ status: "error", message: "username required" }, 400);
+    }
+
+    const code = c.req.param("code").toUpperCase();
+    const room = await loadRoom(code);
+    if (!room) {
+      return c.json<ErrorResponse>({ status: "error", message: "Room not found" }, 404);
+    }
+
+    if (room.host !== username) {
+      return c.json<ErrorResponse>({ status: "error", message: "Only the host can advance" }, 400);
+    }
+
+    room.currentCard += 1;
+    if (room.currentCard >= 5) {
+      room.status = "ended";
+      room.currentCard = 4;
+    }
+    // Reset player answers for the new card
+    for (const p of room.players) {
+      p.choiceIdx = null;
+      p.correct = null;
+    }
+
+    await saveRoom(room);
+
+    return c.json({ type: "room", room });
+  } catch (error) {
+    console.error("Room next error:", error);
+    return c.json<ErrorResponse>({ status: "error", message: "Failed to advance room" }, 400);
+  }
+});
+
+api.post("/rooms/:code/chat", async (c) => {
+  try {
+    const username = await reddit.getCurrentUsername();
+    if (!username) {
+      return c.json<ErrorResponse>({ status: "error", message: "username required" }, 400);
+    }
+
+    const code = c.req.param("code").toUpperCase();
+    const room = await loadRoom(code);
+    if (!room) {
+      return c.json<ErrorResponse>({ status: "error", message: "Room not found" }, 404);
+    }
+
+    const body = await c.req.json<{ message: string }>();
+    const text = sanitizeChatText(body.message);
+    if (!text) {
+      return c.json<ErrorResponse>({ status: "error", message: "Empty message" }, 400);
+    }
+
+    const chatMsg: RoomChatMessage = {
+      id: `msg_${Date.now()}`,
+      username,
+      text,
+      ts: Date.now(),
+    };
+
+    room.chat.push(chatMsg);
+    // Keep only the last 30 messages
+    if (room.chat.length > 30) {
+      room.chat = room.chat.slice(-30);
+    }
+
+    await saveRoom(room);
+
+    return c.json({ type: "room", room });
+  } catch (error) {
+    console.error("Room chat error:", error);
+    return c.json<ErrorResponse>({ status: "error", message: "Failed to send chat message" }, 400);
   }
 });
 
