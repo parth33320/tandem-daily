@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { similarity } from "@/lib/content";
+import { motion } from "framer-motion";
+import { similarity } from "../../shared/game/content";
 
 interface EndScreenProps {
   score: number;
@@ -13,7 +14,6 @@ interface EndScreenProps {
 export function EndScreen({ score, streak, answers, daily, onShare, onPlayAgain }: EndScreenProps) {
   const sim = similarity(daily.cards.map((c) => c.word));
   const emoji = answers.map((a) => (a.correct ? "🟩" : "🟥")).join("");
-  const correctCount = answers.filter((a) => a.correct).length;
 
   const [shareStatus, setShareStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [shareError, setShareError] = useState<string>("");
@@ -28,75 +28,89 @@ export function EndScreen({ score, streak, answers, daily, onShare, onPlayAgain 
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-2.5 sm:p-4 gap-2.5 sm:gap-4 text-center">
-      <div className="w-full max-w-md space-y-3 sm:space-y-4">
-        <div className="animate-in">
-          <h1 className="text-xl sm:text-2xl font-bold text-paper mb-1 font-serif">
-            {score === 500 ? "🎉 Perfect!" : score >= 300 ? "👍 Well Done!" : "📚 Keep Learning!"}
-          </h1>
-          <p className="text-base sm:text-lg text-gold-light mb-1 font-mono">
-            {score} pts · {correctCount}/5 Correct
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: 'var(--scene)' }}>
+      <div className="glass rounded-3xl p-8 sm:p-12 max-w-lg w-full text-center space-y-8">
+        {/* Victory/Defeat - Gold gradient Cormorant */}
+        <h1 className="font-display text-4xl sm:text-5xl font-bold gold-text">
+          {score === 500 ? "Perfect!" : score >= 300 ? "Good Job!" : "Keep Learning!"}
+        </h1>
+
+        {/* Similarity Meter - glass progress bar */}
+        <motion.div className="glass rounded-xl p-6 space-y-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
+          <p className="font-sans text-xs uppercase tracking-wide text-gold/60">Similarity</p>
+          
+          <div className="relative h-3 bg-paper-ink/10 rounded-full overflow-hidden">
+            <motion.div
+              className="similarity-fill"
+              initial={{ width: 0 }}
+              animate={{ width: `${sim.pct}%` }}
+              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+            />
+          </div>
+          
+          {/* Breakdown sentence from existing similarity() helper */}
+          <p className="font-sans text-sm text-paper-ink/80 leading-relaxed">
+            {score === 500
+              ? "Perfect harmony — every meaning aligned across both languages."
+              : score >= 300
+                ? "Strong resonance — most meanings bridged the gap."
+                : "Faint echo — the languages drifted apart this round."}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Similarity Meter */}
-        <div className="game-card p-3 sm:p-4 animate-slide-up">
-          <div className="text-xs sm:text-sm text-border-light mb-1.5">Similarity Meter</div>
-          <div className="w-full h-3 sm:h-4 bg-ink-light/50 rounded-full overflow-hidden">
-            <div
-              className="h-full progress-bar-fill"
-              style={{ width: `${sim.pct}%` }}
-            ></div>
+        {/* Scorecard Box */}
+        <motion.div className="glass rounded-xl p-4 space-y-2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}>
+          <div className="flex justify-between font-sans text-sm">
+            <span className="text-paper-ink/60">Score</span>
+            <span className="font-bold text-gold">{score}/500</span>
           </div>
-          <div className="flex justify-between text-[10px] sm:text-xs text-border-light mt-1">
-            <span>0%</span>
-            <span className="font-semibold text-gold-light">{sim.pct}%</span>
-            <span>100%</span>
+          <div className="flex justify-between font-sans text-sm">
+            <span className="text-paper-ink/60">Streak</span>
+            <span className="font-bold text-gold">{streak} day{streak !== 1 ? "s" : ""}</span>
           </div>
-          <p className="text-[10px] sm:text-xs text-border-light mt-1.5 text-center">
-            {sim.same} true friend{sim.same !== 1 ? "s" : ""}, {sim.partial} half friend{sim.partial !== 1 ? "s" : ""}, {sim.different} false friend{sim.different !== 1 ? "s" : ""}
-          </p>
-        </div>
-
-        {/* Streak */}
-        <div className="game-card p-3 sm:p-4 animate-slide-up">
-          <div className="text-xs sm:text-sm text-border-light mb-1.5">Current Streak</div>
-          <div className="text-2xl sm:text-3xl font-bold text-gold">🔥 {streak} day{streak !== 1 ? "s" : ""}</div>
-        </div>
-
-        {/* Shareable scorecard */}
-        <div className="game-card p-2.5 sm:p-3 animate-slide-up">
-          <div className="font-mono text-xs sm:text-sm text-paper break-all bg-ink-light/30 rounded p-1.5 sm:p-2">
-            Tandem Daily #{daily.puzzleNumber} · {correctCount}/5 {emoji} · 🔥 {streak}-day streak
+          <div className="flex justify-between font-sans text-sm">
+            <span className="text-paper-ink/60">Emoji</span>
+            <span className="font-mono text-base">{emoji}</span>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Action buttons */}
-        <div className="space-y-2 animate-in">
-          <button
-            onClick={handleShare}
-            disabled={shareStatus !== "idle"}
-            className="w-full py-2.5 sm:py-3 px-4 sm:px-6 btn-primary text-sm sm:text-base transition-all"
-          >
-            {shareStatus === "loading" && "Posting..."}
-            {shareStatus === "success" && "✅ Shared to Comments!"}
-            {shareStatus === "error" && `❌ Failed — Tap to Retry`}
-            {shareStatus === "idle" && "Share Score to Comments"}
-          </button>
-          {shareStatus === "error" && (
-            <div className="text-[10px] sm:text-xs text-crimson-light text-center">
-              {shareError}
-            </div>
-          )}
-          <button
-            onClick={onPlayAgain}
-            data-testid="play-again-button"
-            className="w-full py-2.5 sm:py-3 px-4 sm:px-6 btn-secondary text-sm sm:text-base"
-          >
-            Play Again
-          </button>
-        </div>
+        {/* Gold Share Button */}
+        <motion.button
+          onClick={handleShare}
+          disabled={shareStatus !== "idle"}
+          className="w-full bg-primary text-primary-foreground font-sans font-semibold py-3.5 rounded-full text-base shadow-[0_4px_20px_-4px_oklch(0.78_0.13_80/0.5)] hover:shadow-[0_6px_30px_-6px_oklch(0.78_0.13_80/0.7)] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          {shareStatus === "loading" && "Posting..."}
+          {shareStatus === "success" && "✅ Shared to Comments!"}
+          {shareStatus === "error" && "❌ Failed — Tap to Retry"}
+          {shareStatus === "idle" && "Share Score to Comments"}
+        </motion.button>
+        
+        {shareStatus === "error" && (
+          <p className="text-xs text-rose-500 text-center">{shareError}</p>
+        )}
+
+{/* Gold Play Again Button */}
+        <motion.button
+          onClick={onPlayAgain}
+          className="w-full border-2 border-primary text-primary font-sans font-semibold py-3.5 rounded-full text-base hover:bg-primary/10 transition-colors"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          data-testid="play-again-button"
+        >
+          Play Again
+        </motion.button>
       </div>
     </div>
   );
 }
+
+export default EndScreen;

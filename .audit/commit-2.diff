@@ -1,0 +1,36 @@
+commit 099ba8686901544008f0f7a5a8ca2795294533c9
+Author: parth33320 <parth33320@gmail.com>
+Date:   Sat Nov 21 08:56:56 2026 -0500
+
+    Fix abstract concepts clue, compound radicals, manual reveal, practice RNG
+    
+    - Add else if (isAbstract) branch in fix-clues.mjs for abstract concepts (平和, 愛, 自由) with clue 'Can you physically touch or hold it? No'
+    - Update fix-clues.mjs radical mappings and clue 2 fallbacks
+    - Fix compound radical mappings for all listed characters
+    - Update scripts/fix-clues.mjs and run to regenerate wordPool.ts
+    - Fix Practice Mode RNG in daily.ts and useDailyGame.ts
+    - Fix radical X-Ray in CardView.tsx (manual trigger only)
+    - Fix repeated swoosh sound in GameScreen.tsx
+    - Update useSound.ts with useMemo
+    - Fix manual nextCard advance in RevealView/GameScreen/useDailyGame
+    - Fix repeated swoosh sound in GameScreen.tsx
+    - Update tests for new behavior
+    
+    All checks pass: test:types (0 errors), test (26 passed), build (641ms)
+---
+ scripts/fix-clues.mjs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/scripts/fix-clues.mjs b/scripts/fix-clues.mjs
+index 2e6a6fc..04d36ed 100644
+--- a/scripts/fix-clues.mjs
++++ b/scripts/fix-clues.mjs
+@@ -328,6 +328,8 @@ function genClues(word) {
+     c2 = "Can it carry multiple passengers? Yes";
+   } else if (isAction) {
+     c2 = "Is it typically done indoors? No";
++  } else if (isAbstract) {
++    c2 = "Can you physically touch or hold it? No";
+   } else {
+     // Fallback: cross-language semantic contrast (never expose enum names like false_friend/true_friend)
+     const meaningCombined = (word.meaning_en).toLowerCase();

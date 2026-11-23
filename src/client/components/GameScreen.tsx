@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { StartScreen } from "./StartScreen";
 import { CardView } from "./CardView";
 import { ChoiceButtons } from "./ChoiceButtons";
@@ -12,6 +12,7 @@ export function GameScreen() {
   const [direction, setDirection] = useState<Direction>("zh2ja");
   const game = useDailyGame(direction);
   const sound = useSound();
+  const submittedRef = useRef(false);
 
   useEffect(() => {
     if (game.phase === "playing" && game.currentCard === 0) {
@@ -32,6 +33,16 @@ export function GameScreen() {
       }
     }
   }, [game.revealed, game.answers, game.daily, game.currentCard, sound]);
+
+  useEffect(() => {
+    if (game.phase === "playing") {
+      submittedRef.current = false;
+    }
+    if (game.phase === "ended" && !game.practiceMode && !submittedRef.current) {
+      submittedRef.current = true;
+      void game.submitScore();
+    }
+  }, [game.phase, game.practiceMode, game.submitScore]);
 
   const handleStart = (dir: Direction, practice = false) => {
     setDirection(dir);
@@ -82,7 +93,7 @@ export function GameScreen() {
   const cardStats = game.daily.stats?.[`card_${game.currentCard}`];
 
   return (
-    <div className="h-screen overflow-hidden flex flex-col">
+    <div className="h-[100dvh] overflow-hidden flex flex-col">
       {game.phase === "start" && (
         <StartScreen
           puzzleNumber={game.daily.puzzleNumber}
@@ -91,7 +102,7 @@ export function GameScreen() {
         />
       )}
       {game.phase === "playing" && currentCard && !game.revealed && (
-        <div className="flex-1 flex flex-col items-center justify-center p-2.5 sm:p-4 gap-2 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-y-auto flex flex-col items-center p-2.5 sm:p-4 gap-2">
           <CardView
             card={currentCard}
             direction={direction}
@@ -108,10 +119,13 @@ export function GameScreen() {
             canAskSubreddit={!game.lifelinesUsed.askSubreddit}
             showRadicalOverlay={game.showRadicalOverlay}
             showClues={game.showClues}
-            showCommunityStats={game.showCommunityStats}
             communityStats={cardStats}
             directionMode={direction}
           />
+        </div>
+      )}
+      {game.phase === "playing" && currentCard && !game.revealed && (
+        <div className="shrink-0 p-2.5 sm:p-4 pt-0">
           <ChoiceButtons
             card={currentCard}
             direction={direction}

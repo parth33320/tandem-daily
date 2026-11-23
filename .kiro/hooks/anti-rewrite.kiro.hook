@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "anti-rewrite-check",
+  "description": "Block or warn immediately if a single edit deletes more than 120 lines in src/",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["src/**/*.ts", "src/**/*.tsx"]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "node -e \"const cp = require('child_process'); const out = cp.execSync('git diff --numstat src/').toString().trim().split('\\n').filter(Boolean); for (const l of out) { const [a, d, f] = l.split('\\t'); if (+d > 120) { console.error('REWRITE DETECTED in ' + f + ' (-' + d + ' lines). Recover with: git checkout HEAD -- ' + f); process.exit(1); } }\""
+  }
+}

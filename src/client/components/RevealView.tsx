@@ -1,4 +1,4 @@
-import type { RoundContent } from "@/lib/content";
+import type { RoundContent } from "../../shared/game/content";
 
 interface RevealViewProps {
   card: RoundContent;
@@ -11,9 +11,9 @@ interface RevealViewProps {
 }
 
 const RELATION_LABELS = {
-  true: { label: "True Friend", color: "badge-true", emoji: "✅" },
-  false: { label: "False Friend", color: "badge-false", emoji: "❌" },
-  partial: { label: "Half Friend", color: "badge-partial", emoji: "⚠️" },
+  true: { label: "True Friend", color: "bg-emerald/20 text-emerald border-emerald/30" },
+  false: { label: "False Friend", color: "bg-rose-500/20 text-rose-500 border-rose-500/30" },
+  partial: { label: "Half Friend", color: "bg-amber-500/20 text-amber-500 border-amber-500/30" },
 } as const;
 
 type RelationKey = keyof typeof RELATION_LABELS;
@@ -22,114 +22,70 @@ function getRelation(relation: RelationKey) {
   return RELATION_LABELS[relation] ?? RELATION_LABELS.partial;
 }
 
-export function RevealView({ card, selectedIdx, correct, stats, directionMode, onNext, isLastCard }: RevealViewProps) {
+export function RevealView({ card, selectedIdx, correct, onNext, isLastCard }: RevealViewProps) {
   const relation = getRelation(card.word.relation);
-  const total = stats ? Object.values(stats).reduce((a, b) => a + b, 0) : 0;
-  const isEnMode = directionMode === "en";
+  const choiceText = card.options[selectedIdx] ?? "";
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md space-y-2 overflow-hidden animate-in p-2.5 sm:p-4" data-testid="reveal-card">
-      {/* Relation badge - now visible after answer */}
-      <div className="flex items-center justify-between mb-2 w-full max-w-md">
-        <span className={`badge ${relation.color} text-xs`}>
-          {relation.emoji} {relation.label}
-        </span>
-        <span className={`text-xs font-semibold ${correct ? "text-emerald-light" : "text-crimson-light"}`}>
-          {correct ? "Correct!" : "Wrong"}
+    <div className="paper-card p-6 h-full flex flex-col" data-testid="reveal-card">
+      {/* Relation Badge */}
+      <div className="flex justify-center mb-3">
+        <span className={`font-sans text-xs font-semibold px-3 py-1 rounded-full ${relation.color}`}>
+          {relation.label}
         </span>
       </div>
 
-      {/* 50/50 Trap badge for en mode on false friends */}
-      {isEnMode && card.word.relation === "false" && (
-        <div className="badge badge-trap text-center mx-auto mb-2 animate-in text-xs">
-          ⚠️ 50/50 Trap: Pick the Japanese meaning
+      {/* Side-by-side JP ↔ CN columns */}
+      <div className="grid grid-cols-2 gap-3 mb-3 text-sm">
+        <div className="text-center">
+          <p className="font-sans text-xs uppercase tracking-wide text-gold/60 mb-1">Japanese</p>
+          <p className="font-[Noto_Serif_JP] text-2xl font-bold text-paper-ink">{card.word.form}</p>
+          <p className="font-sans text-xs text-paper-ink/70 mt-1">{card.word.reading}</p>
+          <p className="font-sans text-xs text-paper-ink/60 mt-2">{card.word.ja}</p>
         </div>
-      )}
-
-      {/* Side-by-side JP/ZH reveal - keep grid-cols-2 on mobile */}
-      <div className="game-card p-3 grid grid-cols-2 gap-2 mb-2 w-full max-w-md">
-        <div className="bg-ink-light/30 rounded-lg p-2.5">
-          <div className="text-[10px] text-border-light mb-0.5">Japanese</div>
-          <div className="kanji-display text-xl mb-0.5">{card.word.form}</div>
-          <div className="reading-text text-xs mb-1">{card.word.reading}</div>
-          <div className="meaning-text text-xs">{card.word.ja}</div>
-        </div>
-        <div className="bg-ink-light/30 rounded-lg p-2.5">
-          <div className="text-[10px] text-border-light mb-0.5">Chinese</div>
-          <div className="kanji-display text-xl mb-0.5">{card.word.zhForm}</div>
-          <div className="reading-text text-xs mb-1">{card.word.pinyin}</div>
-          <div className="meaning-text text-xs">{card.word.zh}</div>
+        <div className="text-center">
+          <p className="font-sans text-xs uppercase tracking-wide text-gold/60 mb-1">Chinese</p>
+          <p className="font-[Noto_Serif_JP] text-2xl font-bold text-paper-ink">{card.word.zhForm}</p>
+          <p className="font-sans text-xs text-paper-ink/70 mt-1">{card.word.pinyin}</p>
+          <p className="font-sans text-xs text-paper-ink/60 mt-2">{card.word.zh}</p>
         </div>
       </div>
 
-      {/* Radical breakdown */}
+      {/* Radical Breakdown */}
       {card.word.radical && (
-        <div className="game-card p-2.5 mb-2 animate-in w-full max-w-md">
-          <div className="flex items-center gap-1.5 mb-1">
-            <span className="text-lg">{card.word.radical.icon}</span>
-            <span className="font-semibold text-gold-light text-sm">{card.word.radical.name} radical</span>
-          </div>
-          <div className="radical-breakdown text-center text-sm">
-            {card.word.radical.breakdown}
-          </div>
+        <div className="glass rounded-lg p-3 mb-3 text-center">
+          <p className="font-sans text-xs uppercase tracking-wide text-gold/60 mb-1">Radical</p>
+          <p className="font-display text-2xl">{card.word.radical.icon} {card.word.radical.glyph}</p>
+          <p className="font-sans text-xs text-paper-ink/70">
+            {card.word.radical.name} — {card.word.radical.breakdown}
+          </p>
         </div>
       )}
 
-      {/* Fun fact */}
-      <div className="fact-text text-center mb-2 text-[11px] w-full max-w-md">
-        {card.word.facts[0]}
+      {/* Fun Fact Box */}
+      <div className="glass rounded-lg p-3 mb-3 border-l-4 border-gold">
+        <p className="font-sans text-xs uppercase tracking-wide text-gold/60 mb-1">✦ Fun Fact</p>
+        <p className="font-sans text-sm text-paper-ink/90 leading-relaxed">
+          {card.word.facts[0]}
+        </p>
       </div>
 
-      {/* Collapsed choice results - only show what was picked + correct answer */}
-      <div className="space-y-1.5 w-full max-w-md">
-        {card.options.map((opt, idx) => {
-          const isCorrect = idx === card.correct;
-          const isSelected = idx === selectedIdx;
-          const pct = stats && total > 0 ? Math.round((stats[idx.toString()] || 0) / total * 100) : null;
-          
-          // In reveal, only show selected and correct
-          if (!isSelected && !isCorrect) return null;
-          
-          return (
-            <div
-              key={idx}
-              className={`game-card p-2 transition-all ${
-                isCorrect
-                  ? "border-l-4 border-emerald bg-emerald/5"
-                  : "border-l-4 border-crimson bg-crimson/5"
-              }`}
-            >
-              <div className="flex items-center justify-between gap-1.5">
-                <span className={`font-medium ${isCorrect ? "text-emerald-light" : "text-crimson-light"} text-sm`}>
-                  {isSelected ? "Your pick: " : "Correct: "} {opt}
-                </span>
-                {pct !== null && (
-                  <span className="stat-pill gold text-[10px] px-1.5 py-0.5">
-                    {pct}% picked
-                  </span>
-                )}
-              </div>
-              {isCorrect && (
-                <div className="text-[10px] text-emerald-light mt-0.5">✓ Correct answer</div>
-              )}
-              {isSelected && !isCorrect && (
-                <div className="text-[10px] text-crimson-light mt-0.5">✗ Your answer</div>
-              )}
-            </div>
-          );
-        })}
+      {/* Choice Result Strip */}
+      <div className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg ${correct ? "bg-emerald/20" : "bg-rose-500/20"}`}>
+        <span className="font-display text-xl">{correct ? "🟩" : "🟥"}</span>
+        <span className="font-sans text-sm font-medium text-paper-ink">
+          {correct ? "Correct!" : "Wrong"} — {choiceText}
+        </span>
       </div>
 
-      {/* Next Card / See Final Score button - always visible at bottom */}
-      <div className="w-full max-w-md shrink-0 mt-2">
-        <button
-          onClick={onNext}
-          data-testid="next-card-button"
-          className="w-full btn-primary py-2.5 text-sm font-semibold shrink-0"
-        >
-          {isLastCard ? "See Final Score →" : "Next Card →"}
-        </button>
-      </div>
+      {/* Gold Next/Final Button */}
+      <button
+        className="mt-auto bg-primary text-primary-foreground font-sans font-semibold py-3 rounded-full text-base shadow-[0_4px_20px_-4px_oklch(0.78_0.13_80/0.5)] hover:shadow-[0_6px_30px_-6px_oklch(0.78_0.13_80/0.7)]"
+        onClick={onNext}
+        data-testid="next-card-button"
+      >
+        {isLastCard ? "See Final Score →" : "Next Card →"}
+      </button>
     </div>
   );
 }

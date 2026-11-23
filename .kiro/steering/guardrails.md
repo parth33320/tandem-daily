@@ -99,6 +99,14 @@ These rules are **absolute** and must never be violated:
 
 ---
 
+## 6. Recover via Git, Never Rewrite
+
+- **If a file edit causes syntax/redeclaration errors, immediately run `git checkout HEAD -- <file>` to restore a clean baseline before applying a small diff.**
+- Never attempt to "fix" a corrupted file by writing more code on top of it — restore first, then reapply a minimal, targeted change.
+- This prevents cascading errors (e.g., duplicate function declarations, orphaned braces, undefined variables) that can corrupt an entire file.
+
+---
+
 ## Enforcement
 
 - These rules are enforced via:

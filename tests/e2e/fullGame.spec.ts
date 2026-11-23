@@ -23,6 +23,16 @@ test.describe('Tandem Daily - Full Game Flow', () => {
     for (let cardNum = 1; cardNum <= 5; cardNum++) {
       await expect(page.locator('[data-testid="question-card"]')).toBeVisible({ timeout: 10000 });
 
+      // 1. No horizontal overflow on mobile or desktop
+      const noHorizontalOverflow = await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth
+      );
+      expect(noHorizontalOverflow).toBe(true);
+
+      // 2. Native cursor is never hidden
+      const cursorStyle = await page.evaluate(() => getComputedStyle(document.body).cursor);
+      expect(cursorStyle).not.toBe('none');
+
       for (let i = 0; i < 4; i++) {
         await expect(page.locator(`[data-testid="answer-option-${i}"]`)).toBeVisible({ timeout: 10000 });
       }
