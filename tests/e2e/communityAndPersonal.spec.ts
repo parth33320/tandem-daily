@@ -49,7 +49,7 @@ test.describe('Tandem Daily - Community & Personal Features', () => {
 
     await page.locator('[data-testid="open-leaderboard-button"]').click();
 
-    await expect(page.locator('[data-testid="reveal-card"]')).toBeVisible({ timeout: 5000 });
+    await expect(page.locator('[data-testid="leaderboard-tab-ja2zh"]')).toBeVisible({ timeout: 5000 });
     await expect(page.locator('text=alice')).toBeVisible({ timeout: 5000 });
   });
 
