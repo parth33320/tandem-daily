@@ -6,34 +6,50 @@ import { createRoot } from "react-dom/client";
 
 export const Splash = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-full bg-white dark:bg-gray-900 p-4">
-      <div className="w-full max-w-sm">
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-3xl">🀄</span>
-            <span className="text-3xl">🈯</span>
-          </div>
-          <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">Tandem Daily</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Chinese × Japanese Word Game</p>
-          <p className="text-xs text-gray-400 dark:text-gray-500 mb-4">Spot the false friends — words that look the same but mean different things</p>
-          <button
-            className="w-full py-3 px-6 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors"
-            onClick={(e) => requestExpandedMode(e.nativeEvent, "game")}
-          >
-            Play Today's 5 Cards
-          </button>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4" style={{ background: 'var(--scene)' }}>
+      <div className="glass rounded-3xl p-8 sm:p-12 max-w-md w-full text-center relative overflow-hidden">
+        {/* Subtle felt texture bg */}
+        <div className="absolute inset-0 bg-[var(--theme-felt)]/30 opacity-10" />
+
+        {/* Tracking eyebrow */}
+        <p className="font-sans uppercase tracking-[0.3em] text-xs text-gold/70 mb-4 relative z-10">
+          CHINESE × JAPANESE
+        </p>
+
+        {/* Gold gradient title */}
+        <h1 className="font-display text-4xl sm:text-6xl font-bold gold-text mb-6 leading-tight relative z-10">
+          Tandem Daily
+        </h1>
+
+        {/* Miniature card-back emblem */}
+        <div className="card-back w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 flex items-center justify-center rounded-lg border-2 border-[oklch(0.92_0.04_85)] relative z-10">
+          <span className="font-display text-2xl text-paper-ink">縁</span>
         </div>
+
+        {/* Gold primary CTA */}
+        <button
+          className="bg-primary text-primary-foreground font-sans font-semibold px-8 py-3 rounded-full text-base shadow-[0_4px_20px_-4px_oklch(0.78_0.13_80/0.5)] hover:shadow-[0_6px_30px_-6px_oklch(0.78_0.13_80/0.7)] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background relative z-10"
+          onClick={(e) => requestExpandedMode(e.nativeEvent, "game")}
+        >
+          Play Today's 5 Cards
+        </button>
+
+        {/* Subtle hint */}
+        <p className="mt-4 font-sans text-xs text-foreground/50 relative z-10">
+          5 cards · 15s each · True/False/Half Friends
+        </p>
       </div>
-      <footer className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 text-[0.7em] text-gray-500 dark:text-gray-400 mt-6">
-        <button className="cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors" onClick={() => navigateTo("https://developers.reddit.com/docs")}>
+
+      <footer className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 text-[0.7em] text-foreground/40 mt-6">
+        <button className="cursor-pointer hover:text-gold transition-colors" onClick={() => navigateTo("https://developers.reddit.com/docs")}>
           Docs
         </button>
-        <span className="text-gray-300 dark:text-gray-600">|</span>
-        <button className="cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors" onClick={() => navigateTo("https://www.reddit.com/r/Devvit")}>
+        <span className="text-foreground/20">|</span>
+        <button className="cursor-pointer hover:text-gold transition-colors" onClick={() => navigateTo("https://www.reddit.com/r/Devvit")}>
           r/Devvit
         </button>
-        <span className="text-gray-300 dark:text-gray-600">|</span>
-        <button className="cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors" onClick={() => navigateTo("https://discord.com/invite/R7yu2wh9Qz")}>
+        <span className="text-foreground/20">|</span>
+        <button className="cursor-pointer hover:text-gold transition-colors" onClick={() => navigateTo("https://discord.com/invite/R7yu2wh9Qz")}>
           Discord
         </button>
       </footer>

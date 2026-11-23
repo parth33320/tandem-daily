@@ -34,6 +34,17 @@ test.describe('Tandem Daily - Full Game Flow', () => {
         if (await xrayBtn.isEnabled()) {
           await xrayBtn.click();
         }
+      } else if (cardNum === 3) {
+        const tqBtn = page.locator('[data-testid="lifeline-20q"]');
+        if (await tqBtn.isEnabled()) {
+          await tqBtn.click();
+          await tqBtn.click(); // 20-Q can be used twice
+        }
+      } else if (cardNum === 4) {
+        const pollBtn = page.locator('[data-testid="lifeline-poll"]');
+        if (await pollBtn.isEnabled()) {
+          await pollBtn.click();
+        }
       }
 
       await page.locator('[data-testid^="answer-option-"]:not([disabled])').first().click();

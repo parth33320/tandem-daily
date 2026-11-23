@@ -7,69 +7,73 @@ interface StartScreenProps {
   alreadyPlayed?: boolean;
 }
 
-export function StartScreen({ puzzleNumber, onStart, alreadyPlayed }: StartScreenProps) {
+export function StartScreen({ onStart, alreadyPlayed }: StartScreenProps) {
   const [direction, setDirection] = useState<Direction>("zh2ja");
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-2.5 sm:p-4 gap-3 sm:gap-5">
-      <div className="text-center">
-        <h1 className="text-xl sm:text-2xl font-bold text-paper mb-1 font-serif">Tandem Daily</h1>
-        <p className="text-xs sm:text-sm text-gold-light">Puzzle #{puzzleNumber}</p>
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: 'var(--scene)' }}>
+      <div className="glass rounded-3xl p-8 sm:p-12 max-w-md w-full text-center space-y-8">
+        {/* Eyebrow */}
+        <p className="font-sans uppercase tracking-[0.3em] text-xs text-gold/70">
+          CHINESE × JAPANESE
+        </p>
 
-      {alreadyPlayed && (
-        <div className="flex items-center justify-center gap-1.5 text-[10px] sm:text-xs text-emerald-light mb-1 animate-in">
-          <span>✓</span>
-          <span>Today's streak saved</span>
+        {/* Gold gradient heading */}
+        <h1 className="font-display text-4xl sm:text-5xl font-bold gold-text leading-tight">
+          Tandem Daily
+        </h1>
+
+        {alreadyPlayed && (
+          <div className="flex items-center justify-center gap-2 text-xs text-emerald/80 animate-in">
+            <span>✓</span>
+            <span>Today's streak saved</span>
+          </div>
+        )}
+
+        {/* Direction Chips - REAL radio inputs inside styled labels */}
+        <div className="flex items-center justify-center gap-3 flex-wrap" role="radiogroup">
+          {['zh2ja', 'ja2zh', 'en'].map((dir) => (
+            <label
+              key={dir}
+              className={`font-sans text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 cursor-pointer
+                ${direction === dir
+                  ? 'bg-primary text-primary-foreground shadow-[0_4px_16px_-4px_oklch(0.78_0.13_80/0.5)]'
+                  : 'border border-primary/50 text-primary hover:bg-primary/10'
+                }`}
+              data-testid={`direction-${dir}`}
+            >
+              <input
+                type="radio"
+                className="sr-only"
+                name="direction"
+                value={dir}
+                checked={direction === dir}
+                onChange={() => setDirection(dir as Direction)}
+              />
+              {dir === 'zh2ja' && '🇨🇳 → 🇯🇵 Chinese → Japanese'}
+              {dir === 'ja2zh' && '🇯🇵 → 🇨🇳 Japanese → Chinese'}
+              {dir === 'en' && '🕵️ Visual Detective'}
+            </label>
+          ))}
         </div>
-      )}
 
-      <div className="w-full max-w-sm space-y-1.5 sm:space-y-2">
-        <label className="flex items-center justify-between p-2.5 sm:p-3 bg-ink-light/50 rounded-lg border border-border cursor-pointer hover:border-gold transition-colors">
-          <span className="text-[10px] sm:text-xs font-medium text-paper">I know Chinese → guess Japanese</span>
-          <input
-            type="radio"
-            name="direction"
-            value="zh2ja"
-            data-testid="direction-zh2ja"
-            checked={direction === "zh2ja"}
-            onChange={() => setDirection("zh2ja")}
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold border-border focus:ring-gold"
-          />
-        </label>
-        <label className="flex items-center justify-between p-2.5 sm:p-3 bg-ink-light/50 rounded-lg border border-border cursor-pointer hover:border-gold transition-colors">
-          <span className="text-[10px] sm:text-xs font-medium text-paper">I know Japanese → guess Chinese</span>
-          <input
-            type="radio"
-            name="direction"
-            value="ja2zh"
-            data-testid="direction-ja2zh"
-            checked={direction === "ja2zh"}
-            onChange={() => setDirection("ja2zh")}
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold border-border focus:ring-gold"
-          />
-        </label>
-        <label className="flex items-center justify-between p-2.5 sm:p-3 bg-ink-light/50 rounded-lg border border-border cursor-pointer hover:border-gold transition-colors">
-          <span className="text-[10px] sm:text-xs font-medium text-paper">I know neither — Visual Detective</span>
-          <input
-            type="radio"
-            name="direction"
-            value="en"
-            data-testid="direction-en"
-            checked={direction === "en"}
-            onChange={() => setDirection("en")}
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold border-border focus:ring-gold"
-          />
-        </label>
+        {/* Full-width gold CTA */}
+        <button
+          onClick={() => onStart(direction, alreadyPlayed)}
+          className="w-full bg-primary text-primary-foreground font-sans font-semibold py-3.5 rounded-full text-base shadow-[0_4px_20px_-4px_oklch(0.78_0.13_80/0.5)] hover:shadow-[0_6px_30px_-6px_oklch(0.78_0.13_80/0.7)] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          data-testid="start-button"
+        >
+          {alreadyPlayed ? 'Play Again (Practice Mode)' : 'Start Game'}
+        </button>
+
+        {/* Practice mode link */}
+        <button
+          className="font-sans text-sm text-foreground/60 hover:text-gold transition-colors"
+          onClick={() => onStart(direction, true)}
+        >
+          Practice Mode (seeded)
+        </button>
       </div>
-
-      <button
-        onClick={() => onStart(direction, alreadyPlayed)}
-        data-testid="start-button"
-        className="w-full max-w-sm py-2.5 sm:py-3 px-4 sm:px-6 btn-primary text-sm sm:text-base"
-      >
-        {alreadyPlayed ? "Play Again (Practice Mode)" : "Play Today's 5 Cards"}
-      </button>
     </div>
   );
 }

@@ -1,2 +1,3 @@
 #!/bin/sh
+echo "Running Red-Green TDD verification suite before push..."
 npm run verify

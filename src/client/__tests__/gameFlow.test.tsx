@@ -84,7 +84,7 @@ describe('Game Flow Integration Tests', () => {
   const waitForGameReady = async () => {
     await waitFor(() => {
       expect(screen.queryByText('Failed to load today\'s puzzle')).not.toBeInTheDocument();
-      expect(screen.queryByRole('button', { name: /Play Today/i })).toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: /Start Game/i })).toBeInTheDocument();
     });
   };
 
@@ -94,11 +94,10 @@ describe('Game Flow Integration Tests', () => {
       await waitForGameReady();
       
       expect(screen.getByText('Tandem Daily')).toBeInTheDocument();
-      expect(screen.getByText('Puzzle #1')).toBeInTheDocument();
-      expect(screen.getByRole('radio', { name: /I know Chinese → guess Japanese/i })).toBeInTheDocument();
-      expect(screen.getByRole('radio', { name: /I know Japanese → guess Chinese/i })).toBeInTheDocument();
-      expect(screen.getByRole('radio', { name: /I know neither — Visual Detective/i })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /Play Today/i })).toBeInTheDocument();
+      expect(screen.getByRole('radio', { name: /🇨🇳 → 🇯🇵 Chinese → Japanese/i })).toBeInTheDocument();
+      expect(screen.getByRole('radio', { name: /🇯🇵 → 🇨🇳 Japanese → Chinese/i })).toBeInTheDocument();
+      expect(screen.getByRole('radio', { name: /🕵️ Visual Detective/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /Start Game/i })).toBeInTheDocument();
     });
   });
 
@@ -108,7 +107,7 @@ describe('Game Flow Integration Tests', () => {
       renderGame();
       await waitForGameReady();
       
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       
       await waitFor(() => {
         const kanjiElements = screen.getAllByText(/^[\u4e00-\u9fff]+$/);
@@ -138,7 +137,7 @@ describe('Game Flow Integration Tests', () => {
       renderGame();
       await waitForGameReady();
       
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       
       await waitFor(() => {
         expect(screen.getByText(/Guess the JAPANESE meaning/i)).toBeInTheDocument();
@@ -151,7 +150,7 @@ describe('Game Flow Integration Tests', () => {
       const user = userEvent.setup();
       renderGame();
       await waitForGameReady();
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       await waitFor(() => screen.getByText(/Guess the JAPANESE meaning/i));
     });
 
@@ -199,7 +198,7 @@ describe('Game Flow Integration Tests', () => {
       const user = userEvent.setup();
       renderGame();
       await waitForGameReady();
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       await waitFor(() => screen.getByText(/Guess the JAPANESE meaning/i));
     });
 
@@ -253,7 +252,7 @@ describe('Game Flow Integration Tests', () => {
       renderGame();
       await waitForGameReady();
       
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       
       // Play through all 5 cards
       for (let i = 0; i < 5; i++) {
@@ -324,10 +323,10 @@ describe('Game Flow Integration Tests', () => {
         await waitForGameReady();
         
         // Select mode
-        const radio = screen.getByRole('radio', { name: mode === 'zh2ja' ? /I know Chinese/i : mode === 'ja2zh' ? /I know Japanese/i : /I know neither/i });
+        const radio = screen.getByRole('radio', { name: mode === 'zh2ja' ? /🇨🇳 → 🇯🇵 Chinese → Japanese/i : mode === 'ja2zh' ? /🇯🇵 → 🇨🇳 Japanese → Chinese/i : /🕵️ Visual Detective/i });
         await user.click(radio);
         
-        await user.click(screen.getByRole('button', { name: /Play Today/i }));
+        await user.click(screen.getByRole('button', { name: /Start Game/i }));
         
         await waitFor(() => {
           const kanjiElements = screen.getAllByText(/^[\u4e00-\u9fff]+$/);
@@ -356,8 +355,8 @@ describe('Game Flow Integration Tests', () => {
       await waitForGameReady();
       
       // Select Visual Detective mode
-      await user.click(screen.getByRole('radio', { name: /I know neither/i }));
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('radio', { name: /🕵️ Visual Detective/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       
       await waitFor(() => {
         // Just verify the game renders - kanji should be visible
@@ -372,7 +371,7 @@ describe('Game Flow Integration Tests', () => {
       const user = userEvent.setup();
       renderGame();
       await waitForGameReady();
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       
       await waitFor(() => {
         expect(screen.getByText(/15s/)).toBeInTheDocument();
@@ -383,7 +382,7 @@ describe('Game Flow Integration Tests', () => {
       const user = userEvent.setup();
       renderGame();
       await waitForGameReady();
-      await user.click(screen.getByRole('button', { name: /Play Today/i }));
+      await user.click(screen.getByRole('button', { name: /Start Game/i }));
       
       await waitFor(() => {
         expect(screen.getByText(/15s/)).toBeInTheDocument();
