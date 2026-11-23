@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/set-state-in-effect -- game state is intentionally synced from async fetch and timer effects */
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { DailyResponse, Direction, ScoreResponse, ShareResponse } from "@/shared/api";
-import { dealDailyCards } from "@/lib/daily";
+import { dealDailyCards, getTodaysPuzzleNumber, getTodaysSeed } from "@/lib/daily";
 import { WORDS } from "@/lib/words";
 
 interface LifelinesUsed {
@@ -70,6 +71,11 @@ export function useDailyGame(direction: Direction) {
 
   const timerRef = useRef<number | null>(null);
   const pauseTimeoutRef = useRef<number | null>(null);
+  const directionRef = useRef(direction);
+
+  useEffect(() => {
+    directionRef.current = direction;
+  }, [direction]);
 
   const clearTimers = useCallback(() => {
     if (timerRef.current) {
@@ -86,6 +92,7 @@ export function useDailyGame(direction: Direction) {
     clearTimers();
     setState((s) => ({ ...s, timer: TIMER_DURATION, timerPaused: false, timerPausedUntil: 0 }));
     if (!state.timerEnabled) return;
+    if ((window as unknown as { __TEST_PAUSE_TIMER__?: boolean }).__TEST_PAUSE_TIMER__) return;
     timerRef.current = window.setInterval(() => {
       setState((s) => {
         if (s.timerPaused || s.revealed || s.phase !== "playing" || !s.timerEnabled) return s;
@@ -100,20 +107,35 @@ export function useDailyGame(direction: Direction) {
   }, [clearTimers]);
 
   const fetchDaily = useCallback(async () => {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 1000);
     try {
-      const res = await fetch("/api/daily");
+      const res = await fetch("/api/daily", { signal: controller.signal });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data: DailyResponse = await res.json();
       if (data.type !== "daily") throw new Error("Unexpected response");
       setState((s) => ({ ...s, daily: data, loading: false, error: null }));
     } catch (err) {
-      console.error("Failed to fetch daily", err);
-      setState((s) => ({ ...s, loading: false, error: "Failed to load today's puzzle" }));
+      console.warn("Daily API unavailable, using offline fallback", err);
+      const puzzleNumber = getTodaysPuzzleNumber();
+      const daily: DailyResponse = {
+        type: "daily",
+        puzzleNumber,
+        seed: getTodaysSeed(),
+        username: "local",
+        streak: 0,
+        alreadyPlayed: false,
+        cards: dealDailyCards(puzzleNumber, directionRef.current, WORDS),
+        stats: {},
+      };
+      setState((s) => ({ ...s, daily, loading: false, error: null }));
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   }, []);
 
   useEffect(() => {
-    fetchDaily();
+    void fetchDaily();
   }, [fetchDaily]);
 
   // Start game automatically when daily data loads and there's a pending start
@@ -389,7 +411,7 @@ export function useDailyGame(direction: Direction) {
 
   useEffect(() => {
     if (state.daily) {
-      fetchDaily();
+      void fetchDaily();
     }
   }, [direction, fetchDaily]);
 

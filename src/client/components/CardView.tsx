@@ -77,10 +77,10 @@ export function CardView({
   const radical = showRadicalOverlay ? card.word.radical : (shouldShowRadical ? card.word.radical : null);
 
   const lifelinePills = [
-    { label: "✂️ 50/50", cost: 20, onClick: onFiftyFifty, disabled: !canFiftyFifty },
-    { label: "🔍 X-Ray", cost: 20, onClick: onXRay, disabled: !canXRay, hidden: !card.word.radical },
-    { label: "🎭 20-Q", cost: 15, onClick: onTwentyQuestions, disabled: !canTwentyQuestions },
-    { label: "📊 Poll", cost: 20, onClick: onAskSubreddit, disabled: !canAskSubreddit },
+    { label: "✂️ 50/50", cost: 20, onClick: onFiftyFifty, disabled: !canFiftyFifty, testid: "lifeline-5050" },
+    { label: "🔍 X-Ray", cost: 20, onClick: onXRay, disabled: !canXRay, hidden: !card.word.radical, testid: "lifeline-xray" },
+    { label: "🎭 20-Q", cost: 15, onClick: onTwentyQuestions, disabled: !canTwentyQuestions, testid: "lifeline-20q" },
+    { label: "📊 Poll", cost: 20, onClick: onAskSubreddit, disabled: !canAskSubreddit, testid: "lifeline-poll" },
   ].filter((p) => !p.hidden);
 
   return (
@@ -109,7 +109,7 @@ export function CardView({
       </div>
 
       {/* Main card */}
-      <div className="w-full game-card p-3 sm:p-4 relative">
+      <div className="w-full game-card p-3 sm:p-4 relative" data-testid="question-card">
         {/* Relation badge - hidden during question, shown after reveal */}
         <div className="flex items-center justify-between mb-2">
           <span className={`text-xs font-semibold px-2 py-1 rounded-full ${relation.color} opacity-0 pointer-events-none`}>
@@ -217,6 +217,7 @@ export function CardView({
               key={pill.label}
               onClick={pill.onClick}
               disabled={pill.disabled}
+              data-testid={pill.testid}
               className={`flex items-center gap-1 px-2 py-1 text-[11px] rounded-full border transition-all ${
                 pill.disabled
                   ? "opacity-50 cursor-not-allowed bg-ink-light/30 border-border"

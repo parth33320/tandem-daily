@@ -90,6 +90,7 @@ export function EndScreen({ score, streak, answers, daily, onShare, onPlayAgain 
           )}
           <button
             onClick={onPlayAgain}
+            data-testid="play-again-button"
             className="w-full py-2.5 sm:py-3 px-4 sm:px-6 btn-secondary text-sm sm:text-base"
           >
             Play Again

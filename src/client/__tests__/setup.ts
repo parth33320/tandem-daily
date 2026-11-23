@@ -49,5 +49,6 @@ class MockAudioContext {
   resume() { return Promise.resolve(); }
 }
 
-globalThis.AudioContext = MockAudioContext as any;
-(globalThis as any).webkitAudioContext = MockAudioContext as any;
+const AudioContextMock = MockAudioContext as unknown as typeof AudioContext;
+globalThis.AudioContext = AudioContextMock;
+(globalThis as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext = AudioContextMock;

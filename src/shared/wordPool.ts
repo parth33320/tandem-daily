@@ -22,8 +22,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In ancient China, shouzhi referred to scrap paper for drafting notes, which later degraded to mean toilet paper, while Japan preserved the epistolary association.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it used for written communication? Yes"
+      "Is it a physical paper item? Yes",
+      "Is it sent inside an envelope to communicate? Yes"
     ],
     "radical": {
       "glyph": "手",
@@ -43,8 +43,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, oya literally denotes the master of the house (rented property), whereas in Chinese dajia evolved into the pronoun for everybody.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a professional title? Yes"
+      "Does it refer to people? Yes",
+      "Is it someone who owns rented property or a group? Yes"
     ],
     "radical": {
       "charIndex": 0,
@@ -64,8 +64,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Both derive from steam-powered origins, but Japanese kept kisha strictly for steam locomotives while Chinese adapted qiche for standard motor cars.",
     "clues": [
-      "Is it a vehicle or mode of transport? Yes",
-      "Can it carry multiple passengers? Yes"
+      "Is it a motorized vehicle? Yes",
+      "Does it transport passengers along tracks or roads? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -85,8 +85,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "The classical Chinese root means forcing oneself against hardship; Japanese applied this idea of exertion to academic studying and commercial price cuts.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a mental or physical effort? Yes",
+      "Does it involve academic learning or pushing yourself? Yes"
     ]
   },
   {
@@ -98,8 +98,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, musume refers down a generation to girls or daughters, whereas in Chinese, niang shifted upward in rank to mean mother or woman.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a female family member? Yes",
+      "Is it a specific generational role like daughter or mother? Yes"
     ]
   },
   {
@@ -111,8 +111,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Introducing your airen in Tokyo implies an illicit extramarital lover, while introducing your airen in Beijing refers to your legitimate spouse.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a romantic partner? Yes",
+      "Is it a spouse or secret lover? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -132,8 +132,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both mean born earlier; Japanese retained it as an honorific for professionals, while Chinese broadened it into the universal title for Mr.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a title used for a person? Yes",
+      "Is it used to address a teacher, doctor, or mister? Yes"
     ]
   },
   {
@@ -145,8 +145,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Calling your young wife roba in Japanese directly translates to calling her an old crone.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a woman? Yes",
+      "Is it an elderly woman or someone's wife? Yes"
     ]
   },
   {
@@ -158,8 +158,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Chinese treats letting go of the heart as relaxing worry, whereas Japanese treats it as the soul vacating the body in a trance.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a mental or emotional state? Yes",
+      "Does it describe feeling spaced-out or completely relieved? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -179,8 +179,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally newly heard things; Chinese kept the abstract concept of current events, whereas Meiji Japan applied it specifically to the printed medium.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mass information medium? Yes"
+      "Is it related to current events? Yes",
+      "Do people read or watch it daily for updates? Yes"
     ]
   },
   {
@@ -192,8 +192,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In classical China, a dazhangfu was a towering, virtuous gentleman; in Japan, his unyielding reliability shifted into meaning safe or OK.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it describe reliability or strength? Yes",
+      "Does it mean 'everything is safe' or a heroic man? Yes"
     ],
     "radical": {
       "charIndex": 0,
@@ -213,8 +213,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originating as a Buddhist term for evil spirits distracting monks, Japanese everyday usage demoted it to simply being in the way.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a malevolent entity? Yes"
+      "Is it something unwelcome? Yes",
+      "Is it an annoying obstacle or an evil spirit? Yes"
     ]
   },
   {
@@ -226,8 +226,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In ancient China, tang originally signified hot boiling water (surviving in Japanese baths), before shifting in modern Chinese exclusively to edible broth.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a warm liquid? Yes",
+      "Do you soak in it at a bathhouse or eat it with a spoon? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -247,8 +247,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Classical Chinese used zou for sprinting and bu for walking; Japanese preserved the ancient fast running meaning, while modern Chinese shifted it to walking.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a form of movement on foot? Yes",
+      "Do you use your legs to travel across the ground? Yes"
     ]
   },
   {
@@ -260,8 +260,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, kokuso is exclusively a formal legal criminal complaint, while in Chinese, gaosu is a mundane verb for simply telling someone something.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a legal or verbal action? Yes"
+      "Is it a form of verbal or formal communication? Yes",
+      "Does it involve filing a legal charge or informing someone? Yes"
     ]
   },
   {
@@ -273,8 +273,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally calculating in the dark; in Japan it means computing numbers in your head, while in China it means plotting covert betrayal.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mental calculation? Yes"
+      "Does it happen silently inside someone's mind? Yes",
+      "Is it doing math in your head or plotting in secret? Yes"
     ]
   },
   {
@@ -286,8 +286,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, gongzuo is the standard word for ordinary employment, whereas in Japanese, kosaku denotes manual handicraft or intelligence scheming.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a productive task or occupation? Yes",
+      "Does it involve crafting things or doing your daily job? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -307,8 +307,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japan, koko abbreviates kotogakko (high school), while in China, gaoxiao abbreviates gaodeng xuexiao (colleges and universities).",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an educational facility? Yes"
+      "Is it an educational institution? Yes",
+      "Do teenagers or young adults attend classes there? Yes"
     ],
     "radical": {
       "glyph": "木",
@@ -328,8 +328,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally not ordinary; Chinese developed it into a common intensifying adverb, while Japanese preserved the noun sense of a critical crisis.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it an urgent situation? Yes"
+      "Does it describe something out of the ordinary? Yes",
+      "Does it signal a sudden emergency or an extreme degree? Yes"
     ]
   },
   {
@@ -341,8 +341,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Ancient living quarters blurred sitting mats and sleeping platforms; Japanese came to designate the floorboards, while Chinese designated the raised bed.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a piece of furniture? Yes"
+      "Is it part of a room's interior? Yes",
+      "Is it the surface you walk on or sleep on? Yes"
     ]
   },
   {
@@ -354,8 +354,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "The Chinese word for the bird sparrow gave mahjong its name due to the clacking tile sounds resembling chirping, but Japanese uses it solely for the game.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a game? Yes"
+      "Is it associated with small chirping sounds? Yes",
+      "Is it a four-player tile game or a tiny brown bird? Yes"
     ]
   },
   {
@@ -367,8 +367,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japanese, yojin means exercising defensive caution against risks, whereas in Chinese, yongxin means dedicating heart and intellect toward an endeavor.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a focused mindset? Yes",
+      "Does it mean taking careful precautions or paying close attention? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -388,8 +388,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally heaven's well; in traditional Chinese architecture it is an interior open courtyard, while in Japanese architecture it became the overhead ceiling.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it an architectural element? Yes"
+      "Is it an architectural feature of a building? Yes",
+      "Do you look upward to see it inside a room or courtyard? Yes"
     ]
   },
   {
@@ -401,8 +401,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, kega (injury) is an ateji phonetic spelling whose characters literally read blame me in Mandarin Chinese.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it physical harm? Yes"
+      "Is it an unfortunate physical or social event? Yes",
+      "Does it involve getting physically hurt or taking the blame? Yes"
     ],
     "radical": {
       "glyph": "忄",
@@ -422,8 +422,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "A Japanese kanji compound for burglar derived from mud-smeared faces that reads as nonsensical mud club to a Chinese reader.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a criminal or soil-related? Yes"
+      "Is it something sneaky or messy? Yes",
+      "Does it refer to a burglar or a stick covered in dirt? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -443,8 +443,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, douhe historically meant summing amounts, whereas Japanese shifted it to signify how neatly circumstances align for one's schedule.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about timing or circumstance? Yes"
+      "Is it an abstract condition or calculation? Yes",
+      "Does it refer to schedule convenience or a grand total? Yes"
     ]
   },
   {
@@ -456,8 +456,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally lacking tea; Japanese coined this ateji to describe thoughtless behavior, evoking a host serving guests without proper refreshments.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it a description or a beverage? Yes",
+      "Does it mean acting recklessly or having no brewed leaves? Yes"
     ],
     "radical": {
       "glyph": "灬",
@@ -477,8 +477,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Derived from seeing one's true facial expression; Chinese keeps it as authentic reality, while Japanese evolved it into personal diligence.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about sincerity? Yes"
+      "Does it describe a person's character or appearance? Yes",
+      "Does it mean being dead serious or showing one's true face? Yes"
     ],
     "radical": {
       "glyph": "目",
@@ -498,8 +498,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originally meaning spiritually lost or deceived, in Japanese it migrated to mean causing inconvenience or annoyance to others around you.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it an inconvenience? Yes"
+      "Is it an unpleasant mental or social state? Yes",
+      "Does it mean causing annoyance or feeling confused? Yes"
     ]
   },
   {
@@ -511,8 +511,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Both relate to graduated steps; Chinese primarily uses it figuratively for temporal milestones, while Japanese uses it literally for physical stairs.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a step or phase? Yes"
+      "Is it something you climb or progress through? Yes",
+      "Is it a flight of stairs or a phase in a process? Yes"
     ]
   },
   {
@@ -524,8 +524,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Short for kirite-tegata (cut redemption ticket), it looks alarmed to a Chinese reader as severed hand.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it related to paper or a sharp action? Yes",
+      "Is it a small adhesive square for mail or cutting a hand? Yes"
     ],
     "radical": {
       "glyph": "手",
@@ -545,8 +545,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, kanbyo is the act of a caregiver looking after an invalid; in Chinese, kanbing describes the medical consultation of a physician.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to medicine? Yes"
+      "Is it a medical activity? Yes",
+      "Does it involve nursing a sick person or diagnosing a patient? Yes"
     ]
   },
   {
@@ -558,8 +558,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originating from Confucius' adage that one without far-sighted thought faces near-term worry, Japanese turned it into polite social reservation.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a thoughtful mental habit? Yes",
+      "Does it mean holding back politely or planning far ahead? Yes"
     ]
   },
   {
@@ -571,8 +571,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both convey acting contrary to reason; Japanese extended it to encompass physical impossibility or overtaxing one's physical limits.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about impossibility or excess? Yes"
+      "Does it describe pushing past limits? Yes",
+      "Does it mean something is impossible or completely unreasonable? Yes"
     ],
     "radical": {
       "glyph": "灬",
@@ -592,8 +592,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, godo signifies combining forces or joint operations, while in Chinese, hetong is the universal legal term for a binding agreement.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a legal agreement? Yes"
+      "Does it bring two or more parties together? Yes",
+      "Is it a joint organization or a signed legal agreement? Yes"
     ]
   },
   {
@@ -605,8 +605,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Traditional Chinese medicine diagnoses cold ailments as evil wind invading the body; Japan adopted the diagnosis as the common word for a cold.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a malevolent entity? Yes"
+      "Is it related to weather and health? Yes",
+      "Does it refer to catching a cold or a chilly draft? Yes"
     ]
   },
   {
@@ -618,8 +618,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While Chinese uses renxing descriptively for humanoid silhouettes, Japanese uses ningyo specifically for toys, puppets, and miniature figures.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it resemble a human body? Yes",
+      "Is it a toy figurine/puppet or a human silhouette? Yes"
     ],
     "radical": {
       "glyph": "人",
@@ -639,8 +639,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Derived from Zen teaching that skin and flesh represent superficial exterior understanding, Japanese morphed it into stinging satirical wit.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it mockery or literal body parts? Yes"
+      "Does it refer to sharp speech or physical tissue? Yes",
+      "Is it biting sarcasm or literal skin and muscle? Yes"
     ]
   },
   {
@@ -652,8 +652,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally right and wrong; Chinese retains ethical appraisal, whereas Japanese idiomatically transformed it into an enthusiastic insistence.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about correctness or conflict? Yes"
+      "Does it involve right versus wrong? Yes",
+      "Does it mean 'by all means' or a moral dispute? Yes"
     ]
   },
   {
@@ -665,8 +665,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In China, jingli is the corporate title for an executive manager, while in Japan, keiri is the internal department balancing financial ledgers.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to business? Yes"
+      "Is it an office or business role? Yes",
+      "Does it handle company accounting or manage a team? Yes"
     ]
   },
   {
@@ -678,8 +678,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally in the heart; in Edo Japan, lovers proved pure inner devotion by pledging mutual suicide pacts, forever changing the Japanese meaning.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a romantic partner? Yes"
+      "Is it deeply tied to human emotion? Yes",
+      "Does it refer to a lovers' pact or thoughts deep in the heart? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -699,8 +699,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Yaoya comes from yaoyorozu (innumerable myriad goods), symbolizing a market vendor with hundreds of fresh fruits and vegetables.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a shop or a number? Yes"
+      "Is it related to commerce or quantities? Yes",
+      "Is it a neighborhood produce shop or hundreds of stores? Yes"
     ]
   },
   {
@@ -712,8 +712,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In classical Chinese literature, renjian designates the terrestrial realm of mortals rather than an individual person, which is Japanese ningen.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it relate to humanity? Yes",
+      "Does it mean an individual human being or the mortal realm? Yes"
     ],
     "radical": {
       "glyph": "人",
@@ -733,8 +733,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both stem from attaining one's satisfaction; Japanese further expanded tokui to mean regular commercial patrons who favor your business.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to business? Yes"
+      "Is it a positive feeling or relationship? Yes",
+      "Does it mean a personal strong suit, a regular client, or feeling proud? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -754,8 +754,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, yueshu means to restrict or bind behavior, whereas in Japanese, yakusoku highlights the mutual promise binding both parties.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a binding commitment between people? Yes",
+      "Is it a scheduled appointment/promise or a rule that restricts? Yes"
     ]
   },
   {
@@ -767,8 +767,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originally referring to knowing the inner details of an affair, Japanese turned annai into the standard word for guiding tourists and visitors.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it guidance or legal matter? Yes"
+      "Does it involve sharing inside details? Yes",
+      "Is it guiding a visitor on a tour or the inside of a legal case? Yes"
     ]
   },
   {
@@ -780,8 +780,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While both mean focusing conscious intention, Japanese frequently uses chui as a stern disciplinary scolding or hazard warning.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a mental focus or warning? Yes",
+      "Does it mean watching out for danger or paying close attention? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -801,8 +801,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, quwei expresses delightfulness or zest, while Japanese turned it into the standard category for personal leisure hobbies.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a pastime or sensory experience? Yes"
+      "Is it something you enjoy in your free time? Yes",
+      "Is it a personal hobby or something full of amusing charm? Yes"
     ]
   },
   {
@@ -814,8 +814,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, kakko describes one's outward style or posture, forming phrases like kakkoii (stylish), which makes little sense directly in Chinese.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a toy or human form? Yes"
+      "Does it describe how something looks or rates? Yes",
+      "Does it mean outward style/appearance or meeting a good standard? Yes"
     ],
     "radical": {
       "glyph": "木",
@@ -835,8 +835,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originally describing the well-balanced construction of an architectural edifice, Japanese evolved it into an expression of satisfactory perfection.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about construction or satisfaction? Yes"
+      "Does it describe how parts fit together? Yes",
+      "Does it mean 'quite splendid' or an underlying framework? Yes"
     ]
   },
   {
@@ -848,8 +848,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "A Buddhist loanword combining time (shi/se) and spatial boundaries (jie/kai), universally shared between both modern languages.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a person or the mortal world? Yes"
+      "Is it a massive geographic or cosmic concept? Yes",
+      "Does it encompass every country and human on Earth? Yes"
     ]
   },
   {
@@ -861,8 +861,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Shared classical term used continuously across the Sinosphere to denote educational institutions.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it a physical building? Yes",
+      "Do students and teachers go there every weekday to learn? Yes"
     ],
     "radical": {
       "glyph": "木",
@@ -882,8 +882,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Coined in Japan during the Meiji era as a kanji neologism for telephone, it was subsequently re-imported into modern Chinese.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an electronic communication device? Yes",
+      "Do you use it to hear someone's voice from miles away? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -903,8 +903,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Used identically in both languages to represent temporal duration and hours.",
     "clues": [
-      "Is it a unit of time? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an abstract measurement? Yes",
+      "Do clocks and calendars track its passing? Yes"
     ]
   },
   {
@@ -916,8 +916,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally meaning transforming people through literature and virtue, it became the established Sino-Japanese translation for Western culture.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an intangible human achievement? Yes",
+      "Does it include a society's arts, customs, and traditions? Yes"
     ]
   },
   {
@@ -929,8 +929,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Truncated from the classical Chinese idiom keisei saimin (governing the state and relieving the people's suffering) to translate political economy.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an abstract system? Yes",
+      "Does it govern money, trade, production, and wealth? Yes"
     ]
   },
   {
@@ -942,8 +942,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally communal altar assemblies in ancient China; inverted and repurposed in Meiji Japan to translate society, then re-adopted into Chinese.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it describe a large group of people? Yes",
+      "Is it the organized community we all live and interact in? Yes"
     ]
   },
   {
@@ -955,8 +955,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Coined by Japanese scholar Nishi Amane in 1874 to express specialized discipline-based study, becoming standard across East Asia.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a systematic field of study? Yes",
+      "Does it rely on experiments, hypotheses, and evidence? Yes"
     ]
   },
   {
@@ -968,8 +968,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Both characters date back millennia in Chinese texts to document passed calendars and chroniclers, remaining identical in meaning.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a record of events? Yes",
+      "Does it study civilizations, wars, and people from the past? Yes"
     ]
   },
   {
@@ -981,8 +981,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally organized tone and joyous harmony; found in ancient texts like the Book of Rites and shared without semantic drift.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an art form? Yes",
+      "Is it made of organized melodies, rhythms, and instruments? Yes"
     ]
   },
   {
@@ -994,8 +994,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Used across East Asia to represent travel, combining military dispatch encampment (lu) with journeying forward (xing).",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a leisure or business activity? Yes",
+      "Does it involve packing bags and visiting distant places? Yes"
     ]
   },
   {
@@ -1007,8 +1007,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Both languages use this term identically for both physical athletic sports and socio-political grassroots movements.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an active effort? Yes",
+      "Does it refer to physical workouts or an organized public campaign? Yes"
     ]
   },
   {
@@ -1020,8 +1020,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "A compound combining sickness and institutional hall, shared universally across Chinese and Japanese medical systems.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it a medical facility? Yes"
+      "Is it a public building? Yes",
+      "Do doctors and nurses treat sick or injured patients inside? Yes"
     ]
   },
   {
@@ -1033,8 +1033,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "A Meiji Japanese administrative coinage derived from watchful observation that was adopted wholesale into modern Chinese law enforcement.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to law? Yes"
+      "Does it refer to uniformed public officials? Yes",
+      "Do they enforce laws, patrol streets, and investigate crimes? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -1054,8 +1054,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Formed in Japan combining silver (gin) with mercantile guild (ko/hang), becoming the standard banking term throughout the Sinosphere.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it a commercial building? Yes",
+      "Do people deposit money, take loans, and store savings there? Yes"
     ],
     "radical": {
       "glyph": "钅",
@@ -1075,8 +1075,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "In Chinese, both heping and pinghe are used, with pinghe emphasizing tranquil mildness, whereas Japanese standardized heiwa for geopolitical peace.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an abstract social state? Yes",
+      "Is it the complete absence of war, violence, and conflict? Yes"
     ]
   },
   {
@@ -1088,8 +1088,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally a philosophical Daoist term meaning of its own accord, it was adapted to translate the Western physical concept of nature.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it the physical world around us? Yes",
+      "Does it include forests, mountains, oceans, and wildlife? Yes"
     ],
     "radical": {
       "glyph": "灬",
@@ -1109,8 +1109,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Both languages use this word to evaluate both physical body demeanor and psychological posture toward circumstances.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an internal human trait? Yes",
+      "Does it describe a person's mindset, demeanor, or outlook? Yes"
     ]
   },
   {
@@ -1122,8 +1122,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "A perfectly identical compound dating back to antiquity meaning achieving accomplishment.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a positive outcome? Yes",
+      "Does it happen when you achieve a difficult goal? Yes"
     ]
   },
   {
@@ -1135,8 +1135,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining bamboo tally strip (jian) and single slip (dan), signifying brevity and ease across both cultures.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a descriptive quality? Yes",
+      "Does it mean easy to understand and not complicated at all? Yes"
     ]
   },
   {
@@ -1148,8 +1148,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In classical Chinese, liushou meant remaining behind to defend a post while the master was away, but in Japanese, the meaning inverted to focus on the person being away.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mental state? Yes"
+      "Is it about someone's location at home? Yes",
+      "Does it mean being away from home or staying behind to guard it? Yes"
     ]
   },
   {
@@ -1161,8 +1161,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In China, bing denotes flat wheat-flour foods like scallion pancakes, whereas in Japan, mochi refers exclusively to dense pounded glutinous rice cakes.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a traditional grain-based food? Yes",
+      "Is it a chewy pounded rice cake or a baked wheat flatbread? Yes"
     ],
     "radical": {
       "glyph": "飠",
@@ -1182,8 +1182,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally tying a bundle; Japanese took it metaphorically as people uniting firmly together, while Chinese used the binding of a bundle to denote bringing an affair to a close.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an action involving a group or timeline? Yes",
+      "Does it mean uniting together tightly or bringing an event to an end? Yes"
     ]
   },
   {
@@ -1195,8 +1195,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originating as a Zen dialogue term testing a disciple's enlightenment, it became daily pleasant greetings in Japan, whereas the individual characters in Chinese mean to endure physical abuse.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it an illness? Yes"
+      "Is it a social interaction between people? Yes",
+      "Is it a polite daily greeting or enduring a harsh scolding? Yes"
     ],
     "radical": {
       "glyph": "扌",
@@ -1216,8 +1216,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "When carrots were introduced to Japan, their root resembled medicinal ginseng, so the name stuck to carrots, requiring modern Japanese to call true ginseng otane-ninjin or korai-ninjin.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Is it an edible plant root? Yes",
+      "Is it a common orange garden vegetable or a medicinal root? Yes"
     ],
     "radical": {
       "glyph": "人",
@@ -1237,8 +1237,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally big root; in Japanese it is the staple winter vegetable Raphanus sativus, while in Chinese it is simply an adjective-noun description of any thick plant root.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it part of a plant? Yes",
+      "Is it a giant white winter radish or any thick underground root? Yes"
     ],
     "radical": {
       "charIndex": 0,
@@ -1258,8 +1258,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, kisui is a technical ecological term for the mix of fresh and sea water where rivers meet the sea, whereas in Chinese it is the everyday word for soda.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it a type of liquid? Yes",
+      "Is it a fizzy sweet soft drink or a mix of river and sea water? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -1279,8 +1279,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, jinyu signifies supreme elegance, wealth, and moral purity, while in colloquial Japanese, kintama bluntly refers to male anatomy.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a noun referring to prized objects or anatomy? Yes",
+      "Does it mean precious gold and jade or male body parts? Yes"
     ],
     "radical": {
       "glyph": "金",
@@ -1300,8 +1300,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, muho denotes brazen unlawful conduct, whereas in Chinese, wufa is a mundane grammatical modal verb meaning to have no way of doing something.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it describe a boundary or impossibility? Yes",
+      "Does it mean acting completely lawless or having no way to do something? Yes"
     ],
     "radical": {
       "glyph": "灬",
@@ -1321,8 +1321,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Japanese legend traces yudan to Buddhist monks letting the oil lamp dry out during meditation, making it synonymous with fatal negligence, whereas Chinese reads it literally.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a sudden lapse or interruption? Yes",
+      "Does it mean letting your guard down carelessly or running out of oil? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -1342,8 +1342,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In ancient China, zhangfu was an adult man; in Chinese it evolved into the spouse term husband, while Japanese retained the physical association of male strength to mean durable or healthy.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it describe strength or a family role? Yes",
+      "Does it mean physically sturdy and durable or a married man? Yes"
     ]
   },
   {
@@ -1355,8 +1355,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese literature, chihan is an affectionate or pitying term for an obsessed romantic, but in modern Japanese law and society, chikan denotes a public sexual harasser.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to law? Yes"
+      "Does it refer to a specific type of man? Yes",
+      "Is it a public train groper or a hopelessly lovestruck fool? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -1376,8 +1376,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japan, yakimochi is a pun on yaku (to burn / be jealous) and toasted rice cake, leading to idioms like yakimochi o yaku (to be jealous), which sounds like baking bread in Chinese.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it related to heat, food, or emotion? Yes",
+      "Does it mean feeling romantic jealousy or a toasted sesame flatbread? Yes"
     ],
     "radical": {
       "glyph": "火",
@@ -1397,8 +1397,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally wind boat; in Edo Japan it originally referred to hot air aerostats before shrinking to ordinary rubber balloons, whereas in Chinese it historically meant wind-driven watercraft.",
     "clues": [
-      "Is it a vehicle or mode of transport? Yes",
-      "Can it carry multiple passengers? Yes"
+      "Is it a lightweight object inflated or pushed by air? Yes",
+      "Is it a rubber party toy or a wind-powered wooden boat? Yes"
     ]
   },
   {
@@ -1410,8 +1410,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, xuanhua describes an auditory disturbance such as an unruly crowd talking loudly, while in Japanese, kenka escalated into actual violent fighting or serious verbal disputes.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a loud, disruptive human event? Yes",
+      "Is it a physical fistfight/argument or a noisy crowd commotion? Yes"
     ]
   },
   {
@@ -1423,8 +1423,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originating from avoiding Buddhist transgressions that arouse public dislike, Japanese shifted the word into asking about another's daily wellness or emotional state.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an internal emotional state? Yes",
+      "Does it describe your current daily mood or hidden suspicion? Yes"
     ],
     "radical": {
       "glyph": "木",
@@ -1444,8 +1444,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, kuqing evokes deep personal sorrow and tragic life difficulties, whereas Japanese business uses kujo for formal customer grievances and product complaints.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about timing or circumstance? Yes"
+      "Is it an expression of unhappiness? Yes",
+      "Is it a formal customer complaint or a tragic life hardship? Yes"
     ],
     "radical": {
       "glyph": "艹",
@@ -1465,8 +1465,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, qingchu describes legibility or clarity of perception, while in Japanese, seiso describes a woman's pure, refined, and understated personal aesthetic.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a descriptive adjective? Yes",
+      "Does it mean neat and modest in appearance or crystal clear? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -1486,8 +1486,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, chutou means rising above the crowd and finding success, whereas in Japanese, shutto almost exclusively means turning oneself into authorities or showing up under legal summons.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a public appearance or action? Yes",
+      "Does it mean turning yourself in to police or rising above the crowd? Yes"
     ]
   },
   {
@@ -1499,8 +1499,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, zhongjian indicates spatial position in between objects, whereas in Japanese, nakama grew out of Edo trade guilds into close personal companionship.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it unreasonable or about tea? Yes"
+      "Is it a social or spatial relationship? Yes",
+      "Does it mean a close teammate/comrade or being right in the middle? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -1520,8 +1520,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally copying reality; in ancient China it meant painting lifelike human portraits, which Japan adopted to name camera photography in the 19th century.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a visual image? Yes",
+      "Is it a camera photograph or a realistic portrait? Yes"
     ]
   },
   {
@@ -1533,8 +1533,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japanese, nimotsu covers personal everyday suitcases and mail parcels, whereas Chinese hewu leans toward commercial cargo transport.",
     "clues": [
-      "Is it a vehicle or mode of transport? Yes",
-      "Can it carry multiple passengers? Yes"
+      "Is it physical items being transported? Yes",
+      "Is it personal travel luggage or commercial cargo freight? Yes"
     ]
   },
   {
@@ -1546,8 +1546,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japanese, kazoku usually specifies the nuclear family living under one roof, whereas Chinese jiazu evokes multi-generational lineage clans and ancestral heritage.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a group of related people? Yes",
+      "Is it your immediate household or an extended ancestral clan? Yes"
     ]
   },
   {
@@ -1559,8 +1559,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, qinyou is a collective compound blending qinqi (relatives) and pengyou (friends), while in Japanese, shinyu is reserved for one's closest personal confidant.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to close personal relationships? Yes",
+      "Is it your single best friend or your relatives and friends together? Yes"
     ]
   },
   {
@@ -1572,8 +1572,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, yanchu is the physical act of performing on stage, while Japanese enshutsu specifically highlights the directorial vision behind a production.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a step or phase? Yes"
+      "Is it related to theater or cinema? Yes",
+      "Is it the creative directing of a show or acting on stage? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -1593,8 +1593,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While both mean making something known outward, Japanese students and researchers constantly do happyo in the sense of oral presentations.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it sharing information with an audience? Yes",
+      "Is it giving a class presentation or publishing an article? Yes"
     ]
   },
   {
@@ -1606,8 +1606,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, chabie neutrally describes factual differences between two quantities, whereas Japanese sabetsu carry a heavy connotation of unfair social bias.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it describe treating or seeing things unevenly? Yes",
+      "Is it unfair social prejudice or a neutral numerical difference? Yes"
     ]
   },
   {
@@ -1619,8 +1619,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originally Buddhist utensils assisting enlightenment, Chinese narrowed daoju down to theatrical stage props, while Japanese expanded dogu to all physical hand tools.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a step or phase? Yes"
+      "Is it a physical implement you hold or use? Yes",
+      "Is it an everyday household tool or a theatrical stage prop? Yes"
     ]
   },
   {
@@ -1632,8 +1632,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally inside a dream; Chinese uses it literally for dreams during sleep, while Japanese developed it into waking obsession with a hobby or passion.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it typically done indoors? No"
+      "Is it a deep mental state? Yes",
+      "Does it mean being totally absorbed in a hobby or asleep inside a dream? Yes"
     ],
     "radical": {
       "charIndex": 1,
@@ -1653,8 +1653,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originating as an adjective for an unsteady, drifting mind, Japanese focused uwaki specifically onto romantic infidelity.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an unsteady behavior? Yes",
+      "Does it mean romantic cheating or a frivolous, superficial attitude? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -1674,8 +1674,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Buddhist terminology, both meant achieving spiritual awakening, but modern Japanese hardened kakugo into bracing oneself for sacrifice or danger.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a state of mind? Yes",
+      "Does it mean bracing yourself for danger or spiritual awakening? Yes"
     ]
   },
   {
@@ -1687,8 +1687,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While both stem from alternating roles, Chinese jiaodai often carries the imperative of answering to superiors or confessing errors.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it postal or surgical? Yes"
+      "Is it a transition between people? Yes",
+      "Does it mean taking over someone's work shift or handing over a task? Yes"
     ]
   },
   {
@@ -1700,8 +1700,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally an old topic staying overnight; Chinese diplomats use it for long-standing territorial disputes, while Japanese schoolkids dread it as nightly homework.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an educational facility? Yes"
+      "Is it an unresolved task or question? Yes",
+      "Is it nightly school assignments or a long-standing historical issue? Yes"
     ]
   },
   {
@@ -1713,8 +1713,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japan, kogi is the verbal lecture delivered by a professor, while Chinese historically designated the printed pamphlet or handout summarizing the course.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it used in higher education? Yes",
+      "Is it a professor's spoken class talk or printed study notes? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -1734,8 +1734,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Japan popularized eiga as moving pictures projected with light, which was used in early Republican China before being largely superseded by dianying (electric shadow).",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it visual entertainment? Yes",
+      "Do you watch it projected onto a large screen in a theater? Yes"
     ]
   },
   {
@@ -1747,8 +1747,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, wairen is anyone unrelated or outside a private group, while Japanese gaijin became the standard colloquial term for a non-Japanese foreigner.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it describe someone from outside? Yes",
+      "Is it a foreign citizen or a stranger outside your circle? Yes"
     ],
     "radical": {
       "glyph": "人",
@@ -1768,8 +1768,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Japanese elementary schools partition mathematics into sansu for young children and sugaku for secondary school, while Chinese also uses suanshu idiomatically for keeping one's word.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an educational facility? Yes"
+      "Is it related to numbers? Yes",
+      "Is it elementary school math or basic arithmetic? Yes"
     ]
   },
   {
@@ -1781,8 +1781,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Coined during the early Meiji postal modernization led by Maejima Hisoka, combining ancient relay courier stations (yu) with convenience (bin).",
     "clues": [
-      "Is it a vehicle or mode of transport? Yes",
-      "Can it carry multiple passengers? Yes"
+      "Is it a communication service? Yes",
+      "Does it deliver letters and parcels to your mailbox? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -1802,8 +1802,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japanese, fushinsha refers to a suspicious person lurking around, while in Chinese, bushen retains its literal root of lacking careful deliberation.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Does it describe something questionable? Yes",
+      "Does it mean looking suspicious or lacking careful thought? Yes"
     ]
   },
   {
@@ -1815,8 +1815,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "A holy Buddhist practice of wandering monks seeking food offerings that degraded in colloquial Japanese into a derogatory term for an impoverished beggar.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it cultivated for food? No"
+      "Does it involve asking for food or money? Yes",
+      "Is it a street beggar or a monk collecting alms? Yes"
     ],
     "radical": {
       "glyph": "食",
@@ -1836,8 +1836,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Tracing back to Confucius' disciple Zengzi examining himself three times daily, both cultures value hansei deeply in education and ethics.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a quiet mental habit? Yes",
+      "Do you do it when looking back at your own past mistakes? Yes"
     ]
   },
   {
@@ -1849,8 +1849,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally look board; it went from traditional shop signs to worldwide fame through the Toyota Just-In-Time manufacturing system named Kanban.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a physical display object? Yes",
+      "Do shops hang it outside to advertise their name? Yes"
     ]
   },
   {
@@ -1862,8 +1862,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining miscellaneous and conversation, both cultures use it to describe friendly, low-stakes chatting before business meetings.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a casual social activity? Yes",
+      "Is it relaxed small talk about random everyday topics? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -1883,8 +1883,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Standard scientific classification shared seamlessly across both writing systems to represent all hexapods.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a living creature? Yes",
+      "Does it have six legs, antennae, and often wings? Yes"
     ]
   },
   {
@@ -1896,8 +1896,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally planted things; adopted as an East Asian botanical translation for vegetation and flora during 19th-century educational standardization.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it cultivated for food? No"
+      "Is it a living organism? Yes",
+      "Does it grow in soil and use sunlight for photosynthesis? Yes"
     ]
   },
   {
@@ -1909,8 +1909,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally moving things; the universal companion to botanical shokubutsu/zhiwu across all Sino-character educational curricula.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a wild animal? Yes"
+      "Is it a living organism? Yes",
+      "Does it move around, breathe, and eat food to survive? Yes"
     ]
   },
   {
@@ -1922,8 +1922,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Dating back to the Huainanzi, where yu defined all spatial dimensions and zhou defined all temporal dimensions from past to present.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an immense physical expanse? Yes",
+      "Does it contain all stars, galaxies, planets, and space? Yes"
     ]
   },
   {
@@ -1935,8 +1935,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "In Daoist cosmology, taiyang represents the supreme manifestation of Yang energy, becoming the universal word for the central star of our solar system.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a celestial object? Yes",
+      "Does it shine brightly in the daytime sky and warm the Earth? Yes"
     ]
   },
   {
@@ -1948,8 +1948,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally earth tremor; centuries of shared seismic geography in the Pacific Rim made this term identically vital to both nations.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a sudden natural event? Yes",
+      "Does it cause the ground and buildings to shake violently? Yes"
     ]
   },
   {
@@ -1961,8 +1961,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Its etymology represents a fascinating circular borrowing among Cantonese tai-fung, Arabic tufan, and English typhoon, standardized into identical kanji.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a severe weather event? Yes",
+      "Is it a powerful tropical storm with spinning winds and heavy rain? Yes"
     ]
   },
   {
@@ -1974,8 +1974,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Coupling religious and moral standards with penal codes, this legal binomial dates back to the Qin and Tang dynastic legal codes.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an official system of rules? Yes",
+      "Do courts and governments enforce it to keep order? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -1995,8 +1995,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining righteous order (zheng) with river management and administrative governance (zhi), deeply rooted in Confucian political philosophy.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a public sphere of power? Yes",
+      "Does it involve elections, government policies, and leadership? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -2016,8 +2016,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Coined in 1874 by Nishi Amane using the character tetsu (wise) to translate Western philosophy, later imported into modern Chinese academies.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an academic discipline? Yes",
+      "Does it ask deep questions about existence, ethics, and knowledge? Yes"
     ]
   },
   {
@@ -2029,8 +2029,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining heart-mind and inner pattern; universally applied to academic psychology (shinrigaku / xinlixue) and everyday mental states.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it related to the human mind? Yes",
+      "Does it study emotions, thoughts, and behavior? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -2050,8 +2050,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally referring to learning the Confucian classics in the Analects, it was modernized to translate the European concept of belles-lettres and literature.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a creative art form? Yes",
+      "Does it consist of written novels, poetry, and classic books? Yes"
     ]
   },
   {
@@ -2063,8 +2063,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Coined by Japanese translators preparing for the 1873 Vienna World's Fair to translate the German word Bildende Kunst, then embraced across China.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a creative discipline? Yes",
+      "Does it include painting, sculpture, and gallery exhibitions? Yes"
     ]
   },
   {
@@ -2076,8 +2076,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Used by Hokusai in 1814 for whimsical brush sketches, it was popularized in China by Feng Zikai in 1925, cementing the pan-Asian word for comics.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a visual storytelling medium? Yes",
+      "Does it combine sequential drawings and speech bubbles? Yes"
     ]
   },
   {
@@ -2089,8 +2089,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Classical kinship term preserved formally in official family registries and polite discourse across both civilizations.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a family member? Yes"
+      "Is it a male family member? Yes",
+      "Is he your father's father? Yes"
     ]
   },
   {
@@ -2102,8 +2102,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The formal complement to sofu/zufu, standard in legal documents and ancestry books throughout East Asia.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a female relative? Yes"
+      "Is it a female family member? Yes",
+      "Is she your father's mother? Yes"
     ]
   },
   {
@@ -2115,8 +2115,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining elder brother (xiong) and younger brother (di); Japanese colloquially broadens it to all siblings regardless of gender.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a liquid food? Yes"
+      "Does it refer to family siblings? Yes",
+      "Are they your male brothers? Yes"
     ]
   },
   {
@@ -2128,8 +2128,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining elder sister (jie) and younger sister (mei), used identically for biological sisters, sister cities, and affiliated institutions.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a family member? Yes"
+      "Does it refer to family siblings? Yes",
+      "Are they your female sisters? Yes"
     ]
   },
   {
@@ -2141,8 +2141,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "An ancient binomial pairing man/husband with woman/wife, recognized identically across thousand-year-old literary traditions.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it describe two people together? Yes",
+      "Are they a legally married husband and wife? Yes"
     ]
   },
   {
@@ -2154,8 +2154,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The primary Chinese word for friend, read as hoyu in formal literary Japanese to convey close mutual alliance.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a person you know? Yes",
+      "Is it a trusted companion you enjoy spending time with? Yes"
     ]
   },
   {
@@ -2167,8 +2167,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally meaning peers holding identical bureaucratic rank in ancient imperial courts, it smoothly transitioned to modern corporate coworkers.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it related to employment? Yes"
+      "Does it refer to someone you see regularly? Yes",
+      "Do you work together at the same company or office? Yes"
     ]
   },
   {
@@ -2180,8 +2180,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Every primary school student in both Japan and China writes sakubun / zuowen as their foundational creative writing exercises.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a written piece of text? Yes",
+      "Do students write it as an essay for language class? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -2201,8 +2201,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally describing mutual intercourse and travel between regions, it became the standard administrative term for vehicular transit networks.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a public infrastructure system? Yes",
+      "Does it involve cars, trains, roads, and commuting? Yes"
     ]
   },
   {
@@ -2214,8 +2214,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining incident (shi) and unforeseen cause (gu), standard in journalism for unexpected road crashes and mechanical failures.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an unexpected event? Yes",
+      "Is it an unintended crash or mishap causing damage? Yes"
     ]
   },
   {
@@ -2227,8 +2227,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Used identically for commemorative anniversaries (kinenbi / jinianri) and physical souvenir stamps across both languages.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it tied to memory and history? Yes",
+      "Does it mark a special anniversary or serve as a souvenir? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -2248,8 +2248,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Direct opposite of seiko/chenggong (success), shared in identical form and philosophical meaning across both cultures.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an undesired result? Yes",
+      "Does it happen when a plan or attempt does not succeed? Yes"
     ]
   },
   {
@@ -2261,8 +2261,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Coined in East Asian educational philosophy to translate empirical observation, universally required on modern resumes in both nations.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a family member? Yes"
+      "Is it something you gain over time? Yes",
+      "Does it come from living through events and practicing skills? Yes"
     ]
   },
   {
@@ -2274,8 +2274,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, gongfu famously became synonymous with martial arts discipline and dedicated time, whereas in Japanese, kufu shifted toward creative problem solving and inventive design.",
     "clues": [
-      "Is it a unit of time? Yes",
-      "Is it a mental calculation? Yes"
+      "Is it an investment of mental or physical energy? Yes",
+      "Does it mean clever problem-solving design or dedicated skill/time? Yes"
     ]
   },
   {
@@ -2287,8 +2287,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originally designating the archer's bow-string hand or the domestic kitchen wing, Japanese katte came to express self-serving convenience, unlike Chinese victorious hand.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it postal or surgical? Yes"
+      "Does it relate to personal control or a room? Yes",
+      "Does it mean acting selfishly or a skilled winning hand? Yes"
     ],
     "radical": {
       "glyph": "手",
@@ -2308,8 +2308,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "A Buddhist doctrine of adapting teachings to listeners' capacities; modern Chinese made it the everyday word for convenience, while Japanese famously gave us uso mo hoben (a lie can be an expedient means).",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it postal or surgical? Yes"
+      "Is it an adjective or noun about practicality? Yes",
+      "Does it mean everyday convenience or a helpful white lie? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -2329,8 +2329,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In classical Buddhist theology, woman represented the sin of clinging stubbornly to one's ego; in Japan, that obstinate pride transformed into the cardinal virtue of silent perseverance.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a strong internal attitude? Yes",
+      "Does it mean patient endurance or stubborn ego? Yes"
     ]
   },
   {
@@ -2342,8 +2342,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In classical Chinese literature, dazhe denoted an insightful philosopher who understood heaven's fate, but in Japan, it grounded into being physically spry or dexterous at a craft.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it describe a capable person? Yes",
+      "Does it mean physically healthy/skilled or an enlightened sage? Yes"
     ]
   },
   {
@@ -2355,8 +2355,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Contrasted with kuroto (expert), shiroto literally means white person, representing an unpainted clean canvas in Japanese arts, while in Chinese suren means an unranked civilian or herbivore.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a type of person? Yes",
+      "Is it a complete beginner/amateur or an ordinary civilian? Yes"
     ],
     "radical": {
       "glyph": "人",
@@ -2376,8 +2376,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Derived from xuan (profound dark mystery); Chinese applied it to Daoist spiritual hermits, while Japanese theater applied it to master guild professionals wearing seasoned black garments.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a professional title? Yes"
+      "Does it refer to a specialized person? Yes",
+      "Is it a seasoned veteran professional or a mysterious recluse? Yes"
     ],
     "radical": {
       "glyph": "人",
@@ -2397,8 +2397,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originally the gate of entry into Zen Buddhist enlightenment, in Japanese domestic architecture it became the indispensable sunken entryway for removing shoes.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mental state? Yes"
+      "Is it an architectural entryway? Yes",
+      "Is it the front foyer where you take off your shoes? Yes"
     ]
   },
   {
@@ -2410,8 +2410,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Combining part/section (he) and roof/house (ya); in ancient Japan it was a partitioned subordinate quarters, evolving into the standard word for any private room or sumo stable.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a job or official title? Yes"
+      "Is it an enclosed indoor space? Yes",
+      "Is it a private bedroom/chamber or an office department? Yes"
     ]
   },
   {
@@ -2423,8 +2423,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originating from the imperial pedestal platform where court banquets were prepared, Japanese kept daidokoro for the cooking kitchen, while Chinese reads it as a generic platform place.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a physical space? Yes",
+      "Is it an indoor cooking kitchen or a raised outdoor platform? Yes"
     ]
   },
   {
@@ -2436,8 +2436,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "An irregular phonetic ateji reading in Japanese evolving from ancient water clepsydras (toki-hakari), now meaning any physical watch, whereas modern Chinese uses zhongbiao.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it related to measuring time? Yes",
+      "Is it a wall clock or wristwatch you wear on your arm? Yes"
     ]
   },
   {
@@ -2449,8 +2449,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Formed by compounding fumikiri (stepping across a line), this compound is an everyday transit sight across Japan that looks completely nonsensical to Chinese commuters.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it related to walking or transit? Yes",
+      "Is it a railroad track crossing with gates or stepping firmly? Yes"
     ]
   },
   {
@@ -2462,8 +2462,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally pouring words into text; in China it means written glosses and scholia, whereas Japanese merchants used it for itemized request orders.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it an indoor building? Yes"
+      "Is it a written or spoken request? Yes",
+      "Do you place it at a restaurant table or read it as book notes? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -2483,8 +2483,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally returning a matter; in Japanese it became the standard universal response when one's name is called, while Chinese uses huida or fankui.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it postal or surgical? Yes"
+      "Is it a reaction to someone else? Yes",
+      "Is it answering when called or returning a matter? Yes"
     ]
   },
   {
@@ -2496,8 +2496,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Evolving from martial arts duels where warriors tested each other's blades (shiahi), it became the primary Japanese word for sports matches, whereas Chinese uses bisai.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a competitive or testing event? Yes",
+      "Is it an official sports match or a trial fitting? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -2517,8 +2517,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, kanding meant auditing geographical boundaries or documents, while in Edo Japan, kanjo became synonymous with calculating debts and asking for the bill.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Does it involve numbers and verification? Yes",
+      "Is it paying your restaurant bill or auditing records? Yes"
     ]
   },
   {
@@ -2530,8 +2530,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Historically an official release or exemption granted by the Shogun or Emperor; Japanese everyday speech colloquialized it into gomen nasai (I'm sorry).",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a polite or official release? Yes",
+      "Do you say it to excuse yourself or grant an official pardon? Yes"
     ]
   },
   {
@@ -2543,8 +2543,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Japanese etiquette demands referring to one's own gift with extreme humility as coarse goods (soshina), which would sound insultingly literal to a Chinese recipient.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about looks or quality? Yes"
+      "Is it a physical item given or sold? Yes",
+      "Is it a humble complimentary gift or low-quality merchandise? Yes"
     ]
   },
   {
@@ -2556,8 +2556,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Confucian texts taught jinshen as keeping internal ethical vigilance, but Japanese feudal law and modern schools converted it into punitive disciplinary grounding.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it describe careful or restricted behavior? Yes",
+      "Is it disciplinary grounding at home or being cautious? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -2577,8 +2577,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Derived from placing healing hands upon a wound, Japanese expanded teate to both first aid and employee monetary allowances, unfamiliar in modern Chinese.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a form of practical support? Yes",
+      "Is it medical first aid, a paycheck bonus, or preparing ahead? Yes"
     ],
     "radical": {
       "glyph": "手",
@@ -2598,8 +2598,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originally the Buddhist foundation of consciousness; Japanese shifted iji into obstinate willpower and stubbornness, as seen in ijippari.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a mental disposition? Yes",
+      "Is it stubborn pride or an underlying mental tendency? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -2619,8 +2619,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, fengsu is a strictly sociological academic term for local ethnic traditions, whereas in contemporary Japan, fuzoku commonly designates commercial adult entertainment businesses.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it describe cultural practices? Yes",
+      "Does it refer to local folk traditions or adult entertainment? Yes"
     ]
   },
   {
@@ -2632,8 +2632,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Borrowed phonetically into Japan from a Southern Chinese dialect term for quick-boiling wine pots, kyusu became the standard side-handled Japanese green tea pot.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it related to tea or urgency? Yes",
+      "Is it a small side-handled ceramic teapot or an urgent need? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -2653,8 +2653,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japan, densha is the universal word for all electric passenger trains, whereas in China, dianche refers specifically to road-bound streetcars or electric trolleybuses.",
     "clues": [
-      "Is it a vehicle or mode of transport? Yes",
-      "Is it cultivated for food? No"
+      "Is it an electric transit vehicle? Yes",
+      "Does it carry commuters on rails or overhead wires? Yes"
     ]
   },
   {
@@ -2666,8 +2666,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese medical practice, mayao numbs nerves for surgery, but in Japanese legal enforcement, mayaku designates strictly banned recreational narcotics.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a chemical substance affecting the body? Yes",
+      "Is it an illegal narcotic or a hospital surgical anesthetic? Yes"
     ],
     "radical": {
       "glyph": "艹",
@@ -2687,8 +2687,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In ancient Chinese it meant arranging and managing affairs, a meaning preserved in Taiwan/China, while Japanese specialized it almost entirely into culinary food preparation.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a practical task? Yes",
+      "Does it mean cooking food or managing household affairs? Yes"
     ]
   },
   {
@@ -2700,8 +2700,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally consuming tea; Chinese retains it as a literary verb for tea-drinking, while Japanese standardized kissaten into the vintage retro coffee shop institution.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it related to beverages and relaxing? Yes",
+      "Is it a retro coffee shop or the act of drinking tea? Yes"
     ],
     "radical": {
       "glyph": "艹",
@@ -2721,8 +2721,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "The kanji smoke herb was coined to phonetically transcribe Portuguese tabaco into Japanese, while Chinese uses yancao primarily for the unprocessed botanical leaf.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a dried plant product? Yes",
+      "Is it rolled into cigarettes or harvested as raw leaf? Yes"
     ],
     "radical": {
       "glyph": "火",
@@ -2742,8 +2742,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In dynastic China, paiyou were imperial entertainers providing comical musical theater; Meiji Japan resurrected the term to dignifiedly translate modern dramatic stage actors.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to arts? Yes"
+      "Does it refer to a performer? Yes",
+      "Is it a dramatic stage/film actor or a court entertainer? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -2763,8 +2763,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, jiandu is an oversight official inspecting compliance, while Japanese athletes and movie crews look up to the kantoku as their creative director or manager.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to business? Yes"
+      "Is it a leadership role? Yes",
+      "Does this person direct a movie/sports team or oversee operations? Yes"
     ]
   },
   {
@@ -2776,8 +2776,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, shiyan predominantly refers to scientific experimentation (for which Japanese uses jikken), whereas Japanese uses shiken for high-stakes school tests.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an educational facility? Yes"
+      "Is it a formal evaluation? Yes",
+      "Is it a school exam or a scientific lab experiment? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -2797,8 +2797,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Asking a shitsumon in a Japanese classroom is routine and polite, but in Chinese, zhiwen implies confronting an accused person with accusatory questioning.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it asking someone for answers? Yes",
+      "Is it a polite classroom question or a sharp interrogation? Yes"
     ]
   },
   {
@@ -2810,8 +2810,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While Chinese xiangtan means two people simply talking amicably, Japanese sodan is an institutional cultural pillar of Japanese corporate consensus building (Ho-Ren-So).",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a conversation between people? Yes",
+      "Is it seeking serious advice or chatting together? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -2831,8 +2831,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japanese, jisho is the primary everyday word for any pocket or desk language dictionary, whereas Chinese more commonly uses cidian or zidian.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a reference book? Yes",
+      "Do you look up word definitions and spellings inside it? Yes"
     ]
   },
   {
@@ -2844,8 +2844,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "A picturesque Meiji Japanese coinage describing a pen whose continuous ink supply makes it write for ten thousand years, subsequently recognized in China.",
     "clues": [
-      "Is it a unit of time? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a handheld writing tool? Yes",
+      "Does it use a metal nib and liquid ink reservoir? Yes"
     ]
   },
   {
@@ -2857,8 +2857,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In ancient China and Japan, eki/yi were horse stations for government dispatches; modern Japan preserved eki for train stops, while Chinese transitioned to chezhan.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it a transit hub? Yes"
+      "Is it a travel stop? Yes",
+      "Do trains or historical courier horses stop there to load up? Yes"
     ]
   },
   {
@@ -2870,8 +2870,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both mean without incident; Japanese frequently uses buji as a relieved sigh that someone arrived safely without harm, while Chinese often means having nothing to do.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it an inconvenience? Yes"
+      "Is it a calm, peaceful condition? Yes",
+      "Does it mean arriving safely without harm or having nothing to do? Yes"
     ],
     "radical": {
       "glyph": "灬",
@@ -2891,8 +2891,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both express the spatial directions left and right, but Chinese uses zuoyou as a ubiquitous numerical approximation adverb (about/around), while Japanese uses sayu suru as to dominate or sway.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it about correctness or conflict? Yes"
+      "Does it relate to directions or estimates? Yes",
+      "Does it mean controlling outcomes or 'approximately around'? Yes"
     ]
   },
   {
@@ -2904,8 +2904,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally certain death; Chinese retains the fatal literal consequence, whereas Japanese idiomatically shifted it to trying with all one's might as if facing death.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an extreme state of intensity? Yes",
+      "Does it mean trying desperately hard or facing certain death? Yes"
     ]
   },
   {
@@ -2917,8 +2917,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, niantou describes a spontaneous notion or whim, whereas Japanese nento ni oku means solemnly keeping a strategic concept firmly fixed in mind.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a thought inside your head? Yes",
+      "Is it keeping a priority in mind or a sudden stray whim? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -2938,8 +2938,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally lead brush; adopted during the early modern era across East Asia based on the misconception that graphite was a form of lead.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a wooden writing instrument? Yes",
+      "Does it leave erasable graphite marks on paper? Yes"
     ],
     "radical": {
       "glyph": "钅",
@@ -2959,8 +2959,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally meaning miscellaneous anecdotal records in imperial dynastic libraries, it was adapted in the 19th century to denote periodical print magazines.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a printed publication? Yes",
+      "Is it a glossy periodical filled with articles and photos? Yes"
     ]
   },
   {
@@ -2972,8 +2972,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Found in the ancient Zhuangzi meaning petty trivial talk; revived in modern East Asia to translate the substantial Western literary genre of the novel.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a book of storytelling? Yes",
+      "Is it a long work of narrative prose fiction? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -2993,8 +2993,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "An esteemed shared literary title dating back over two millennia, applied with equal reverence to classical bards like Li Bai and modern poets.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a creative writer? Yes",
+      "Does this person compose verses, stanzas, and rhymes? Yes"
     ],
     "radical": {
       "glyph": "人",
@@ -3014,8 +3014,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining painting (hua/ga) with expert master (jia/ka), shared identically across both civilizations to celebrate fine artists.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to arts? Yes"
+      "Is it a visual artist? Yes",
+      "Does this person use brushes and pigments on canvas? Yes"
     ]
   },
   {
@@ -3027,8 +3027,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Utilizing the professional agent suffix hand (shu/te), this term serves as the standard word for modern vocalists and pop stars across East Asia.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a musical performer? Yes",
+      "Does this person perform songs using their voice? Yes"
     ],
     "radical": {
       "glyph": "手",
@@ -3048,8 +3048,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally selected hand; designated across both languages for team members selected to represent a school, club, or Olympic nation.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a wild animal? Yes"
+      "Is it a competitive participant? Yes",
+      "Does this person play on a sports team or in tournaments? Yes"
     ],
     "radical": {
       "glyph": "手",
@@ -3069,8 +3069,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining drilling silk (lian) with repetitive practicing (xi), shared without difference in sports, musical arts, and academic exercises.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a repetitive skill-building activity? Yes",
+      "Do musicians and athletes do it before a big performance? Yes"
     ]
   },
   {
@@ -3082,8 +3082,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The pedagogical pairing of pre-studying before a lecture, practiced with rigorous discipline in schools throughout both countries.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it an academic study habit? Yes",
+      "Do students do it before class to prepare for new material? Yes"
     ]
   },
   {
@@ -3095,8 +3095,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The complementary counterpart to yoshu/yuxi, encouraging students across East Asia to review classroom notes to consolidate memory.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a family member? Yes"
+      "Is it an academic study habit? Yes",
+      "Do students do it after class to reinforce what they learned? Yes"
     ]
   },
   {
@@ -3108,8 +3108,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining connecting and twine; ubiquitous in East Asian business culture for keeping colleagues continuously informed of developments.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a family member? Yes"
+      "Is it an interpersonal action? Yes",
+      "Does it mean staying in touch or messaging someone updates? Yes"
     ]
   },
   {
@@ -3121,8 +3121,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Used identically for groups of people gathering at a rendezvous point as well as mathematical set theory in classrooms.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it bring individual items or people together? Yes",
+      "Is it a group meeting at one spot or a mathematical set? Yes"
     ]
   },
   {
@@ -3134,8 +3134,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Used universally for adjourning a crowd after an event, ending a military formation, or formally dissolving a legislative parliament.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it the end of a group gathering? Yes",
+      "Does it mean dismissing a crowd or dissolving an organization? Yes"
     ]
   },
   {
@@ -3147,8 +3147,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining beforehand (yo/yu) and covenant agreement (yaku/yue), essential for reserving hotel rooms and restaurant tables in both nations.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a planning action? Yes",
+      "Do you do it ahead of time to secure a hotel room or table? Yes"
     ]
   },
   {
@@ -3160,8 +3160,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally food matter; used politely across both languages to elevate the act of eating into formal dining.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a daily human routine? Yes",
+      "Does it involve sitting down to eat breakfast, lunch, or dinner? Yes"
     ],
     "radical": {
       "glyph": "食",
@@ -3181,8 +3181,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally dry the cup; while Japanese kanpai is a general friendly cheers without requiring emptying the glass, Chinese ganbei literally challenges you to drain the entire cup.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a social celebration gesture? Yes",
+      "Do people raise their glasses together before drinking? Yes"
     ]
   },
   {
@@ -3194,8 +3194,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally sand sugar, reflecting the granular crystallization process that revolutionized sweet confectionery across early modern East Asia.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a kitchen ingredient? Yes",
+      "Is it white or brown crystals used to sweeten food and drinks? Yes"
     ]
   },
   {
@@ -3207,8 +3207,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally ferment oil; the quintessential culinary liquid seasoning of East Asia, shared identically in character composition and kitchen pride.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a liquid cooking condiment? Yes",
+      "Is it salty, dark brown, and brewed from fermented soybeans? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -3228,8 +3228,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally diagram of the earth; standard cartographic term uniting Chinese and Japanese navigation for centuries.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a visual navigation tool? Yes",
+      "Does it show countries, roads, rivers, and borders? Yes"
     ]
   },
   {
@@ -3241,8 +3241,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally air harbor, poeticizing aviation runways as maritime ports for aircraft, shared harmoniously across both modern languages.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an aviation facility? Yes"
+      "Is it a major transportation hub? Yes",
+      "Do airplanes take off and land on runways there? Yes"
     ]
   },
   {
@@ -3254,8 +3254,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Formed in Japanese as water wear, it serves as the everyday word for swimwear, whereas in Chinese it reads as a verb-particle combination for contact with water.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it associated with water? Yes",
+      "Is it clothing worn for swimming or water touching a surface? Yes"
     ],
     "radical": {
       "glyph": "水",
@@ -3275,8 +3275,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Since yu retained its archaic meaning of hot bath water in Japan, yuge means rising steam, whereas Chinese tangqi refers specifically to boiling soup vapor.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it rising warm vapor? Yes",
+      "Does it rise off a hot bath or a steaming bowl of soup? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -3296,8 +3296,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Literally bird dwelling, these iconic vermilion Shinto gates mark the boundary to sacred grounds, while Chinese reads them purely as bird perches.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it a religious site? Yes"
+      "Is it a traditional wooden or stone structure? Yes",
+      "Is it a sacred Shinto shrine gate or a bird's perch? Yes"
     ]
   },
   {
@@ -3309,8 +3309,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Derived from the classical Japanese verb kawasu (to exchange), it is the backbone of Japanese foreign exchange banking, looking completely cryptic in Chinese.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a beverage? Yes"
+      "Is it related to money or substitution? Yes",
+      "Is it currency exchange/money orders or replacing something? Yes"
     ]
   },
   {
@@ -3322,8 +3322,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originally meaning simply things to wear in Japanese, it became the globally recognized robe, whereas in Chinese it means articles adhering to surfaces.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it related to clothing or surfaces? Yes",
+      "Is it a traditional wrapped robe or items clinging to a surface? Yes"
     ]
   },
   {
@@ -3335,8 +3335,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Chinese, ao is a warm padded winter coat, but Japanese interior architecture appropriated the character for paper-covered sliding partition doors.",
     "clues": [
-      "Is it a unit of time? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a household or wearable item? Yes",
+      "Is it a sliding paper room door or a padded winter coat? Yes"
     ]
   },
   {
@@ -3348,8 +3348,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originally a savory Chinese lamb broth that solidified into gelatin when cooled, Zen Buddhist monks in vegetarian Japan adapted it into sweet bean jelly.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a traditional culinary dish? Yes",
+      "Is it a sweet red-bean jelly dessert or a savory mutton soup? Yes"
     ]
   },
   {
@@ -3361,8 +3361,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Combining fee/coin (sen) and hot bath (to), it is Japan's traditional paid public bath, sounding humorously like broth boiled with money to Chinese speakers.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a warm, watery noun? Yes",
+      "Is it a paid neighborhood bathhouse or 'coin soup'? Yes"
     ],
     "radical": {
       "glyph": "钅",
@@ -3382,8 +3382,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Combining soaking/pickling (tsuke) with things (mono), this ubiquitous Japanese side dish is read literally by Chinese readers as soaked objects.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it something soaked in liquid? Yes",
+      "Is it crunchy pickled vegetables served with rice? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -3403,8 +3403,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Originated on Tsukuda Island in Edo by preserving small fish in sweet soy sauce; to Chinese readers, the characters suggest tenant farmers cooking.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it related to simmering food? Yes",
+      "Is it sweet-salty soy-simmered seafood or farmers cooking? Yes"
     ]
   },
   {
@@ -3416,8 +3416,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Using the kanji for pledge/hostage (shichi/zhi), Japanese combines it with shop (ya) for pawnshops, whereas modern Chinese uses dangpu.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it a physical building? Yes",
+      "Is it a shop where you trade valuables for cash loans? Yes"
     ]
   },
   {
@@ -3429,8 +3429,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese, kifu is the standard term for contributing funds to charity, while in Chinese postal context, jifu historically meant sending items on deposit.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it used for written communication? Yes"
+      "Is it sending money or items? Yes",
+      "Is it a charitable donation or mailing something on deposit? Yes"
     ]
   },
   {
@@ -3442,8 +3442,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "In Japanese medicine, okan refers to the uncontrollable shivering that precedes a high fever, whereas Chinese ehan describes disliking cold climates.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it an illness? Yes"
+      "Is it a physical sensation of cold? Yes",
+      "Is it feverish shivering chills or disliking cold weather? Yes"
     ],
     "radical": {
       "glyph": "心",
@@ -3463,8 +3463,8 @@ export const wordPool: PoolWord[] = [
     "relation": "false_friend",
     "fun_fact": "Beyond literal muddy water, Japanese literature idiomatically calls working in the pleasure quarters living in the mud-water world (doromizu-kagyō).",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a gritty liquid or metaphor? Yes",
+      "Is it literal muddy water or a tough nightlife district? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -3484,8 +3484,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both derive from Buddhist active worldly karma, developing into secular descriptions of promising youth with bright futures.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a commitment or restriction? Yes"
+      "Is it a positive quality in a person? Yes",
+      "Does it describe someone capable with great future promise? Yes"
     ]
   },
   {
@@ -3497,8 +3497,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Imported from Ming China, Japan modified the beads from a 2:5 configuration to a 1:4 design, keeping the classical name intact.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mental calculation? Yes"
+      "Is it a traditional math tool? Yes",
+      "Do you slide wooden beads on rods to add and subtract? Yes"
     ]
   },
   {
@@ -3510,8 +3510,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originally written as Chinese hand in Okinawa, the first character was changed in 1930s Japan to empty hand, aligning with Chinese kongshou.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it postal or surgical? Yes"
+      "Is it related to empty hands? Yes",
+      "Is it an unarmed martial art or having nothing in your hands? Yes"
     ],
     "radical": {
       "glyph": "手",
@@ -3531,8 +3531,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally practitioner of arts; Chinese applies it widely to theatrical performers and artisans, while Japanese made it a globally recognized icon.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a skilled performer? Yes",
+      "Is it a traditional kimono entertainer or a master artisan? Yes"
     ],
     "radical": {
       "glyph": "艹",
@@ -3552,8 +3552,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, renzhe is an ethically self-controlled person who endures hardship, while Japanese shinobi/ninja emphasized covert stealth.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a disciplined individual? Yes",
+      "Is it a stealthy feudal spy or someone with deep patience? Yes"
     ]
   },
   {
@@ -3565,8 +3565,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Derived from the classical Japanese verb saburau (to serve closely), turning royal bodyguards into warrior nobles, while Chinese kept the serving verb.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a historical role? Yes",
+      "Is it an armored Japanese warrior or a court attendant? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -3586,8 +3586,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, jiangjun is any general rank officer or chess check, whereas in Japanese history, Shogun specifically designated the supreme military ruler.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a job or official title? Yes"
+      "Is it a high military rank? Yes",
+      "Is it a supreme feudal ruler or an army general? Yes"
     ]
   },
   {
@@ -3599,8 +3599,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally wave man; originally displaced wandering peasants in China, later masterless samurai, and now students studying another year for college entry.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a professional title? Yes"
+      "Does it describe someone without a fixed post? Yes",
+      "Is it a masterless warrior, an exam repeater, or a drifter? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -3620,8 +3620,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both languages associate goosebumps with plucked fowl, though Chinese more commonly says chicken skin (jipi) while Japanese prefers bird skin (torihada).",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a game? Yes"
+      "Is it a reaction on the skin? Yes",
+      "Do tiny bumps appear on your arms when you feel cold or scared? Yes"
     ]
   },
   {
@@ -3633,8 +3633,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Read as kōyō or momiji in Japanese to encompass all deciduous autumn color changes, whereas Chinese hongye focuses explicitly on red maple foliage.",
     "clues": [
-      "Is it a unit of time? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a seasonal plant sight? Yes",
+      "Do tree leaves turn brilliant red and gold in autumn? Yes"
     ],
     "radical": {
       "glyph": "艹",
@@ -3654,8 +3654,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originating as an aristocrat's steam-bath undergarment, yukata evolved into festival wear in Japan, while Chinese uses yuyi for modern bathrobes.",
     "clues": [
-      "Is it a unit of time? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a casual garment? Yes",
+      "Is it a light cotton summer robe or a post-shower bathrobe? Yes"
     ]
   },
   {
@@ -3667,8 +3667,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "The wooden clogs invented in ancient southern China to traverse muddy roads survived continuously in Japanese geta footwear.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it traditional footwear? Yes",
+      "Are they elevated wooden sandals worn with a strap? Yes"
     ]
   },
   {
@@ -3680,8 +3680,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Derived from the Japanese verb tatamu (to fold up portable mats), while Chinese preserves the original verbal meaning of folding and stacking.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a piece of furniture? Yes"
+      "Is it related to floor mats or folding? Yes",
+      "Is it woven rush-straw flooring or stacking layers neatly? Yes"
     ]
   },
   {
@@ -3693,8 +3693,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In ancient China, zhangzi shielded people from cold drafts, which Japan refined into delicate wooden latticework pasted with translucent washi paper.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mass information medium? Yes"
+      "Is it an indoor room divider? Yes",
+      "Is it a translucent paper-latticed sliding screen? Yes"
     ]
   },
   {
@@ -3706,8 +3706,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originally thermal doorway drapes in Zen temples, noren became shopkeeper branding banners in Japan, symbolizing corporate reputation.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a hanging fabric piece? Yes",
+      "Does it hang across a shop doorway or block cold drafts? Yes"
     ]
   },
   {
@@ -3719,8 +3719,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally carrying a lamp; in Japanese it represents the distinct bamboo-ribbed collapsible cylindrical paper lantern hung outside taverns.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Can it carry passengers? Yes"
+      "Is it a portable light source? Yes",
+      "Is it a glowing paper lantern carried by hand or hung outside? Yes"
     ],
     "radical": {
       "glyph": "火",
@@ -3740,8 +3740,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While Northern Chinese jianbing is a soft rolled breakfast crepe, Japanese senbei evolved into hard, savory baked or grilled rice crackers.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a baked or grilled grain snack? Yes",
+      "Is it a crunchy rice cracker or a savory pan-fried crepe? Yes"
     ],
     "radical": {
       "glyph": "飠",
@@ -3761,8 +3761,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Literally pierced flesh; Edo culinary masters coined sashimi to avoid cutting the fish's body (kirimi), while in Chinese it evokes skin tattooing.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it involve slicing or piercing? Yes",
+      "Is it thinly sliced fresh raw fish or tattooing skin? Yes"
     ]
   },
   {
@@ -3774,8 +3774,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Derived from early Chinese fermented seasonings (jiang), Japan standardized miso into an indispensable soup paste and savory cooking foundation.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a savory kitchen staple? Yes",
+      "Is it a fermented soybean paste used to season soup? Yes"
     ]
   },
   {
@@ -3787,8 +3787,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Edo Japan, customers would stay at the sake shop (i-zake) to drink directly on premise, creating the modern izakaya culture.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it a social eating and drinking spot? Yes",
+      "Do people gather there at night for drinks and small plates? Yes"
     ]
   },
   {
@@ -3800,8 +3800,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japan, yatai famous in Fukuoka are open-air wheeled street stalls serving ramen and skewers, while Chinese reads it as a roof pavilion.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it cultivated for food? No"
+      "Is it an outdoor structure? Yes",
+      "Is it a mobile street food cart or a rooftop terrace? Yes"
     ]
   },
   {
@@ -3813,8 +3813,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While Chinese lvguan is an umbrella word for modern hotels, Japanese ryokan strictly implies traditional hot springs, futons, and kaiseki dining.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it overnight lodging for travelers? Yes",
+      "Is it a traditional tatami inn or a local guesthouse? Yes"
     ],
     "radical": {
       "glyph": "飠",
@@ -3834,8 +3834,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japan, ryotei are discreet, high-class establishments hosting top politicians and corporate executives, far more formal than Chinese dining pavilions.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it a place for dining? Yes",
+      "Is it an exclusive traditional restaurant or a garden pavilion? Yes"
     ]
   },
   {
@@ -3847,8 +3847,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, gongyang means dutifully feeding elders or monks, whereas Japanese kuyō includes memorializing expired household needles and broken dolls.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a respectful offering? Yes",
+      "Is it a memorial rite for spirits or providing food to elders? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -3868,8 +3868,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Using yaku (public service duties), Japan standardized shiyakusho for municipal civic offices, while modern China uses shizhengfu.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it a government building? Yes",
+      "Do local officials manage city administration inside? Yes"
     ]
   },
   {
@@ -3881,8 +3881,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japan, saibansho is the constitutional court of justice, whereas Chinese reserves fayuan for legal courts and caipansuo for arbitration or sports judging.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a place where disputes are settled? Yes",
+      "Is it a legal court of law or a sports judging desk? Yes"
     ]
   },
   {
@@ -3894,8 +3894,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japan, saiban is an official trial before a judge, while in China, caipan is the sports referee blowing a whistle on the pitch.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it involve making an official ruling? Yes",
+      "Is it a courtroom trial or a sports referee's call? Yes"
     ]
   },
   {
@@ -3907,8 +3907,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Early Japanese diplomats coined daitōryō for American presidents; modern Chinese adapted zongtong for heads of state, leaving datongling historical.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to business? Yes"
+      "Is it a top national leader? Yes",
+      "Is it an elected president or a supreme commander? Yes"
     ],
     "radical": {
       "charIndex": 0,
@@ -3928,8 +3928,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Originated from merchant guilds sharing stump equity in Edo markets, kabu became the Japanese word for corporate equities and stocks.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it cultivated for food? No"
+      "Is it related to trees or finance? Yes",
+      "Is it a corporate stock share or a cut tree stump? Yes"
     ],
     "radical": {
       "glyph": "木",
@@ -3949,8 +3949,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Coined in Meiji Japan to establish modern corporate shareholder law (kabushiki kaisha), while Chinese adopted the translation gupiao.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a legal agreement? Yes"
+      "Is it a business ownership structure? Yes",
+      "Does it divide a company into tradable equity shares? Yes"
     ],
     "radical": {
       "glyph": "木",
@@ -3970,8 +3970,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Both mean borrowing money, but Japanese shakkin serves as a heavy everyday noun for being in debt or owing financial obligations.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a financial obligation? Yes",
+      "Is it money you borrowed and must pay back? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -3991,8 +3991,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, jiyu is a formal verb for giving or granting, while Japanese labor law uses kyūyo as the legal term for employee wages.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to law? Yes"
+      "Is it transferring money or benefits? Yes",
+      "Is it an employee's regular paycheck or granting aid? Yes"
     ]
   },
   {
@@ -4004,8 +4004,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Japan, zangyo is the institutionalized culture of staying late at the office, while Chinese uses jiaban for overtime shifts.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it related to office hours? Yes",
+      "Is it staying late at the office to finish extra work? Yes"
     ]
   },
   {
@@ -4017,8 +4017,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Derived from pitching military field tents forward, Japanese shucho is an everyday business trip, whereas Chinese uses chuchai.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a work-related movement? Yes",
+      "Is it traveling to another city on company business? Yes"
     ]
   },
   {
@@ -4030,8 +4030,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In Chinese, zuhe is a mathematical combination or musical group, whereas Japanese kumiai specifically denotes labor unions and agricultural co-ops.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Does it group people or items together? Yes",
+      "Is it a workers' trade union or a combined set? Yes"
     ]
   },
   {
@@ -4043,8 +4043,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Inverting Chinese shehui (society), Japanese scholars created kaisha to denote commercial joint-stock business corporations.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an organized group of people? Yes",
+      "Is it a commercial business corporation or civic society? Yes"
     ]
   },
   {
@@ -4056,8 +4056,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "In China, shezhang directs newspaper publishing agencies or communal organizations, while in Japan, shacho is the ultimate executive boss of any firm.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it the top executive role? Yes",
+      "Is this person the president/CEO of a company or agency? Yes"
     ]
   },
   {
@@ -4069,8 +4069,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "Calling someone bucho in a Tokyo office addresses a middle department manager, while in Beijing, buzhang addresses a top government minister.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a job or official title? Yes"
+      "Is it a senior leadership title? Yes",
+      "Is this person a corporate department head or government minister? Yes"
     ]
   },
   {
@@ -4082,8 +4082,8 @@ export const wordPool: PoolWord[] = [
     "relation": "half_friend",
     "fun_fact": "While Chinese mianjie simply means meeting someone directly in person, Japanese mensetsu is the formal gauntlet of school and job interviews.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to education? Yes"
+      "Is it a direct in-person meeting? Yes",
+      "Do job applicants sit through it to get hired? Yes"
     ]
   },
   {
@@ -4095,8 +4095,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The philosophical pursuit of spiritual harmony through tea preparation, celebrated across centuries of East Asian cultural aesthetics.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it a traditional cultural ritual? Yes",
+      "Does it center on whisking and serving green tea mindfully? Yes"
     ],
     "radical": {
       "glyph": "艹",
@@ -4116,8 +4116,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally the way of flowers, both languages recognize it as an elevated discipline of balance, form, and natural appreciation.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it cultivated for food? No"
+      "Is it a traditional visual art? Yes",
+      "Does it arrange cut stems, leaves, and blossoms in a vase? Yes"
     ]
   },
   {
@@ -4129,8 +4129,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Founded by Kano Jigoro based on the principle of softness overcoming hard force (ju yoku go o seisu), shared worldwide.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an Olympic martial art? Yes",
+      "Does it focus on throws, pins, and using an opponent's force? Yes"
     ]
   },
   {
@@ -4142,8 +4142,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The classical martial path of swordsmanship, codified with bamboo shinai swords and protective bōgu armor.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a traditional martial art? Yes",
+      "Do practitioners wear armor and spar with bamboo swords? Yes"
     ]
   },
   {
@@ -4155,8 +4155,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally meaning out-of-the-ordinary (kabuku), it was assigned elegant kanji for singing (ka), dancing (bu), and acting skill (ki).",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a classical stage performance? Yes",
+      "Is it known for elaborate makeup, costumes, and stylized drama? Yes"
     ]
   },
   {
@@ -4168,8 +4168,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originally the field headquarters of Chinese commanding generals in battle, it became the established title of Japan's warrior governments.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a historical government system? Yes",
+      "Was it led by a military shogun rather than the emperor? Yes"
     ]
   },
   {
@@ -4181,8 +4181,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Bred from wild carp in Song Dynasty China and transported to Japan in 1502, sparking centuries of summer festival scooping games.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a small aquatic pet? Yes",
+      "Is it bright orange-gold and kept in bowls or pond tanks? Yes"
     ],
     "radical": {
       "glyph": "金",
@@ -4202,8 +4202,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "A symbol of perseverance across East Asia, celebrated for swimming up waterfalls to transform into mighty dragons.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a freshwater fish? Yes",
+      "Is it prized in garden ponds and famous for swimming upstream? Yes"
     ]
   },
   {
@@ -4215,8 +4215,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The national floral emblem of spring in Japan, appreciated throughout East Asian classical literature for transient beauty.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it cultivated for food? No"
+      "Is it a flowering tree? Yes",
+      "Do its pale pink petals bloom briefly every spring? Yes"
     ],
     "radical": {
       "glyph": "木",
@@ -4236,8 +4236,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Originating from Chinese penjing tray plantings over a thousand years ago, it was perfected in Japan into the global art of miniature trees.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it cultivated for food? No"
+      "Is it a living art form? Yes",
+      "Is it a miniature tree carefully pruned inside a shallow pot? Yes"
     ]
   },
   {
@@ -4249,8 +4249,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Shared universally across both cultures to describe sophisticated landscaped courtyards integrating rocks, water, and flora.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it an indoor building? Yes"
+      "Is it a designed outdoor space? Yes",
+      "Does it feature curated rocks, pathways, ponds, and trees? Yes"
     ]
   },
   {
@@ -4262,8 +4262,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally warm spring; celebrated across East Asia's volcanic geology as therapeutic destinations for health and relaxation.",
     "clues": [
-      "Is it a natural phenomenon? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a natural water feature? Yes",
+      "Is it geothermally heated mineral water people bathe in? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -4283,8 +4283,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Ancient round hand-fans symbolizing completeness and unity, carried during summer evening festivals in both nations.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mass information medium? Yes"
+      "Is it a handheld cooling accessory? Yes",
+      "Is it flat, round, and does not fold up? Yes"
     ]
   },
   {
@@ -4296,8 +4296,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Invented in Japan during the Heian period as folding slats, it was subsequently gifted to the Chinese imperial court and adopted broadly.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mass information medium? Yes"
+      "Is it a handheld cooling accessory? Yes",
+      "Does it fold neatly into a slim stick when closed? Yes"
     ]
   },
   {
@@ -4309,8 +4309,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining folding (ori/zhe) and paper (kami/zhi), this delicate art form bridges childhood games and high-tech aerospace folding design.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a mass information medium? Yes"
+      "Is it a hands-on craft? Yes",
+      "Do you fold a flat square of paper into cranes or shapes without scissors? Yes"
     ],
     "radical": {
       "glyph": "扌",
@@ -4330,8 +4330,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The revered East Asian craft of coating wooden bowls with purified Toxicodendron vernicifluum tree resin for water-resistant sheen.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a traditional craft object? Yes",
+      "Is it wood coated in glossy, waterproof tree-sap varnish? Yes"
     ]
   },
   {
@@ -4343,8 +4343,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Low to medium-fire clay ware fired in kilns, representing millennia of continuous shared ceramic culture.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a handmade vessel? Yes",
+      "Is it shaped from clay and baked hard in a kiln? Yes"
     ]
   },
   {
@@ -4356,8 +4356,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "High-fired vitrified translucent ceramic ware made with kaolin clay, prized along global trade routes as china.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a delicate ceramic material? Yes",
+      "Is it white, translucent, and made from fine kaolin clay? Yes"
     ]
   },
   {
@@ -4369,8 +4369,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally mosquito curtain; hung over family sleeping beds in hot summer nights throughout ancient East Asian villages.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a piece of furniture? Yes"
+      "Is it a bedroom fabric accessory? Yes",
+      "Does it hang around a bed to keep biting insects out? Yes"
     ]
   },
   {
@@ -4382,8 +4382,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "A shared character compound describing small round spherical dumplings, immortalized in the Japanese proverb hana yori dango.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a sweet or savory snack? Yes",
+      "Is it made of round chewy dough balls, often served on a skewer? Yes"
     ]
   },
   {
@@ -4395,8 +4395,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Written with auspicious characters wishing long life (su-shi), this world-famous dish traces back to Southeast Asian fermented fish narezushi.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a famous traditional dish? Yes",
+      "Does it combine vinegared rice with seafood or vegetables? Yes"
     ]
   },
   {
@@ -4408,8 +4408,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally temple kitchen beans, recognized across both cultures for its pungent probiotic stringiness and exceptional nutrient density.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a traditional fermented food? Yes",
+      "Is it made of sticky, pungent soybeans often eaten at breakfast? Yes"
     ]
   },
   {
@@ -4421,8 +4421,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Invented during the Han Dynasty in China and introduced to Japan during the Nara period, it remains an indispensable East Asian staple.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it typically a main dish? Yes"
+      "Is it a protein-rich food staple? Yes",
+      "Is it soft white blocks made from coagulated soy milk? Yes"
     ]
   },
   {
@@ -4434,8 +4434,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Both writing systems use these characters for Fagopyrum esculentum, famous in Tokyo as slender noodles slurped for longevity.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a grain or noodle food? Yes",
+      "Is it made from buckwheat flour and served hot or chilled? Yes"
     ]
   },
   {
@@ -4447,8 +4447,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Thick wheat flour noodles eaten in hot savory broth, whose kanji spelling is shared across Chinese and Japanese menus.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a noodle dish? Yes",
+      "Are the noodles thick, chewy, white, and made from wheat flour? Yes"
     ]
   },
   {
@@ -4460,8 +4460,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The Song Dynasty method of grinding steamed green tea leaves on stone mills, famously preserved through the Japanese tea ceremony.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it a vibrant green beverage ingredient? Yes",
+      "Is it finely stone-ground green tea leaf powder? Yes"
     ],
     "radical": {
       "glyph": "艹",
@@ -4481,8 +4481,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally jade dew; celebrated as the highest grade of shaded green tea in Japan, echoing classical poetic Chinese terminology.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it a luxury beverage? Yes",
+      "Is it a high-grade shaded green tea prized for sweet umami? Yes"
     ]
   },
   {
@@ -4494,8 +4494,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Contrasted with cloudy nigorizake, this classical compound designates clarified, filtered rice wine brewed to perfection.",
     "clues": [
-      "Is it edible? Yes",
-      "Is it a beverage? Yes"
+      "Is it an alcoholic beverage? Yes",
+      "Is it clear, filtered rice wine? Yes"
     ],
     "radical": {
       "glyph": "氵",
@@ -4515,8 +4515,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining burning distillation (shō/shāo) with liquor (chū/zhǒu), representing clear, potent distilled spirits.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it an alcoholic beverage? Yes",
+      "Is it a strong, clear distilled spirit? Yes"
     ],
     "radical": {
       "glyph": "火",
@@ -4536,8 +4536,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally dew heaven; used identically for outdoor markets (roten) and open-air hot spring baths (rotenburo).",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it describe a setting? Yes",
+      "Is it completely outdoors under the open sky with no roof? Yes"
     ]
   },
   {
@@ -4549,8 +4549,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining kami/spirit (shin/shén) with communal gathering place (sha/shè), designating sacred grounds in both languages.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it a religious site? Yes"
+      "Is it a sacred place of worship? Yes",
+      "Do visitors go there to pray to spirits or local deities? Yes"
     ]
   },
   {
@@ -4562,8 +4562,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "A formal ecclesiastical compound combining temple (ji/sì) and institutional precinct (in/yuàn), identical across both realms.",
     "clues": [
-      "Is it a physical location? Yes",
-      "Is it a religious site? Yes"
+      "Is it a religious complex? Yes",
+      "Do Buddhist monks live, chant, and meditate inside? Yes"
     ]
   },
   {
@@ -4575,8 +4575,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining sangha monk (sō) with collective companions (ryo), used with identical religious solemnity in both societies.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Does it refer to a religious person? Yes",
+      "Has this person taken vows to follow Buddhist monastic life? Yes"
     ],
     "radical": {
       "glyph": "亻",
@@ -4596,8 +4596,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Sanskrit Bodhisattva transliterated into shared characters, representing compassionate beings striving for universal salvation.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a revered figure in Buddhism? Yes",
+      "Is this enlightened being dedicated to helping all others reach salvation? Yes"
     ]
   },
   {
@@ -4609,8 +4609,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Abbreviated from Guanshiyin (Perceiver of the World's Cries), worshipped universally as the embodiment of infinite mercy.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a revered Buddhist figure? Yes",
+      "Is this figure known worldwide as the Bodhisattva of Compassion? Yes"
     ]
   },
   {
@@ -4622,8 +4622,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Sanskrit Yama phonetically rendered into characters, ruling the Buddhist afterlife courts with an unforgiving mirror.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a mythological ruler? Yes",
+      "Does this fearsome judge preside over the afterlife underworld? Yes"
     ]
   },
   {
@@ -4635,8 +4635,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Translating Sanskrit Sukhavati as utmost bliss, this realm of Amitabha Buddha provides salvation in East Asian Pure Land Buddhism.",
     "clues": [
-      "Is it an abstract idea or state? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a spiritual realm? Yes",
+      "Is it a blissful Buddhist paradise free from all suffering? Yes"
     ]
   },
   {
@@ -4648,8 +4648,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally earth prison; translating Sanskrit Naraka as the fiery punitive underworld realm of karmic retribution.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a person or the mortal world? Yes"
+      "Is it a mythological realm? Yes",
+      "Is it a fiery subterranean underworld of punishment? Yes"
     ]
   },
   {
@@ -4661,8 +4661,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally turning wheel; depicting the eternal cyclic transmigration of souls across the six realms of existence.",
     "clues": [
-      "Is it an action or activity? Yes",
-      "Is it typically done indoors? No"
+      "Is it a philosophical and religious concept? Yes",
+      "Is it the endless cycle of birth, death, and rebirth? Yes"
     ]
   },
   {
@@ -4674,8 +4674,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The classical phonetic transcription of Sanskrit Nirvana, signifying the ultimate quenching of all worldly suffering and illusion.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it the ultimate spiritual goal in Buddhism? Yes",
+      "Is it complete liberation from desire, suffering, and rebirth? Yes"
     ]
   },
   {
@@ -4687,8 +4687,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Used identically to designate memorial grave plots where ancestors are venerated during annual remembrance festivals.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a quiet outdoor location? Yes",
+      "Are deceased family members buried and honored under stone markers there? Yes"
     ]
   },
   {
@@ -4700,8 +4700,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Literally bequeathed words; carries full legal status as a testamentary document and emotional resonance as dying wishes.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it a final statement? Yes",
+      "Does a person write or speak it before passing away to distribute property? Yes"
     ],
     "radical": {
       "glyph": "言",
@@ -4721,8 +4721,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Applied identically to financial property inherited from deceased family as well as UNESCO World Heritage sites (sekai isan).",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Is it wealth or culture passed down? Yes",
+      "Do heirs receive it after a relative passes away? Yes"
     ]
   },
   {
@@ -4734,8 +4734,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Deeply respected in East Asian filial piety, honoring preceding generations through seasonal offerings and prayers.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it refer to family members? Yes",
+      "Are they the earlier generations of your family from centuries past? Yes"
     ]
   },
   {
@@ -4747,8 +4747,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combining children (shi/zǐ) and grandchildren (son/sūn), representing unbroken familial lineage into the future.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it used for written communication? Yes"
+      "Does it refer to family members? Yes",
+      "Are they your children, grandchildren, and future generations? Yes"
     ]
   },
   {
@@ -4760,8 +4760,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The universal social term across both cultures for aunts, uncles, cousins, and in-laws who gather during New Year holidays.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a general human or social role? Yes"
+      "Does it describe a broad group of people? Yes",
+      "Are they all your extended family members related by blood or marriage? Yes"
     ]
   },
   {
@@ -4773,8 +4773,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Specifically designates the elder brother of one's father or mother according to classical Confucian kinship taxonomy.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a male relative? Yes",
+      "Is he the older brother of your mother or father? Yes"
     ]
   },
   {
@@ -4786,8 +4786,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The precise female counterpart to oji/bofu, designating one's parent's older sister in legal and family documentation.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a female relative? Yes",
+      "Is she the older sister of your mother or father? Yes"
     ]
   },
   {
@@ -4799,8 +4799,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Contrasts with bofu by specifically denoting the younger brother of one's mother or father.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a male relative? Yes",
+      "Is he the younger brother of your mother or father? Yes"
     ]
   },
   {
@@ -4812,8 +4812,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Distinguishes the younger sister of one's mother or father from elder aunts in traditional family tree records.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a female relative? Yes",
+      "Is she the younger sister of your mother or father? Yes"
     ]
   },
   {
@@ -4825,8 +4825,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Combines filial collateral branch (cóng) with elder and younger brothers to specify male cousins.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a family member? Yes"
+      "Does it refer to relatives of your own generation? Yes",
+      "Are they the male sons of your aunts and uncles? Yes"
     ]
   },
   {
@@ -4838,8 +4838,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The parallel female compound used for daughters of one's aunts and uncles across both family systems.",
     "clues": [
-      "Is it a tangible object? Yes",
-      "Is it a family member? Yes"
+      "Does it refer to relatives of your own generation? Yes",
+      "Are they the female daughters of your aunts and uncles? Yes"
     ]
   },
   {
@@ -4851,8 +4851,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Using the righteousness/duty character (gi/yì), indicating kinship established through legal marriage or adoption rather than blood.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a male family title? Yes",
+      "Is he your spouse's father or your adoptive father? Yes"
     ]
   },
   {
@@ -4864,8 +4864,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "The maternal parallel for legally recognized mothers through matrimony or official adoption procedures.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to public service? Yes"
+      "Is it a female family title? Yes",
+      "Is she your spouse's mother or your adoptive mother? Yes"
     ]
   },
   {
@@ -4877,8 +4877,8 @@ export const wordPool: PoolWord[] = [
     "relation": "true_friend",
     "fun_fact": "Practiced widely in Japanese merchant families (muko-yoshi) and Chinese lineages to preserve house names and businesses.",
     "clues": [
-      "Is it a person or human role? Yes",
-      "Related to business? Yes"
+      "Is it a family relationship? Yes",
+      "Is this person a child legally adopted into a family? Yes"
     ],
     "radical": {
       "glyph": "飠",

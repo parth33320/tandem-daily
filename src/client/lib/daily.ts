@@ -43,7 +43,7 @@ export function dealDailyCards(
   const getRandom = (max: number) => (rng ? rng() % max : hash(`${Date.now()}-${Math.random()}`) % max);
 
   for (let i = 0; i < 5; i++) {
-    let n = puzzleNum * 5 + i;
+    const n = puzzleNum * 5 + i;
     let card: RoundContent;
 
     if (i === 0) {

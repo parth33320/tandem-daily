@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { HandCursor } from "./HandCursor";
 import { StartScreen } from "./StartScreen";
 import { CardView } from "./CardView";
 import { ChoiceButtons } from "./ChoiceButtons";
@@ -41,7 +40,7 @@ export function GameScreen() {
   };
 
   const handleSelect = (idx: number) => {
-    game.selectAnswer(idx);
+    void game.selectAnswer(idx);
   };
 
   const handleLifeline = (type: "fiftyFifty" | "xray" | "twentyQuestions" | "askSubreddit") => {
@@ -55,8 +54,8 @@ export function GameScreen() {
   };
 
   const handleShare = (onStatus: (status: "loading" | "success" | "error", error?: string) => void) => {
-    game.submitScore();
-    game.shareScore(onStatus);
+    void game.submitScore();
+    void game.shareScore(onStatus);
   };
 
   if (game.loading) {
@@ -84,7 +83,6 @@ export function GameScreen() {
 
   return (
     <div className="h-screen overflow-hidden flex flex-col">
-      <HandCursor />
       {game.phase === "start" && (
         <StartScreen
           puzzleNumber={game.daily.puzzleNumber}

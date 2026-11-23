@@ -25,6 +25,7 @@ export function ChoiceButtons({ card, direction, eliminatedIndices, onSelect, di
             key={idx}
             onClick={() => !disabled && !isEliminated && onSelect(idx)}
             disabled={disabled || isEliminated}
+            data-testid={`answer-option-${idx}`}
             className={`choice-btn transition-all ${
               isEliminated
                 ? "opacity-25 line-through cursor-not-allowed"

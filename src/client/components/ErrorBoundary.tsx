@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect, ReactNode, ErrorInfo } from "react";
 
 interface Props {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface Props {
 interface ErrorState {
   hasError: boolean;
   error: Error | null;
-  errorInfo: React.ErrorInfo | null;
+  errorInfo: ErrorInfo | null;
 }
 
 export function ErrorBoundary({ children, fallback }: Props) {

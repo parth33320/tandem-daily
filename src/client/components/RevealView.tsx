@@ -28,7 +28,7 @@ export function RevealView({ card, selectedIdx, correct, stats, directionMode, o
   const isEnMode = directionMode === "en";
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md space-y-2 overflow-hidden animate-in p-2.5 sm:p-4">
+    <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md space-y-2 overflow-hidden animate-in p-2.5 sm:p-4" data-testid="reveal-card">
       {/* Relation badge - now visible after answer */}
       <div className="flex items-center justify-between mb-2 w-full max-w-md">
         <span className={`badge ${relation.color} text-xs`}>
@@ -124,6 +124,7 @@ export function RevealView({ card, selectedIdx, correct, stats, directionMode, o
       <div className="w-full max-w-md shrink-0 mt-2">
         <button
           onClick={onNext}
+          data-testid="next-card-button"
           className="w-full btn-primary py-2.5 text-sm font-semibold shrink-0"
         >
           {isLastCard ? "See Final Score →" : "Next Card →"}

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "pre-push-verify",
+  "description": "Run full verification suite before allowing push",
+  "version": "1",
+  "when": {
+    "type": "userTriggered",
+    "patterns": []
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npm run verify"
+  }
+}

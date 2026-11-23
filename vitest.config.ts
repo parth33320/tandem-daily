@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwind()],
   resolve: {
     alias: {
+      '@/shared': path.resolve(__dirname, './src/shared'),
       '@': path.resolve(__dirname, './src/client'),
     },
   },

@@ -134,7 +134,7 @@ function dealDailyCards(
   const usedIds = new Set<number>();
 
   for (let i = 0; i < 5; i++) {
-    let n = puzzleNum * 5 + i;
+    const n = puzzleNum * 5 + i;
     let card: RoundContent;
 
     if (i === 0) {
@@ -237,7 +237,7 @@ api.post("/score", async (c) => {
     }
 
     const streakKey = `streak:${username}`;
-    let streakStr = await redis.get(streakKey);
+    const streakStr = await redis.get(streakKey);
     let streak = streakStr ? parseInt(streakStr, 10) : 0;
 
     const yesterday = new Date();

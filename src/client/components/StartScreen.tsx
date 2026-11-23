@@ -31,6 +31,7 @@ export function StartScreen({ puzzleNumber, onStart, alreadyPlayed }: StartScree
             type="radio"
             name="direction"
             value="zh2ja"
+            data-testid="direction-zh2ja"
             checked={direction === "zh2ja"}
             onChange={() => setDirection("zh2ja")}
             className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold border-border focus:ring-gold"
@@ -42,6 +43,7 @@ export function StartScreen({ puzzleNumber, onStart, alreadyPlayed }: StartScree
             type="radio"
             name="direction"
             value="ja2zh"
+            data-testid="direction-ja2zh"
             checked={direction === "ja2zh"}
             onChange={() => setDirection("ja2zh")}
             className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold border-border focus:ring-gold"
@@ -53,6 +55,7 @@ export function StartScreen({ puzzleNumber, onStart, alreadyPlayed }: StartScree
             type="radio"
             name="direction"
             value="en"
+            data-testid="direction-en"
             checked={direction === "en"}
             onChange={() => setDirection("en")}
             className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold border-border focus:ring-gold"
@@ -62,6 +65,7 @@ export function StartScreen({ puzzleNumber, onStart, alreadyPlayed }: StartScree
 
       <button
         onClick={() => onStart(direction, alreadyPlayed)}
+        data-testid="start-button"
         className="w-full max-w-sm py-2.5 sm:py-3 px-4 sm:px-6 btn-primary text-sm sm:text-base"
       >
         {alreadyPlayed ? "Play Again (Practice Mode)" : "Play Today's 5 Cards"}
