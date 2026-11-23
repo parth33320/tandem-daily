@@ -20,9 +20,9 @@ export interface VoiceLines {
 
 export const LINES: Record<HostLang, VoiceLines> = {
   en: {
-    question: (word, lang) => `The word is ${word}. Is it A, B, C, or D?`,
+    question: (word, _lang) => `The word is ${word}. Is it A, B, C, or D?`,
     correct: (answer) => `Correct! ${answer}.`,
-    wrong: (answer, correct) => `Wrong. The answer is ${correct}.`,
+    wrong: (_answer, correct) => `Wrong. The answer is ${correct}.`,
     timeUp: () => `Time's up!`,
     won: () => `Victory! Well done!`,
     lost: () => `Defeat. Keep learning!`,

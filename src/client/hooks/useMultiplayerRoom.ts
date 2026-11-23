@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import type { RoomState, RoomPlayer } from "@/shared/room";
+import type { RoomState } from "@/shared/room";
 import type { Direction } from "@/shared/api";
 
 export function useMultiplayerRoom() {
