@@ -71,10 +71,10 @@ export function RevealView({ card, selectedIdx, correct, onNext, isLastCard }: R
       </div>
 
       {/* Choice Result Strip */}
-      <div className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg ${correct ? "bg-emerald/20" : "bg-rose-500/20"}`}>
-        <span className="font-display text-xl">{correct ? "🟩" : "🟥"}</span>
+      <div className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg ${selectedIdx === -1 ? "bg-amber-500/20" : correct ? "bg-emerald/20" : "bg-rose-500/20"}`}>
+        <span className="font-display text-xl">{selectedIdx === -1 ? "⏰" : correct ? "🟩" : "🟥"}</span>
         <span className="font-sans text-sm font-medium text-paper-ink">
-          {correct ? "Correct!" : "Wrong"} — {choiceText}
+          {selectedIdx === -1 ? "Time's Up!" : correct ? "Correct!" : "Wrong"} — {choiceText}
         </span>
       </div>
 
