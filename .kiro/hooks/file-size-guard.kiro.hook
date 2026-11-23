@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "file-size-guard",
+  "description": "Warn immediately if any edited file in src/ exceeds 250 lines",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["src/**/*.ts", "src/**/*.tsx"]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "node -e \"const fs = require('fs'), cp = require('child_process'); const files = cp.execSync('git diff --name-only src/').toString().trim().split('\\n').filter(Boolean); for (const f of files) { if (f.includes('wordPool.ts')) continue; const lines = fs.readFileSync(f, 'utf8').split('\\n').length; if (lines > 250) { console.error('FILE TOO LARGE (' + lines + ' lines): ' + f + '. Extract a modular sub-file instead.'); process.exit(1); } }\""
+  }
+}

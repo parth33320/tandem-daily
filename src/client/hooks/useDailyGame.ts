@@ -34,6 +34,8 @@ interface UseDailyGameState {
   _practiceSeed: number | undefined;
   pendingStartGame: boolean;
   pendingPractice: boolean;
+  trapPracticeMode: boolean;
+  trapPracticeWords: Array<{ id: number; form: string }>;
 }
 
 const BASE_POINTS = 100;
@@ -67,6 +69,8 @@ export function useDailyGame(direction: Direction) {
     _practiceSeed: undefined,
     pendingStartGame: false,
     pendingPractice: false,
+    trapPracticeMode: false,
+    trapPracticeWords: [],
   });
 
   const timerRef = useRef<number | null>(null);
@@ -426,6 +430,30 @@ export function useDailyGame(direction: Direction) {
 
   useEffect(() => clearTimers, [clearTimers]);
 
+  const startTrapPractice = useCallback((trapWords: Array<{ id: number; form: string }>) => {
+    setState((s) => ({
+      ...s,
+      trapPracticeMode: true,
+      trapPracticeWords: trapWords,
+      phase: "playing",
+      currentCard: 0,
+      score: 0,
+      answers: [],
+      usedHints: [],
+      revealed: false,
+      eliminatedIndices: [],
+      timer: TIMER_DURATION,
+      timerPaused: false,
+      timerPausedUntil: 0,
+      timerEnabled: true,
+      lifelinesUsed: { fiftyFifty: false, xray: false, twentyQuestions: 0, askSubreddit: false },
+      showRadicalOverlay: false,
+      showClues: [],
+      showCommunityStats: false,
+    }));
+    setTimeout(startTimer, 300);
+  }, [startTimer]);
+
   return {
     ...state,
     fetchDaily,
@@ -438,5 +466,6 @@ export function useDailyGame(direction: Direction) {
     shareScore,
     resetGame,
     nextCard,
+    startTrapPractice,
   };
 }

@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import type { Direction } from "@/shared/api";
 import { useVoiceHost } from "../hooks/useVoiceHost";
 import { useMultiplayerRoom } from "../hooks/useMultiplayerRoom";
+import { SettingsModal } from "./SettingsModal";
+import { HowToPlayModal } from "./HowToPlayModal";
+import { LeaderboardModal } from "./LeaderboardModal";
+import { WordPoolModal } from "./WordPoolModal";
+import { MyTrapsModal } from "./MyTrapsModal";
+import type { HostLang } from "../lib/host";
 
 interface StartScreenProps {
   puzzleNumber: number;
@@ -14,6 +20,12 @@ export function StartScreen({ onStart, alreadyPlayed }: StartScreenProps) {
   const [roomCodeInput, setRoomCodeInput] = useState("");
   const voiceHost = useVoiceHost();
   const multiplayer = useMultiplayerRoom();
+  
+  const [showSettings, setShowSettings] = useState(false);
+  const [showHowToPlay, setShowHowToPlay] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showWordPool, setShowWordPool] = useState(false);
+  const [showMyTraps, setShowMyTraps] = useState(false);
 
   const handleStart = (dir: Direction, practice = false) => {
     voiceHost.unlockVoice();
@@ -228,6 +240,87 @@ export function StartScreen({ onStart, alreadyPlayed }: StartScreenProps) {
             <p className="font-sans text-xs text-rose-500">{multiplayer.error}</p>
           )}
         </div>
+
+        {/* Modal Trigger Buttons */}
+        <div className="border-t border-primary/20 pt-4 space-y-2">
+          <p className="font-sans uppercase tracking-[0.3em] text-xs text-gold/70">
+            COMMUNITY & TOOLS
+          </p>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <button
+              onClick={() => setShowLeaderboard(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-leaderboard-button"
+            >
+              🏆 Leaderboard
+            </button>
+            
+            <button
+              onClick={() => setShowWordPool(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-wordpool-button"
+            >
+              📖 Word Pool
+            </button>
+            
+            <button
+              onClick={() => setShowMyTraps(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-traps-button"
+            >
+              🎯 My Traps
+            </button>
+
+            <button
+              onClick={() => setShowHowToPlay(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-howtoplay-button"
+            >
+              📖 How to Play
+            </button>
+            
+            <button
+              onClick={() => setShowSettings(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-settings-button"
+            >
+              ⚙️ Settings
+            </button>
+          </div>
+        </div>
+
+        {/* Modals */}
+        <SettingsModal
+          open={showSettings}
+          onClose={() => setShowSettings(false)}
+          hostLang={"en" as HostLang}
+          onLangChange={() => {}}
+          muted={false}
+          onMuteChange={() => {}}
+        />
+        
+        <HowToPlayModal
+          open={showHowToPlay}
+          onClose={() => setShowHowToPlay(false)}
+        />
+        
+        <LeaderboardModal
+          open={showLeaderboard}
+          onClose={() => setShowLeaderboard(false)}
+        />
+        
+        <WordPoolModal
+          open={showWordPool}
+          onClose={() => setShowWordPool(false)}
+          onToast={() => {}}
+        />
+        
+        <MyTrapsModal
+          open={showMyTraps}
+          onClose={() => setShowMyTraps(false)}
+          onPracticeTraps={() => {}}
+        />
       </div>
     </div>
   );

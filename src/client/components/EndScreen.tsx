@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { similarity } from "../../shared/game/content";
+import { LeaderboardModal } from "./LeaderboardModal";
+import { WordPoolModal } from "./WordPoolModal";
+import { MyTrapsModal } from "./MyTrapsModal";
+import { HowToPlayModal } from "./HowToPlayModal";
+import { SettingsModal } from "./SettingsModal";
 
 interface EndScreenProps {
   score: number;
@@ -15,8 +20,14 @@ export function EndScreen({ score, streak, answers, daily, onShare, onPlayAgain 
   const sim = similarity(daily.cards.map((c) => c.word));
   const emoji = answers.map((a) => (a.correct ? "🟩" : "🟥")).join("");
 
-  const [shareStatus, setShareStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [shareStatus, setShareStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [shareError, setShareError] = useState<string>("");
+  
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showWordPool, setShowWordPool] = useState(false);
+  const [showMyTraps, setShowMyTraps] = useState(false);
+  const [showHowToPlay, setShowHowToPlay] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   const handleShare = () => {
     setShareStatus("loading");
@@ -95,7 +106,7 @@ export function EndScreen({ score, streak, answers, daily, onShare, onPlayAgain 
           <p className="text-xs text-rose-500 text-center">{shareError}</p>
         )}
 
-{/* Gold Play Again Button */}
+        {/* Gold Play Again Button */}
         <motion.button
           onClick={onPlayAgain}
           className="w-full border-2 border-primary text-primary font-sans font-semibold py-3.5 rounded-full text-base hover:bg-primary/10 transition-colors"
@@ -108,9 +119,88 @@ export function EndScreen({ score, streak, answers, daily, onShare, onPlayAgain 
         >
           Play Again
         </motion.button>
+
+        {/* Modal Trigger Buttons */}
+        <div className="border-t border-primary/20 pt-4 space-y-2">
+          <p className="font-sans uppercase tracking-[0.3em] text-xs text-gold/70">
+            COMMUNITY & TOOLS
+          </p>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <button
+              onClick={() => setShowLeaderboard(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-leaderboard-button"
+            >
+              🏆 Leaderboard
+            </button>
+            
+            <button
+              onClick={() => setShowWordPool(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-wordpool-button"
+            >
+              📖 Word Pool
+            </button>
+            
+            <button
+              onClick={() => setShowMyTraps(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-traps-button"
+            >
+              🎯 My Traps
+            </button>
+
+            <button
+              onClick={() => setShowHowToPlay(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-howtoplay-button"
+            >
+              📖 How to Play
+            </button>
+            
+            <button
+              onClick={() => setShowSettings(true)}
+              className="font-sans text-sm font-semibold px-4 py-2.5 rounded-full transition-all border border-primary/50 text-primary hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+              data-testid="open-settings-button"
+            >
+              ⚙️ Settings
+            </button>
+          </div>
+        </div>
+
+        {/* Modals */}
+        <LeaderboardModal
+          open={showLeaderboard}
+          onClose={() => setShowLeaderboard(false)}
+        />
+        
+        <WordPoolModal
+          open={showWordPool}
+          onClose={() => setShowWordPool(false)}
+          onToast={() => {}}
+        />
+        
+        <MyTrapsModal
+          open={showMyTraps}
+          onClose={() => setShowMyTraps(false)}
+          onPracticeTraps={() => {}}
+        />
+        
+        <HowToPlayModal
+          open={showHowToPlay}
+          onClose={() => setShowHowToPlay(false)}
+        />
+        
+        <SettingsModal
+          open={showSettings}
+          onClose={() => setShowSettings(false)}
+          hostLang="en"
+          onLangChange={() => {}}
+          muted={false}
+          onMuteChange={() => {}}
+        />
       </div>
     </div>
   );
 }
-
-export default EndScreen;

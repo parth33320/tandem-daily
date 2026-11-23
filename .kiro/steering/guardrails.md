@@ -116,3 +116,6 @@ These rules are **absolute** and must never be violated:
   4. **Playwright E2E** — runs on mobile (375×667) and desktop (1280×800) before merge
 
 **No exceptions. No waivers. These guardrails protect the Frankenstein architecture that makes Tandem Daily work across Devvit, mobile, and desktop simultaneously.**
+## 7. Modular Sub-Routers & 100-Line Diff Limit
+- Never add more than 100 lines to an existing file in a single edit. For new backend endpoints, create a separate Hono sub-router file (e.g. src/server/routes/rooms.ts) and mount it with api.route() in 1 line.
+

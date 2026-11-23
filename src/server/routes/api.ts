@@ -22,8 +22,12 @@ import {
   type RoomPlayer,
   type RoomChatMessage,
 } from "../../shared/room";
+import { community } from "./community";
 
 export const api = new Hono();
+
+// Mount community sub-router (leaderboard, words, missed)
+api.route("/", community);
 
 const EPOCH_START = new Date("2025-01-01T00:00:00Z");
 
@@ -264,6 +268,38 @@ api.post("/score", async (c) => {
     for (const ans of body.answers) {
       const statKey = `stats:${puzzleNumber}:${ans.cardIdx}`;
       await redis.hIncrBy(statKey, ans.choiceIdx.toString(), 1);
+    }
+
+    // Leaderboard: save best score per direction
+    const direction = (body as unknown as Record<string, unknown>).direction as string || "zh2ja";
+    if (["zh2ja", "ja2zh", "en"].includes(direction)) {
+      await redis.zAdd(`leaderboard:${direction}`, { member: username, score: body.score });
+    }
+
+    // Missed words (My Traps): increment missCount for wrong/timeout answers
+    for (const ans of body.answers) {
+      if (!ans.correct) {
+        const missedKey = `missed:${username}`;
+        const existing = await redis.hGet(missedKey, String(ans.cardIdx));
+        if (existing) {
+          const parsed = JSON.parse(existing);
+          parsed.missCount = (parsed.missCount || 0) + 1;
+          parsed.lastMissedAt = Date.now();
+          await redis.hSet(missedKey, { [String(ans.cardIdx)]: JSON.stringify(parsed) });
+        } else {
+          const word = SERVER_WORD_POOL[ans.cardIdx % SERVER_WORD_POOL.length];
+          await redis.hSet(missedKey, { [String(ans.cardIdx)]: JSON.stringify({
+            wordId: word?.id || ans.cardIdx,
+            form: word?.form || "unknown",
+            reading: word?.reading || "",
+            meaning_ja: word?.ja || "",
+            meaning_zh: word?.zh || "",
+            relation: word?.relation || "false",
+            missCount: 1,
+            lastMissedAt: Date.now(),
+          }) });
+        }
+      }
     }
 
     let flair: string | undefined;
